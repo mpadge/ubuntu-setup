@@ -11,7 +11,7 @@ if has("syntax")
   syntax on
 endif
 " Set up solarized colour profile, as per
-" www.xorcode.com/2011/04/11/solarized-vim-eclipse-ubuntu/
+" http://www.xorcode.com/2011/04/11/solarized-vim-eclipse-ubuntu/
 " Copy the soliarized.vim file from solarized/vim-colors-solarized/colors/ to
 " the directory (which needs to be mkdir'd) /.vim/colors.
 if has ('gui_running')
@@ -84,10 +84,15 @@ nnoremap <C-L> :nohls<cr>
 noremap <C-m> :!make<cr>
 nmap <leader>w :w!<cr>
 
+" openbrowser maps:
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+nmap gw <Plug>(openbrowser-open)
+vmap gw <Plug>(openbrowser-open)
+
 " Next 2 lines make tab match brackets instead of %
 nnoremap <tab> %
 vnoremap <tab> %
-
 
 "------------------------------------
 " Showmarks
