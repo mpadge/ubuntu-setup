@@ -19,6 +19,12 @@ shopt -s histappend
 HISTSIZE=100000
 HISTFILESIZE=100000
 
+# Then extra stuff to append history from all tmux windows:
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+shopt -s histappend                      # append to history, don't overwrite it
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
