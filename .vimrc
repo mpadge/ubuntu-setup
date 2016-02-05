@@ -185,6 +185,8 @@ let vimrplugin_vimpager = "no"
 vmap <Space> <Plug>RDSendSelection 
 " send line to R with space bar
 nmap <Space> <Plug>RDSendLine
+" Disable mapping underscore to '->':
+let vimrplugin_assign = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
