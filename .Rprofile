@@ -18,17 +18,19 @@ attach(.env)
 
 .First <- function(){
     if(interactive()){
-        message ("====================R====================")
+        message ("||==============================R",
+                 "===============================||")
         rv <- R.Version ()$version.string
         rn <- R.Version ()$nickname
         rpl <- R.Version ()$platform
-        message (rv, " --- \"", rn, "\"")
+        message ("|| ", rv, " --- \"", rn, "\"\t||")
         rsys <- Sys.info ()
         ss <- system (". /etc/os-release; echo ${VERSION}", intern=T)
-        message ("Ubuntu ", ss, " (kernel ", rsys["release"], ")")
-        message ("machine = ", rpl, ": ", rsys["nodename"])
-        message (".Rprofile contains ", ls (name=".env"))
-        message ("====================R====================")
+        message ("|| Ubuntu ", ss, " (kernel ", rsys["release"], ")\t||")
+        message ("|| \tmachine = ", rpl, ": ", rsys["nodename"], "\t\t\t||")
+        message ("|| \t.Rprofile contains ", ls (name=".env"), "\t\t\t\t||")
+        message ("||==============================R",
+                 "===============================||")
     }
 }
 
