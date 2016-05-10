@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# ~.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=100000
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 # Then extra stuff to append history from all tmux windows:
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
@@ -28,7 +28,6 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -125,3 +124,6 @@ export TERM=screen-256color-bce
 
 # Add custom colour scheme produced from http://ciembor.github.io/4bit/#
 #source /data/Dropbox/mark/system/solarized.sh
+
+alias R='R --no-save --quiet'
+alias sudo='sudo ' # ensures that sudo R loads .Rprofile
