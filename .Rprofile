@@ -24,7 +24,9 @@ attach(.env)
         rpl <- R.Version ()$platform
         message (rv, " --- \"", rn, "\"")
         rsys <- Sys.info ()
-        message ("Ubuntu ", rsys["release"], " on ", rpl, ": ", rsys["nodename"])
+        ss <- system (". /etc/os-release; echo ${VERSION}", intern=T)
+        message ("Ubuntu ", ss, " (kernel ", rsys["release"], ")")
+        message ("machine = ", rpl, ": ", rsys["nodename"])
         message (".Rprofile contains ", ls (name=".env"))
         message ("====================R====================")
     }
