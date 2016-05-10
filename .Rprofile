@@ -18,6 +18,7 @@ attach(.env)
 
 .First <- function(){
     if(interactive()){
+        message ("")
         message ("||==============================R",
                  "===============================||")
         rv <- R.Version ()$version.string
@@ -31,6 +32,7 @@ attach(.env)
         message ("|| \t.Rprofile contains ", ls (name=".env"), "\t\t\t\t||")
         message ("||==============================R",
                  "===============================||")
+        message ("")
     }
 }
 
