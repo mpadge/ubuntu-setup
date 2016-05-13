@@ -1,13 +1,13 @@
 local ({r <- getOption("repos")
-      r["CRAN"] <- "http://cran.uni-muenster.de"
+      r["CRAN"] <- "https://cran.uni-muenster.de"
       options(repos=r)})
  
 #options (stringsAsFactors=FALSE)
-options (max.print=100)
+#options (max.print=100)
 options (width = 80)
 options (scipen=10)
 options (editor="vim")
-options (prompt="R> ", digits=4)
+#options (prompt="R> ", digits=4)
 
 .env <- new.env()
 .env$setpar <- function (mar=c(3, 3, 2, 1), mgp=c(1.7, 0.3, 0))
