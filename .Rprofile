@@ -16,6 +16,8 @@ options (editor="vim")
 }
 attach(.env)
 
+#utils::update.packages (ask=FALSE)
+
 .First <- function(){
     if(interactive()){
         message ("")
@@ -32,10 +34,17 @@ attach(.env)
         message ("|| \t.Rprofile contains ", ls (name=".env"), "\t\t\t\t||")
         message ("||==============================R",
                  "===============================||")
+        message ("\tcurrent dir:", getwd ())
         message ("")
+
+        old <- utils::old.packages ()
+        if (!is.null (old)) 
+            cat ("Updatable packages: ", old [,1], "\n", fill=TRUE) 
+        else 
+            cat ("All packages up to date\n")
     }
 }
 
- 
+
 if(Sys.getenv("TERM") == "xterm-256color")
-  library("colorout")
+    library("colorout")

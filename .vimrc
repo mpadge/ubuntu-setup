@@ -19,7 +19,6 @@ if has ('gui_running')
 else
     set background=dark
 endif
-set background=light
 set t_Co=16
 let g:solarized_termcolors=16
 colorscheme solarized
@@ -84,7 +83,7 @@ let mapleader = ";"
 nnoremap <C-L> :nohls<cr>
 noremap <C-m> :!make<cr>
 nmap <leader>w :w!<cr>
-nmap <C-x> :xa<cr>
+nmap <C-x> :qa<cr>
 
 " openbrowser maps:
 nmap gx <Plug>(openbrowser-smart-search)
@@ -187,9 +186,9 @@ let vimrplugin_vimpager = "no"
 vmap <Space> <Plug>RDSendSelection 
 " send line to R with space bar
 nmap <Space> <Plug>RDSendLine
-" finally, stop the plugin remapping underscore to '->'
-let vimrplugin_assign = 0
 
+" finally, stop the plugin remapping underscore to '->':
+let vimrplugin_assign = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
