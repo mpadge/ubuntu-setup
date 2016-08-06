@@ -186,6 +186,7 @@ travis version
 # <a name="4-misc-system-stuff"></a>4. Miscellaneous System Stuff
 
 1. Set default editor
+
     ```
     echo $EDITOR
     export EDITOR='vim'
