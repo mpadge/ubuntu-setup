@@ -19,14 +19,12 @@ Contents
 
 [7. `python`](#7-pthyon) ([7.1 scipy & numpy](#7-scipy-numpy))
 
-[8. Miscellaneous non-system stuff](#8-misc-non-syst)
+[8. Other packages](#8-other-packages) (
+[8.1 Image processing](#8.1-image-processing))
 
-[9. Other packages](#9-other-packages) (
-[9.1 Image processing](#9.1-image-processing))
+[9. ruby & jekyll](#9-ruby-jekyll)
 
-[10. ruby & jekyll](#10-ruby-jekyll)
-
-[11. Miscellaneous system commands](#11-misc-syst-commands)
+[10. Miscellaneous system commands](#10-misc-syst-commands)
 
 --------
 
@@ -368,24 +366,10 @@ sudo pip install slimit
 ```
 
 
-----------
-
-# <a name="8-misc-non-syst"></a>8. Misc Non-system Stuff
-
-1. BetterPrivacy for Firefox
-2. Firetray for Thunderbird
-
-Copy 'msgFilterRules.dat' to ./thunderbird/.../ImapMail/imap.mail.com/
-(but note that that doesn't actually work; they need to be manually
-re-entered.)
-Load 'thunderbird-addresses-xx.ldiff' into thunderbird
-
-
-
 --------------------
 
 
-# <a name="9-other-packages"></a>9. Other interesting / useful packages
+# <a name="8-other-packages"></a>8. Other interesting / useful packages
 
 ```
 ardesia
@@ -405,7 +389,7 @@ pyparsing
 
 ----------------
 
-## <a name="9.1-image-processing"></a>9.1 For image processing
+## <a name="8.1-image-processing"></a>8.1 For image processing
 
 ```
 rawtherapee
@@ -415,7 +399,7 @@ darktable
 
 -------------------------------
 
-# <a name="10-ruby-jekyll"></a>10 Ruby & jekyll stuff
+# <a name="9-ruby-jekyll"></a>9 Ruby & jekyll stuff
 
 
 Install [Ruby-Version-Manager](http://rvm.io) which is necessary for [jekyll](https://help.github.com/articles/using-jekyll-with-pages/)
@@ -460,7 +444,7 @@ bundle exec jekyll serve
 
 ---------------------------------
 
-# <a name="11-misc-syst-commands"></a>11 Miscellaneous Useful System Commands
+# <a name="10-misc-syst-commands"></a>10 Miscellaneous Useful System Commands
 
 To list installed packages:
 ```
