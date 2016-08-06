@@ -10,7 +10,7 @@ Contents
 
 [3. git](#3-git) ([3.1 travis](#3.1-travis))
 
-[4. Miscellaneous system stuff](#4-misc-system-stuff")
+[4. Miscellaneous system stuff](#4-misc-system-stuff)
 
 [5. R](#5-R) ([5.1 R packages](#5.1-packages); 
 [5.2 vim-r](#5.2-vim-r); [5.3 Nvim-r](#5.3-Nvim-r))
@@ -32,11 +32,11 @@ Contents
 
 # <a name="1-visual-settings"></a>1 Visual settings
 
-1. Appearance -> Look -> Launcher Icon Size = 32 (smallest)
+1. Appearance -> Look -> Launcher Icon Size = 32 
 2. Appearance -> Behaviour -> Autohide Launcher
 3. Install Gnome Tweak from software centre (not apt-get)
 4. Advanced Settings -> Fonts -> All to 10, except Document = 11
-5. To enable <super>-N for moving windows between monitors:
+5. To enable `<super>-N` for moving windows between monitors:
 
         sudo apt-get install compizconfig-settings-manager compiz-plugins-extra 
     5a. Window Management -> Enable `Put`
@@ -63,13 +63,14 @@ Contents
 1. Download [`.tar.gz`](https://github.com/adobe-fonts/source-code-pro)
 2. Open each `.otf` with `font-viewer` and `install`
 3. Advanced Settings -> Fonts -> Monospace font -> SourceCodePro Light 9pt
-4. Set termain -> profile -> general -> font -> SourceCodePro Light 9pt
+4. Set Terminal -> profile -> general -> font -> SourceCodePro Light 9pt
 
 -----
 
 ## <a name="1.2-solarized"></a>1.2 [solarized](https://github.com/altercation/vim-colors-solarized)
 
-First install [`vim-pathogen`](https://github.com/tpope/vim-pathogen):
+1. See notes on `vim` install [below](#2.1-vim)
+2. Install [`vim-pathogen`](https://github.com/tpope/vim-pathogen):
 ```
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
@@ -108,7 +109,7 @@ Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name
 
     ```
     msgid "Ubuntu Desktop"
-    msgstr "o---o"
+    msgstr "whatever"
     ```
 3.  
     ```
@@ -185,15 +186,15 @@ travis version
 # <a name="4-misc-system-stuff"></a>4. Miscellaneous System Stuff
 
 1.
-    ```
     echo $EDITOR
     export EDITOR='vim'
-    ```
+
 2. `tcolorbox` does **NOT** install as latest version, so has to be done manually in 
 
     ```
     /usr/share/texlive/texmf-dist/tex/latex/tcolorbox
     ```
+    
 3. To update `boost` to `>=LTS`:
 
     a. Check version
@@ -201,7 +202,9 @@ travis version
     ```
     dpkg -s libboost-all-dev | grep version
     ```
+    
     b. Then update to downloaded version
+    
     ```
     wget -O boost_1_xx_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.xx.0/boost_1_xx_0.tar.gz/download
     tar xzvf boost_1_xx_0.tar.gz
@@ -210,6 +213,7 @@ travis version
     sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev
     ./bootstrap.sh --prefix=/usr/local
     ```
+    
     c. The last of these gives instructions for install, then just need to 
     ```
     sudo copy boost_1_xx_0 /usr/include/ -r
@@ -313,7 +317,7 @@ at around line#126 from
     let g:Tex_FoldedSections = 'part,chapter,section,'
                         \. 'subsection,subsubsection,paragraph'
 
-to
+to include `objective` and `subobjective` for example:
 
     let g:Tex_FoldedSections = 'part,chapter,section,'
                         \. 'subsection,subsubsection,paragraph,'
