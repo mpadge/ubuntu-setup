@@ -102,17 +102,18 @@ If not set at install, just change both:
 Then to change the ["Ubuntu
 Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel) text at top left:
 
-1. `vim .junk.po` # file has to remain in place
+1. `vim .junk.po` # (can be deleted afterward)
 2. insert:
 
     ```
     msgid "Ubuntu Desktop"
     msgstr "whatever"
     ```
-3.  
+3.  then:
+
     ```
     cd /usr/share/locale/en/LC_MESSAGES
-    sudo msgfmt -o unity.mo ~/junk.po
+    sudo msgfmt -o unity.mo ~/.junk.po
     ```
 4. log out to change it
 
