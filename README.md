@@ -17,7 +17,7 @@ Contents
 
 [6. Other `vim` plugins](#6-other-vim)
 
-[7. `python`](#7-pthyon) ([7.1 scipy & numpy](#7-scipy-numpy))
+[7. `python`](#7-python) ([7.1 scipy & numpy](#7-scipy-numpy))
 
 [8. Other packages](#8-other-packages) (
 [8.1 Image processing](#8.1-image-processing))
