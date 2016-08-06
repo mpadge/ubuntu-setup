@@ -186,15 +186,15 @@ travis version
 # <a name="4-misc-system-stuff"></a>4. Miscellaneous System Stuff
 
 1.
+    ```
     echo $EDITOR
     export EDITOR='vim'
-
+    ```
 2. `tcolorbox` does **NOT** install as latest version, so has to be done manually in 
 
     ```
     /usr/share/texlive/texmf-dist/tex/latex/tcolorbox
     ```
-    
 3. To update `boost` to `>=LTS`:
 
     a. Check version
@@ -202,7 +202,6 @@ travis version
     ```
     dpkg -s libboost-all-dev | grep version
     ```
-    
     b. Then update to downloaded version
     
     ```
@@ -213,7 +212,6 @@ travis version
     sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev
     ./bootstrap.sh --prefix=/usr/local
     ```
-    
     c. The last of these gives instructions for install, then just need to 
     ```
     sudo copy boost_1_xx_0 /usr/include/ -r
