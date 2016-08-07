@@ -3,10 +3,11 @@ My system setup from scratch ...
 Contents
 --------
 
-[1. Visual settings](#1-visual-settings) ([1.1 SourceCodePro](#1.1-sourcecodepro); 
-[1.2 solarized](#1.2-solarized); [1.3 computer name](#1.3-computer-name))
+[1. `apt-get install` comands](#1-apt-get-install) ([1.1 vim](#1.1-vim); 
+[1.2 Other stuff](#1.2-misc))
 
-[2. `apt-get install` comands](#2-apt-get-install) ([2.1 vim](#2.1-vim))
+[2. Visual settings](#2-visual-settings) ([2.1 SourceCodePro](#2.1-sourcecodepro); 
+[2.2 solarized](#2.2-solarized); [2.3 computer name](#2.3-computer-name))
 
 [3. git](#3-git) ([3.1 travis](#3.1-travis))
 
@@ -24,11 +25,63 @@ Contents
 
 [9. ruby & jekyll](#9-ruby-jekyll)
 
-[10. Miscellaneous system commands](#10-misc-syst-commands)
 
 --------
 
-# <a name="1-visual-settings"></a>1 Visual settings
+# <a name="1-apt-get-install"></a>1. `apt-get install` copy-paste commands:
+
+First enable canonical partners, then
+
+```
+sudo apt-get install ctags libx11-dev tmux libboost-all-dev texlive-full
+sudo apt-get install git mc libxml2-dev imagemagick libcgal-dev jabref vlc pdftk
+sudo apt-get install gsl-bin libgsl0-dev valgrind zathura
+sudo apt-get install libcurl4-openssl-dev dos2unix python-bs4 libgeos-dev libglu1-mesa-dev
+sudo apt-get install ubuntu-restricted-extras skype
+sudo apt-get install libzip-dev libglu1-mesa-dev mesa-common-dev clang-3.8
+sudo apt-get install htop python-regex cmake tree libeigen3-dev libgmp3-dev
+```
+
+`zathura` is needed by `Nvim-r`
+
+## <a name="1.1-vim"></a>1.1 `vim`
+
+`vim` can be compiled as described [here](http://www.vim.org/git.php) with these
+lines: 
+```
+git clone https://github.com/vim/vim.git
+cd vim/src
+make
+sudo make install
+```
+This will only work if `vim` has not yet been installed at all, that is if
+```
+dpkg --get-selections | grep vim 
+```
+returns nothing. Otherwise modify as described
+[here](http://www.vim.org/git.php).  This also allows easy updating to any and
+all future patches by simply updating the `git clone`.
+
+## <a name="1.2-misc"></a>1.2 Other installation stuff
+
+1. `Java` and `rJava`
+
+    ```
+    sudo apt-get install openjdk-8-jre # or 9?
+    sudo apt-get install openjdk-8-jdk
+    sudo apt-get install r-cran-rjava
+    sudo R CMD javareconf # -e ?
+    ```
+2. [pandoc](github.com/jpg/pandoc) is best installed not by `apt-get`, rather by
+    ```
+    sudo wget https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
+    sudo dpkg -i pandoc-1.16.0.2-1-amd64.deb
+    ```
+
+--------
+
+
+# <a name="2-visual-settings"></a>2 Visual settings
 
 1. Appearance -> Look -> Launcher Icon Size = 32 
 2. Appearance -> Behaviour -> Autohide Launcher
@@ -56,7 +109,7 @@ Contents
 
 -----
 
-## <a name="1.1-sourcecodepro"></a>1.1 [SourceCodePro](https://github.com/adobe-fonts/source-code-pro)
+## <a name="2.1-sourcecodepro"></a>2.1 [SourceCodePro](https://github.com/adobe-fonts/source-code-pro)
 
 1. Download [`.tar.gz`](https://github.com/adobe-fonts/source-code-pro)
 2. Open each `.otf` with `font-viewer` and `install`
@@ -65,7 +118,7 @@ Contents
 
 -----
 
-## <a name="1.2-solarized"></a>1.2 [solarized](https://github.com/altercation/vim-colors-solarized)
+## <a name="2.2-solarized"></a>2.2 [solarized](https://github.com/altercation/vim-colors-solarized)
 
 1. See notes on `vim` install [below](#2.1-vim)
 2. Install [`vim-pathogen`](https://github.com/tpope/vim-pathogen):
@@ -91,7 +144,7 @@ to configure both light and dark profiles
 
 -----
 
-## <a name="1.3-computer-name"></a>1.3 Computer name
+## <a name="2.3-computer-name"></a>2.3 Computer name
 
 If not set at install, just change both:
 ```
@@ -117,30 +170,6 @@ Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name
     ```
 4. log out to change it
 
-
------
-
-# <a name="2-apt-get-install"></a>2. `apt-get install` copy-paste commands:
-
-First enable canonical partners, then
-
-```
-sudo apt-get install ctags libx11-dev tmux libboost-all-dev texlive-full
-sudo apt-get install git mc libxml2-dev imagemagick libcgal-dev jabref vlc pdftk
-sudo apt-get install gsl-bin libgsl0-dev valgrind 
-sudo apt-get install libcurl4-openssl-dev dos2unix python-bs4 libgeos-dev libglu1-mesa-dev
-sudo apt-get install ubuntu-restricted-extras skype
-sudo apt-get install libzip-dev libglu1-mesa-dev mesa-common-dev clang-3.8
-sudo apt-get install htop python-regex cmake tree pandoc libeigen3-dev libgmp3-dev
-sudo apt-get install zathura
-```
-
-## <a name="2.1-vim"></a>2.1 `vim`
-
-The `apt-get` version of `vim` may not be sufficiently current to work with
-`Nvim-r-plugin`, in which case `vim` can be compiled as described
-[here](http://www.vim.org/git.php). This also allows easy updating to any and
-all future patches by simply updating the `git clone`.
 
 
 -----
@@ -219,20 +248,6 @@ travis version
     d. Finally add to compiler path `/usr/include/boost_1_xx_0` and to linker library path
 `/usr/include/boost_1_xx_0/stage/lib`
 
-4. `Java` and `rJava`
-
-    ```
-    sudo apt-get install openjdk-8-jre # or 9?
-    sudo apt-get install openjdk-8-jdk
-    sudo apt-get install r-cran-rjava
-    sudo R CMD javareconf # -e ?
-    ```
-5. [pandoc](github.com/jpg/pandoc) is best installed not by `apt-get`, rather by
-    ```
-    sudo wget https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
-    sudo dpkg -i pandoc-1.16.0.2-1-amd64.deb
-    ```
-
 ------
 
 # <a name="5-R"></a>5. `R`
@@ -260,6 +275,12 @@ search for `cran` and replace `@CRAN@` with `https://cran.r-project.org/`
 
 ## <a name="5.1-packages"></a>5.1 Package installation
 
+In addition to the [`rJava`](#1.2-misc) requirements listed above, prior to
+installation:
+
+1. `httr` requires `libssl-dev`
+2. `rgdal` requires `gdal-bin libgdal-dev libproj-dev`
+
 ```
 pkgs <- c ("codetools", "ggplot2", "sp", "spacetime", "XML", "data.table", "RCurl")
 pkgs <- c (pkgs, "osmar", "quantreg", "fpc", "knitr", "rmarkdown", "yaml", "bitops")
@@ -273,8 +294,6 @@ new.pkgs <- pkgs [!(pkgs %in% rownames (installed.packages()))]
 if(length(new.pkgs)) install.packages(new.pkgs)
 ```
 
-1. `httr` requires `libssl-dev`
-2. `rgdal` requires `gdal-bin libgdal-dev libproj-dev`
 
 ------
 
@@ -380,10 +399,10 @@ varishapes font
 martin vogel's symbols font
 poky font
 stylebats font
-apache2 - web server needed for routino
-libjson-pp-perl - also for routino
-tcl-dev (only for the R adehabitat package)
-tk-dev (ditto - maybe tcl-dev is not actually needed?)
+apache2 # web server needed for routino
+libjson-pp-perl # also for routino
+tcl-dev # only for the R adehabitat package
+tk-dev # ditto - maybe tcl-dev is not actually needed?
 routino
 pyparsing
 ```
@@ -443,11 +462,3 @@ and to run it:
 bundle exec jekyll serve
 ```
 
----------------------------------
-
-# <a name="10-misc-syst-commands"></a>10 Miscellaneous Useful System Commands
-
-To list installed packages:
-```
-dpkg --get-selections | grep vim # (to list vim packages, for example)
-```

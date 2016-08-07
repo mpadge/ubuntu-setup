@@ -18,6 +18,7 @@ if has ('gui_running')
     set background=light
 else
     set background=dark
+set background=dark
 endif
 set t_Co=16
 let g:solarized_termcolors=16
@@ -30,9 +31,10 @@ colorscheme solarized
 
 " Load indentation rules and plugins according to the detected filetype.
 " Note these are essential for r-plugin!
-if has("autocmd")
-  filetype plugin indent on
-endif
+"if has("autocmd")
+  filetype plugin on
+  filetype indent on
+"endif
 
 set showcmd		    " Show (partial) command in status line.
 set showmatch		" Show matching brackets.
@@ -68,6 +70,8 @@ set gdefault
 set hlsearch 
 " Height of the command bar
 set cmdheight=2
+
+set backspace=indent,eol,start
 
 "------------------------------------
 " Behavior
@@ -164,18 +168,18 @@ nmap <F2> :call MyExplore()<cr>
 " let vimrplugin_screenplugin = 0
 " For tmux support
 let g:ScreenImpl = 'Tmux'
-let vimrplugin_screenvsplit = 1 " For vertical tmux split
+"let vimrplugin_screenvsplit = 1 " For vertical tmux split
 let g:ScreenShellInitialFocus = 'shell' 
 " instruct to use your own .screenrc file
-let g:vimrplugin_noscreenrc = 1
+"let g:vimrplugin_noscreenrc = 1
 " For integration of r-plugin with screen.vim
-let g:vimrplugin_screenplugin = 1
+"let g:vimrplugin_screenplugin = 1
 " Don't use conque shell if installed
-let vimrplugin_conqueplugin = 0
+"let vimrplugin_conqueplugin = 0
 " map the letter 'r' to send visually selected lines to R 
-let g:vimrplugin_map_r = 1
+"let g:vimrplugin_map_r = 1
 " see R documentation in a Vim buffer
-let vimrplugin_vimpager = "no"
+"let vimrplugin_vimpager = "no"
 "set expandtab
 " start R with F2 key - does not work properly, so need to be disabled
 " to re-enable <leader>rf
@@ -188,7 +192,18 @@ vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 
 " finally, stop the plugin remapping underscore to '->':
-let vimrplugin_assign = 0
+"let vimrplugin_assign = 0 
+let R_assign = 0
+" TODO: 1. Get tmux split to stay open when R quits
+
+" new stuff for Nvim-r from
+" https://github.com/jcfaria/Vim-R-plugin/issues/204
+let g:R_in_buffer = 0
+let g:R_tmux_split = 1
+let g:R_vsplit = 1 "enable vertical split
+let R_args = ['--no-save', '--quiet']
+let R_tmux_title = 'R'
+let g:R_notmuxconf = 1 "use my .tmux.conf, not the Nvim-r one
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

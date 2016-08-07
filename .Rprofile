@@ -37,6 +37,9 @@ attach(.env)
         message ("\tcurrent dir:", getwd ())
         message ("")
 
+        if ('colorout' %in% rownames (utils::installed.packages ()))
+            library (colorout)
+
         old <- utils::old.packages ()
         if (!is.null (old)) 
             cat ("Updatable packages: ", old [,1], "\n", fill=TRUE) 
