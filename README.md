@@ -73,6 +73,7 @@ all future patches by simply updating the `git clone`.
     sudo R CMD javareconf # -e ?
     ```
 2. [pandoc](github.com/jpg/pandoc) is best installed not by `apt-get`, rather by
+
     ```
     sudo wget https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
     sudo dpkg -i pandoc-1.16.0.2-1-amd64.deb
