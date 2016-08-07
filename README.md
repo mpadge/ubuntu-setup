@@ -23,7 +23,6 @@ Contents
 [8. Other packages](#8-other-packages) (
 [8.1 Image processing](#8.1-image-processing))
 
-[9. ruby & jekyll](#9-ruby-jekyll)
 
 
 --------
@@ -35,7 +34,7 @@ First enable canonical partners, then
 ```
 sudo apt-get install ctags libx11-dev tmux libboost-all-dev texlive-full
 sudo apt-get install git mc libxml2-dev imagemagick libcgal-dev jabref vlc pdftk
-sudo apt-get install gsl-bin libgsl0-dev valgrind zathura
+sudo apt-get install gsl-bin libgsl0-dev valgrind lxd zathura
 sudo apt-get install libcurl4-openssl-dev dos2unix python-bs4 libgeos-dev libglu1-mesa-dev
 sudo apt-get install ubuntu-restricted-extras skype
 sudo apt-get install libzip-dev libglu1-mesa-dev mesa-common-dev clang-3.8
@@ -416,50 +415,5 @@ pyparsing
 rawtherapee
 rawstudio
 darktable
-```
-
--------------------------------
-
-# <a name="9-ruby-jekyll"></a>9 Ruby & jekyll stuff
-
-
-Install [Ruby-Version-Manager](http://rvm.io) which is necessary for [jekyll](https://help.github.com/articles/using-jekyll-with-pages/)
-```
-ruby --version # lists current version
-source /home/markus/.rvm/scripts/rvm
-rvm list # lists current versions
-```
-Then install a javascript runtime
-```
-apt-get install nodejs
-```
-Then install jekyll:
-```
-get install jekyll
-```
-and run jekyll new:
-```
-jekyll new junk
-cd junk
-jekyll build
-jekyll serve
-```
-
-Then for github pages:
-```
-gem install bundler
-```
-then added 'Gemfile' with the following 2 lines:
-```
-source 'https://rubygems.org'
-gem 'github-pages'
-```
-then finally
-```
-bundle install
-```
-and to run it:
-```
-bundle exec jekyll serve
 ```
 
