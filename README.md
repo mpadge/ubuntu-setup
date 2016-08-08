@@ -335,9 +335,11 @@ sudo vim-addons -w install r-plugin
     sudo vim-addons install -w latex-suite # -w is flag for system-wide installation
 
 If latex folding does not work, the folds can be examined with `:echo &fdo` --
-see `:h fdo` for more details.  New folding environments can be defined by
-changing `/usr/share/vim/addons/ftplugin/latex-suite/folding.vim` at around
-line#126 from
+see `:h fdo` for more details.  (`install` may have to be repeated without
+`-w`).
+
+New folding environments can be defined by changing
+`/usr/share/vim/addons/ftplugin/latex-suite/folding.vim` at around line#126 from
 
     let g:Tex_FoldedSections = 'part,chapter,section,'
                         \. 'subsection,subsubsection,paragraph'
