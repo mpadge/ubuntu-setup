@@ -70,6 +70,7 @@ set backspace=indent,eol,start
 let maplocalleader = ","
 let mapleader = ";"
 "let g:mapleader = ","
+set foldenable
 
 
 "------------------------------------
@@ -132,6 +133,8 @@ let g:R_vsplit = 1 "enable vertical split
 let R_args = ['--no-save', '--quiet']
 let R_tmux_title = 'R'
 let g:R_notmuxconf = 1 "use my .tmux.conf, not the Nvim-r one
+
+let r_syntax_folding = 1
 
 "-------------------------------------------
 "-------------   vim-latex   ---------------
