@@ -71,11 +71,14 @@ all future patches by simply updating the `git clone`.
     sudo apt-get install r-cran-rjava
     sudo R CMD javareconf # -e ?
     ```
-2. [pandoc](github.com/jpg/pandoc) is best installed not by `apt-get`, rather by
+2. [pandoc](https://github.com/jgm/pandoc) is best installed not by `apt-get`,
+   rather by finding latest release
+   [here](https://github.com/jgm/pandoc/releases) and modifying the following
+   accordingly
 
     ```
-    sudo wget https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
-    sudo dpkg -i pandoc-1.16.0.2-1-amd64.deb
+    sudo wget https://github.com/jgm/pandoc/releases/download/1.17.2/pandoc-1.17.2-1-amd64.deb
+    sudo dpkg -i pandoc-1.17.2-1-amd64.deb
     ```
 
 --------
