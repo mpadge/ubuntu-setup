@@ -72,14 +72,18 @@ all future patches by simply updating the `git clone`.
     sudo R CMD javareconf # -e ?
     ```
 2. [pandoc](https://github.com/jgm/pandoc) is best installed not by `apt-get`,
-   rather by finding latest release
-   [here](https://github.com/jgm/pandoc/releases) and modifying the following
-   accordingly
+   rather by installing the 
+   [latest release](https://github.com/jgm/pandoc/releases):
 
     ```
-    sudo wget https://github.com/jgm/pandoc/releases/download/1.17.2/pandoc-1.17.2-1-amd64.deb
-    sudo dpkg -i pandoc-1.17.2-1-amd64.deb
+    URL=$(curl -s https://api.github.com/repos/jgm/pandoc/releases | \
+        grep browser_download_url | head -n 1 | cut -d '"' -f 4)
+    sudo wget $URL
+    file=${URL#https://github.com/jgm/pandoc/releases/download/}
+    file=${file#*/}
+    sudo dpkg -i $file
     ```
+
 
 --------
 
