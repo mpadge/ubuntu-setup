@@ -45,13 +45,23 @@ attach(.env)
         nci <- sapply (lns, nchar, USE.NAMES=FALSE)
         gaplen <- floor (nc + 2 * gap - nci) / 2
 
-        message ('')
-        eq_half <- rep ('=', gap + nc / 2 - 1) # half line of '='
-        message ('||', eq_half, 'R', eq_half, '=||')
+        #for (i in 2500:2600)
+        #    cat(eval(parse(text=paste("\"\\u", i, "\"", sep=""))), " ")
+        top <- "\u2583"
+        bot <- "\u2580"
+        vc <- "\u2588"
+
+        top_half <- paste0 (rep (top, gap + nc / 2 - 1))
+        message (top_half, ' R ', top_half, top)
+        message (paste0 (vc, paste0 (rep (' ', gap + nc + 1), collapse=''), ' ', vc))
         for (i in 1:length (lns))
-            message ('||', rep (' ', gaplen [i]), lns [[i]], 
-                rep (' ', gaplen [i]), '||')
-        message ('||', eq_half, 'R', eq_half, '=||')
+        {
+            gaps <- paste0 (rep (' ', gaplen [i]), collapse='')
+            message (paste0 (vc, gaps, lns [[i]], gaps, vc))
+        }
+        message (paste0 (vc, paste0 (rep (' ', gap + nc + 1), collapse=''), ' ', vc))
+        bot_half <- paste0 (rep (bot, gap + nc / 2 - 1))
+        message (bot_half, ' R ', bot_half, bot)
         message ('')
 
         old <- utils::old.packages ()
