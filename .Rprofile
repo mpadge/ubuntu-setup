@@ -64,12 +64,15 @@ attach(.env)
         message (bot_half, ' R ', bot_half, bot)
         message ('')
 
-        old <- utils::old.packages ()
-        if (!is.null (old)) 
-            cat ('Updatable packages: ', old [,1], '\n', fill=TRUE) 
-        else 
-            cat ('All packages up to date\n')
-        message ('')
+        if (curl::has_internet ())
+        {
+            old <- utils::old.packages ()
+            if (!is.null (old)) 
+                message ('Updatable packages: ', old [,1], '\n', fill=TRUE) 
+            else 
+                message ('All packages up to date\n')
+        } else
+            message ('nope, no internet\n')
     }
 }
 
