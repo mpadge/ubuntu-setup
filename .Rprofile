@@ -68,7 +68,8 @@ attach(.env)
         {
             old <- utils::old.packages ()
             if (!is.null (old)) 
-                message ('Updatable packages: ', old [,1], '\n', fill=TRUE) 
+                message ('Updatable packages: ', 
+                         do.call (paste, as.list (rownames (old))), '\n')
             else 
                 message ('All packages up to date\n')
         } else
@@ -77,5 +78,5 @@ attach(.env)
 }
 
 
-if(Sys.getenv('TERM') == 'xterm-256color')
-    library('colorout')
+#if(Sys.getenv('TERM') == 'xterm-256color')
+#    library('colorout')
