@@ -297,6 +297,7 @@ pkgs <- c (pkgs, "chron", "gridBase", "cubature", "R2Cuba", "devtools", "roxygen
 pkgs <- c (pkgs, "testthat", "rgdal", "rjson", "rgl", "rJava", "OpenStreetMap")
 pkgs <- c (pkgs, "animation", "microbenchmark", "rgl", "extrafont", "Rcpp")
 pkgs <- c (pkgs, "ggm", "rgeos", "changepoint", "readxl", "signal", "msm")
+pkgs <- c (pkgs, "distr")
 new.pkgs <- pkgs [!(pkgs %in% rownames (installed.packages()))]
 if(length(new.pkgs)) install.packages(new.pkgs)
 ```
