@@ -37,7 +37,7 @@ sudo apt-get install git mc libxml2-dev imagemagick libcgal-dev jabref vlc pdftk
 sudo apt-get install gsl-bin libgsl0-dev valgrind lxd zathura
 sudo apt-get install libcurl4-openssl-dev dos2unix python-bs4 libgeos-dev libglu1-mesa-dev
 sudo apt-get install ubuntu-restricted-extras skype
-sudo apt-get install libzip-dev libglu1-mesa-dev mesa-common-dev clang-3.8
+sudo apt-get install libzip-dev libglu1-mesa-dev mesa-common-dev clang
 sudo apt-get install htop python-regex cmake tree libeigen3-dev libgmp3-dev
 ```
 
@@ -287,6 +287,7 @@ installation:
 
 1. `httr` requires `libssl-dev`
 2. `rgdal` requires `gdal-bin libgdal-dev libproj-dev`
+3. `sfr` (not yet CRAN) requires `libgeos++-dev`
 
 ```
 pkgs <- c ("codetools", "ggplot2", "sp", "spacetime", "XML", "data.table", "RCurl")
