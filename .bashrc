@@ -125,5 +125,9 @@ export TERM=screen-256color-bce
 # Add custom colour scheme produced from http://ciembor.github.io/4bit/#
 #source /data/Dropbox/mark/system/solarized.sh
 
+# Nvim-r-plugin requires its own line in .vimrc to achieve this
 alias R='R --no-save --quiet'
 alias sudo='sudo ' # ensures that sudo R loads .Rprofile
+
+# added by travis gem
+[ -f /home/markus/.travis/travis.sh ] && source /home/markus/.travis/travis.sh

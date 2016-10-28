@@ -70,7 +70,7 @@ set backspace=indent,eol,start
 let maplocalleader = ","
 let mapleader = ";"
 "let g:mapleader = ","
-set foldenable
+"set foldenable
 
 
 "------------------------------------
