@@ -13,7 +13,7 @@ if has ('gui_running')
     set background=light
 else
     set background=dark
-    set background=light
+    "set background=light
 endif
 set t_Co=16
 let g:solarized_termcolors=16
