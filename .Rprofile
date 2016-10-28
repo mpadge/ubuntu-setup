@@ -1,6 +1,9 @@
-local ({r <- getOption('repos')
-      r['CRAN'] <- 'https://cran.uni-muenster.de'
-      options(repos=r)})
+local ({
+        r <- getOption('repos')
+        #r['CRAN'] <- 'https://cran.uni-muenster.de'
+        r['CRAN'] <- 'https://cran.wu.ac.at'
+        options(repos=r)
+        })
  
 #options (stringsAsFactors=FALSE)
 #options (max.print=100)
@@ -16,10 +19,16 @@ options (editor='vim')
 }
 attach(.env)
 
-#utils::update.packages (ask=FALSE)
-
 .First <- function(){
     if(interactive()){
+        # see :h nvimcom-not-loaded
+        #if (Sys.getenv ("NVIMR_TMPDIR") == "")
+        #        options (defaultPackages = c ("utils", "grDevices", "graphics",
+        #            "stats", "methods"))
+        #else
+        #        options (defaultPackages = c ("utils", "grDevices", "graphics",
+        #            "stats", "methods", "nvimcom"))
+
         if ('colorout' %in% rownames (utils::installed.packages ()))
             library (colorout)
 
