@@ -1,0 +1,8 @@
+org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu 10'
+org.gnome.desktop.interface font-name 'Ubuntu 10'
+org.gnome.desktop.interface document-font-name 'Sans 11'
+org.gnome.desktop.interface monospace-font-name 'Source Code Pro Light 9'
+org.gnome.shell.app-switcher current-workspace-only true
+org.gnome.settings-daemon.plugins.power lid-close-ac-action 'shutdown'
+org.gnome.settings-daemon.plugins.power lid-close-battery-action 'suspend'
+org.gnome.settings-daemon.plugins.media-keys email '<Primary><Alt>m'

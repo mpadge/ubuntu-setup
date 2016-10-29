@@ -1,0 +1,26 @@
+#!/bin/bash
+
+dir="$(dirname "$0")"
+
+source $dir/functions/non-apt/vim
+
+# Install Third-Party Applications
+function nonapt {
+    eval `resize`
+    NONAPT=$(whiptail \
+        --notags \
+        --title "non-apt packages" \
+        --menu "\nWhat non-apt packages would you like to install/update?" \
+        --ok-button "Install/Update" \
+        --cancel-button "Go Back" \
+        $LINES $COLUMNS $(( $LINES - 12 )) \
+        'vim'       'vim' \
+        3>&1 1>&2 2>&3)
+     
+    exitstatus=$?
+    if [ $exitstatus = 0 ]; then
+        $NONAPT
+    else
+        main
+    fi
+}

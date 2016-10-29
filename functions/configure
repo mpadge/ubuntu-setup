@@ -1,0 +1,91 @@
+#!/bin/bash
+
+#dir="$(dirname "$0")"
+# MP TODO reinstate dirname so can be run from other directories
+
+GSETTINGS="data/gsettings.list"
+DSETTINGS="data/dsettings.list"
+
+# Automatically set preferred gsettings keys as outlined in the 'gsettings.list' file
+function preferences {
+    show_info 'Setting preferred application-specific & desktop settings...'
+    while IFS= read line
+    do
+        eval gsettings set $line
+    done < "$GSETTINGS"
+    while IFS= read line
+    do
+        eval dconf write $line
+    done < "$DSETTINGS"
+    # Done
+    show_success 'Done.'
+    whiptail --title "Finished" --msgbox "Settings changed successfully." 8 78
+    configure
+}
+
+# Replaces main 'sources.list' with a leaned down version
+function sources {
+    show_info 'Changing system-wide sources.list...'
+    show_warning 'Requires root privileges'
+    sudo cp -r $dir/data/sources.list /etc/apt
+    # Update repository information
+    show_info 'Updating repository information...'
+    show_warning 'Requires root privileges'
+    sudo apt-get update
+    # Done
+    show_success 'Done.'
+    whiptail --title "Finished" --msgbox "Sources list changed successfully." 8 78
+    configure
+}
+
+# dot files
+function dotfiles {
+    show_info 'Downloading dot-files...'
+    WD=$PWD
+    eval cd $HOME
+    curl -O https://raw.githubusercontent.com/mpadge/mpadge-dot/master/.Rprofile
+    curl -O https://raw.githubusercontent.com/mpadge/mpadge-dot/master/.bashrc
+    curl -O https://raw.githubusercontent.com/mpadge/mpadge-dot/master/.tmux.conf
+    curl -O https://raw.githubusercontent.com/mpadge/mpadge-dot/master/.vimrc
+    eval cd $WD
+    # Done
+    show_success 'Done.'
+    whiptail --title "Finished" --msgbox "dot files downloaded successfully." 8 78
+    configure
+}
+
+# dot files copy
+function dotfiles_cp {
+    show_info 'Copying dot-files to git repo...'
+    eval cp $HOME/.Rprofile /data/Dropbox/mark/system/mpadge-dot/.Rprofile
+    eval cp $HOME/.bashrc /data/Dropbox/mark/system/mpadge-dot/.bashrc
+    eval cp $HOME/.vimrc /data/Dropbox/mark/system/mpadge-dot/.vimrc
+    eval cp $HOME/.tmux.conf /data/Dropbox/mark/system/mpadge-dot/.tmux.conf
+    # Done
+    show_success 'Done.'
+    whiptail --title "Finished" --msgbox "dot files copied successfully." 8 78
+    configure
+}
+
+# Configure System
+function configure {
+    eval `resize`
+    CONF=$(whiptail \
+        --notags \
+        --title "Configure System" \
+        --menu "\nWhat would you like to do?" \
+        --cancel-button "Go Back" \
+        $LINES $COLUMNS $(( $LINES - 12 )) \
+        preferences 'Set preferred application-specific & desktop settings' \
+        sources     'Enable all software sources (replaces sources.list)' \
+        dotfiles    'Download/replace all dotfiles' \
+        dotfiles_cp 'Copy dotfiles to git repo' \
+        3>&1 1>&2 2>&3)
+     
+    exitstatus=$?
+    if [ $exitstatus = 0 ]; then
+        $CONF
+    else
+        main
+    fi
+}

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# vim
+function vim {
+	# Variables
+	PACKAGE=vim
+	NAME="vim"
+    PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PACKAGE|grep "install ok installed")
+    if [ "" == "$PKGCHECK" ]; then
+        echo 'vim not installed; installing ...'
+        INST_UPDATE="installation"
+        INST_UPDATE_VERB="Installing"
+    else
+        echo 'vim installed; updating ...'
+        INST_UPDATE="update"
+        INST_UPDATE_VERB="Updating"
+    fi
+	# Install
+	show_header 'Begin '$NAME' '$INST_UPDATE
+    # Install git if not installed
+    GITCHECK=$(dpkg-query -W --showformat='${Status}\n' git|grep "install ok installed")
+    if [ "" == "$PKGCHECK" ]; then
+        echo 'installing git first ...'
+        sudo apt-get install git
+    fi
+    # Clone git repo
+    git clone https://github.com/vim/vim.git
+    # Install package(s)
+    show_info $INST_UPDATE_VERB' '$NAME'...'
+    show_warning 'Requires root privileges'
+    cd vim/src
+    make distclean
+    make
+    sudo make install
+    # Cleanup and finish
+    cd ../..
+    rm -rf vim
+    # Done
+    show_success 'Done.'
+    whiptail --title "Finished" --msgbox "$INST_UPDATE_VERB $NAME complete." 8 78
+    nonapt
+}
