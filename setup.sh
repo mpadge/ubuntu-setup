@@ -6,7 +6,8 @@
 #   Mark Padgham <mark.padgham@email.com>
 #
 # Description:
-#   A post-installation bash script for Ubuntu
+#   A post-installation bash script for Ubuntu. Any new scripts must be made
+#   executable with >chmod u+x
 #
 # Legal Preamble:
 #
@@ -66,7 +67,7 @@ function main {
         --menu "\nWhat would you like to do?" \
         --cancel-button "Quit" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        aptadd      '1. Add apt repositories' \
+        addapt      '1. Add apt repositories' \
         packages    '2. Install apt packages' \
         nonapt      '3. Install non-apt packages' \
         configure   '4. Configure system' \

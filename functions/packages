@@ -48,7 +48,15 @@ function packages {
         --scrolltext) then
         show_info 'Installing...'
         show_warning 'Requires root privileges'
-        sudo apt-get install -y $(cat $PKGS)
+        #sudo apt-get install -y $(cat $PKGS)
+        while read F ; do
+            if $(dpkg-query -l $F | grep "no packages")
+            then
+                sudo apt-get install -y $F
+            else
+                echo "package "$F" already installed"
+            fi
+        done < $PKGS
         sudo R CMD javareconf
 
         gdal
@@ -60,7 +68,7 @@ function packages {
         if [[ $EXITSTATUS != 0 ]]; then
             # Already installed
             show_success 'Already installed.'
-            whiptail --title "Finished" --msgbox "Packages are already installed." 8 78
+            whiptail --title "Finished" --msgbox "All packages already installed." 8 78
             main
         else
             whiptail --title "Finished" --msgbox "Installation complete." 8 78

@@ -2,14 +2,29 @@
 
 dir="$(dirname "$0")"
 
-keys="$dir/data/keys.list"
-repos="$dir/data/repos.list"
+KEYS="$dir/data/keys.list"
+REPOS="$dir/data/repos.list"
+
+# recieve new apt keys
+function addkeys {
+    show_info 'adding keys ... ' $(cat $KEYS)
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $(cat $KEYS)
+    show_success 'apt keys added'
+}
+
+# add new apt repositories
+function addrepos {
+    show_info 'adding repos ... ' "$(cat $REPOS)"
+    sudo add-apt-repository "$(cat $REPOS)"
+    sudo apt-get update
+    show_success 'apt repositories added'
+}
 
 # Install packages listed in 'data/packages.list'
-function aptadd {
+function addapt {
     if (eval `resize` && whiptail \
         --title "Apt Repositories" \
-        --yesno "apt keys to recieve: \n\n$(cat $keys) \n\nRepositories to add: \n\n$(cat $repos)" \
+        --yesno "apt keys to recieve: \n\n$(cat $KEYS) \n\nRepositories to add: \n\n$(cat $REPOS)" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
         --scrolltext) then
         show_info 'Installing...'
@@ -32,19 +47,4 @@ function aptadd {
     else
         main
     fi
-}
-
-# recieve new apt keys
-function addkeys {
-    show_info 'adding keys ... ' $(cat $keys)
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $(cat $keys)
-    show_success 'apt keys added'
-}
-
-# add new apt repositories
-function addrepos {
-    show_info 'adding repos ... ' "$(cat $repos)"
-    sudo add-apt-repository "$(cat $repos)"
-    sudo apt-get update
-    show_success 'apt repositories added'
 }

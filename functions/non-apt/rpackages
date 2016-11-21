@@ -11,34 +11,36 @@ while read F ; do
 done < $RPKGS
 
 CRAN="https://cran.r-project.org"
+LIBLOC="/usr/local/lib/R/site-library"
 
 # install R packages
 function rpackages {
-    if (eval `resize` && whiptail \
+    if [ ${#RPKGS_IN[@]} -eq 0 ]
+    then
+        whiptail --title "R packages" --msgbox "All R packages installed." 8 78
+        nonapt
+    elif (eval `resize` && whiptail \
         --title "R Packages" \
         --yesno "Current list of R packages to install: \n\n${RPKGS_NI[*]\\} \n\nProceed with installation?" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
         --scrolltext) then
         show_header 'Installing...'
         show_warning 'Requires root privileges'
-        for i in ${RPKGS_NI[@]}; do
-            CMD='install.packages('\"${i}\"',repos='\"$CRAN\"')'
-            sudo Rscript --verbose -e $CMD
-        done 
+        if [ -d "$LIBLOC" ]; then
+            for i in ${RPKGS_NI[@]}; do
+                CMD='install.packages('\"${i}\"',repos='\"$CRAN\"',lib.loc='\"$LIBLOC\"')'
+                sudo Rscript --verbose -e $CMD
+            done 
+        else
+            for i in ${RPKGS_NI[@]}; do
+                CMD='install.packages('\"${i}\"',repos='\"$CRAN\"')'
+                sudo Rscript --verbose -e $CMD
+            done 
+        fi
 
         # Done
         show_success 'Done.'
-        # Check
-        EXITSTATUS=$1
-        if [[ $EXITSTATUS != 0 ]]; then
-            # Already installed
-            show_success 'Already installed.'
-            whiptail --title "Finished" --msgbox "Packages are already installed." 8 78
-            nonapt
-        else
-            whiptail --title "Finished" --msgbox "Installation complete." 8 78
-            nonapt
-        fi
+        nonapt
     else
         nonapt
     fi

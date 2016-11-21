@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# pandoc
+# pandoc - not complete coz lacks version comparison
 function pandoc {
 	# Variables
 	PACKAGE=pandoc

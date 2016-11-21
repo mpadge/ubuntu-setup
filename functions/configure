@@ -29,10 +29,10 @@ function dotfiles {
     show_info 'Downloading dot-files...'
     WD=$PWD
     eval cd $HOME
-    curl -O https://raw.githubusercontent.com/mpadge/mpadge-dot/master/.Rprofile
-    curl -O https://raw.githubusercontent.com/mpadge/mpadge-dot/master/.bashrc
-    curl -O https://raw.githubusercontent.com/mpadge/mpadge-dot/master/.tmux.conf
-    curl -O https://raw.githubusercontent.com/mpadge/mpadge-dot/master/.vimrc
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/.Rprofile
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/.bashrc
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/.tmux.conf
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/.vimrc
     eval cd $WD
     # Done
     show_success 'Done.'
@@ -43,10 +43,11 @@ function dotfiles {
 # dot files copy
 function dotfiles_cp {
     show_info 'Copying dot-files to git repo...'
-    eval cp $HOME/.Rprofile /data/Dropbox/mark/system/mpadge-dot/.Rprofile
-    eval cp $HOME/.bashrc /data/Dropbox/mark/system/mpadge-dot/.bashrc
-    eval cp $HOME/.vimrc /data/Dropbox/mark/system/mpadge-dot/.vimrc
-    eval cp $HOME/.tmux.conf /data/Dropbox/mark/system/mpadge-dot/.tmux.conf
+    cp $HOME/.bash_aliases /data/Dropbox/mark/system/ubuntu-setup/dot/.bash_aliases
+    cp $HOME/.Rprofile /data/Dropbox/mark/system/ubuntu-setup/dot/.Rprofile
+    cp $HOME/.bashrc /data/Dropbox/mark/system/ubuntu-setup/dot/.bashrc
+    cp $HOME/.vimrc /data/Dropbox/mark/system/ubuntu-setup/dot/.vimrc
+    cp $HOME/.tmux.conf /data/Dropbox/mark/system/ubuntu-setup/dot/.tmux.conf
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "dot files copied successfully." 8 78

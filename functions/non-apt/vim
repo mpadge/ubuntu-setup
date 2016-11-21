@@ -14,6 +14,7 @@ function pathogen {
 }
 
 function solarized {
+    #show_info '---in solarized---'
     PFILE=$HOME"/.vim/autoload/pathogen.vim"
     if [ ! -e $FILE ]; then
         pathogen
@@ -76,6 +77,6 @@ function vim {
 
     # Done
     show_success 'Done.'
-    whiptail --title "Finished" --msgbox "$INST_UPDATE_VERB $NAME complete." 8 78
+    #whiptail --title "Finished" --msgbox "$INST_UPDATE_VERB $NAME complete." 8 78
     nonapt
 }
