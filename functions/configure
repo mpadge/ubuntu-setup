@@ -6,7 +6,7 @@ GSETTINGS="$DIR/data/gsettings.list"
 DSETTINGS="$DIR/data/dsettings.list"
 
 # Automatically set preferred gsettings keys as outlined in the 'gsettings.list' file
-function preferences {
+function set_preferences {
     show_info 'Setting preferred application-specific & desktop settings...'
     while IFS= read line
     do
@@ -17,6 +17,10 @@ function preferences {
         eval dconf write $line
     done < "$DSETTINGS"
     export EDITOR='vim'
+}
+
+function preferences {
+    set_preferences
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "Settings changed successfully." 8 78

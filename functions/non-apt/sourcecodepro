@@ -1,5 +1,30 @@
 #!/bin/bash
 
+function install_sourcecodepro {
+    URL="https://github.com/adobe-fonts/source-code-pro/releases/latest"
+    URL=$(curl -s $URL | grep 'href' | head -n 1 | cut -d '"' -f 2)
+    # TODO: Improvide the next 3 lines:
+    ARCHIVE=${URL/"https://github.com/adobe-fonts/"}
+    ARCHIVE=${ARCHIVE/"releases/tag/"}
+    ARCHIVE=${ARCHIVE////-}
+    URL="https://github.com"$(curl -s $URL | grep '.tar.gz' | head -n 1 | cut -d '"' -f 2)
+    show_header 'Downloading '$NAME
+    sudo wget $URL
+    show_header 'installing '$NAME' ...'
+    FILE=$(echo $URL | rev | head -n 1 | cut -d '/' -f 1 | rev)
+    tar -xzf $FILE
+    cd $ARCHIVE"/OTF"
+    sudo mkdir "$DIR"
+    sudo cp -r * "$DIR/"
+    fc-cache -f -v
+    gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Light 9'
+
+    # Cleanup and finish
+    cd ../..
+    sudo rm -rf $FILE $ARCHIVE
+}
+
+
 # sourcecodepro
 function sourcecodepro {
 	# Variables
@@ -11,27 +36,7 @@ function sourcecodepro {
         whiptail --title "$NAME" --msgbox "$NAME already installed." 8 78
         nonapt
     else
-        URL="https://github.com/adobe-fonts/source-code-pro/releases/latest"
-        URL=$(curl -s $URL | grep 'href' | head -n 1 | cut -d '"' -f 2)
-        # TODO: Improvide the next 3 lines:
-        ARCHIVE=${URL/"https://github.com/adobe-fonts/"}
-        ARCHIVE=${ARCHIVE/"releases/tag/"}
-        ARCHIVE=${ARCHIVE////-}
-        URL="https://github.com"$(curl -s $URL | grep '.tar.gz' | head -n 1 | cut -d '"' -f 2)
-        show_header 'Downloading '$NAME
-        sudo wget $URL
-        show_header 'installing '$NAME' ...'
-        FILE=$(echo $URL | rev | head -n 1 | cut -d '/' -f 1 | rev)
-        tar -xzf $FILE
-        cd $ARCHIVE"/OTF"
-        sudo mkdir "$DIR"
-        sudo cp -r * "$DIR/"
-        fc-cache -f -v
-        gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Light 9'
-
-        # Cleanup and finish
-        cd ../..
-        sudo rm -rf $FILE $ARCHIVE
+        install_sourcecodepro
         # Done
         show_success 'Done.'
         whiptail --title "Finished" --msgbox "Installing $NAME complete." 8 78

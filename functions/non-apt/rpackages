@@ -13,7 +13,7 @@ while read F ; do
 done < $RPKGS
 
 CRAN="https://cran.r-project.org"
-LIBLOC="/usr/local/lib/R/site-library"
+RLIBLOC="/usr/local/lib/R/site-library"
 
 # install R packages
 function rpackages {
@@ -28,9 +28,9 @@ function rpackages {
         --scrolltext) then
         show_header 'Installing...'
         show_warning 'Requires root privileges'
-        if [ -d "$LIBLOC" ]; then
+        if [ -d "$RLIBLOC" ]; then
             for i in ${RPKGS_NI[@]}; do
-                CMD='install.packages('\"${i}\"',repos='\"$CRAN\"',lib.loc='\"$LIBLOC\"')'
+                CMD='install.packages('\"${i}\"',repos='\"$CRAN\"',lib.loc='\"$RLIBLOC\"')'
                 sudo Rscript --verbose -e $CMD
             done 
         else

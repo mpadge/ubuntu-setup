@@ -1,5 +1,30 @@
 #!/bin/bash
 
+function install_vim {
+    # Clone git repo
+    HDIR=0
+    if [[ $PWD = $HOME ]]
+    then
+        cd ./Downloads # because .vim sits in home
+        HDIR=1
+    fi
+    git clone https://github.com/vim/vim.git
+    # Install package(s)
+    show_info $INST_UPDATE_VERB' '$NAME'...'
+    show_warning 'Requires root privileges'
+    cd vim/src
+    make distclean
+    make
+    sudo make install
+    # Cleanup and finish
+    cd ../..
+    rm -rf vim
+    if [ $HDIR -eq 0 ]
+    then
+        cd ..
+    fi
+}
+
 function pathogen {
     FILE=$HOME"/.vim/autoload/pathogen.vim"
     PNAME="pathogen"
@@ -58,18 +83,7 @@ function vim {
             echo 'installing git first ...'
             sudo apt-get install git
         fi
-        # Clone git repo
-        git clone https://github.com/vim/vim.git
-        # Install package(s)
-        show_info $INST_UPDATE_VERB' '$NAME'...'
-        show_warning 'Requires root privileges'
-        cd vim/src
-        make distclean
-        make
-        sudo make install
-        # Cleanup and finish
-        cd ../..
-        rm -rf vim
+        install_vim
     fi
 
     pathogen

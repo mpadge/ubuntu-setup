@@ -32,6 +32,7 @@ dir="$(dirname "$0")"
 . $dir/functions/check
 . $dir/functions/cleanup
 . $dir/functions/configure
+. $dir/functions/doall
 . $dir/functions/nonapt
 . $dir/functions/packages
 
@@ -63,13 +64,14 @@ function main {
     eval `resize`
     MAIN=$(whiptail \
         --notags \
-        --title "Ubuntu Post-Install Script" \
+        --title "Ubuntu System Setup" \
         --menu "\nWhat would you like to do?" \
         --cancel-button "Quit" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        addapt      '1. Add apt repositories' \
-        packages    '2. Install apt packages' \
-        nonapt      '3. Install non-apt packages' \
+        doall       '1. Do all (non-interactive)' \
+        addapt      '2. Add apt repositories' \
+        packages    '3. Install apt packages' \
+        nonapt      '4. Install non-apt packages' \
         configure   '4. Configure system' \
         cleanup     '5. Cleanup the system' \
         3>&1 1>&2 2>&3)

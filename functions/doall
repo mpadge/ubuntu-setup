@@ -1,0 +1,68 @@
+#!/bin/bash
+
+DIR="$(dirname "$0")"
+
+source $DIR/functions/non-apt/vim
+source $DIR/functions/non-apt/pandoc
+source $DIR/functions/non-apt/sourcecodepro
+source $DIR/functions/non-apt/travis
+source $DIR/functions/non-apt/rpackages
+
+# Install packages listed in 'data/packages.list'
+function doall {
+    if (eval `resize` && whiptail \
+        --title "Everything" \
+        --yesno "Install and setup whole system non-interactively?" \
+        $LINES $COLUMNS $(( $LINES - 12 )) \
+        --scrolltext) then
+
+        # ---aptadd
+        #addkeys
+        #addrepos
+
+        # ---packages
+        #while read F ; do
+        #    if $(dpkg-query -l $F | grep "no packages")
+        #    then
+        #        sudo apt-get install -y $F
+        #    else
+        #        echo "package "$F" already installed"
+        #    fi
+        #done < $PKGS
+        #sudo R CMD javareconf
+        #gdal
+
+        # ---nonapt
+        set_preferences
+
+        # ---non-apt/vim
+        install_vim
+        pathogen
+        solarized
+        # ---non-apt/pandoc
+        install_pandoc
+        # ---non-apt/sourcecodepro
+        install_sourcecodepro
+        # ---non-apt/travis
+        sudo apt-get install ruby-dev
+        sudo gem install travis --no-rdoc --no-ri
+        # ---non-apt/rpackages
+        if [ -d "$RLIBLOC" ]; then
+            while read F ; do
+                CMD='install.packages('\"$F\"',repos='\"$CRAN\"',lib.loc='\"$RLIBLOC\"')'
+                echo sudo Rscript --verbose -e $CMD
+            done < $RPKGS
+        else
+            while read F ; do
+                CMD='install.packages('\"$F\"',repos='\"$CRAN\"')'
+                sudo Rscript --verbose -e $CMD
+            done < $RPKGS
+        fi
+
+        # Done
+        show_success 'Done.'
+        main
+    else
+        main
+    fi
+}
