@@ -17,8 +17,11 @@ libcurl4-openssl-dev
 libeigen3-dev 
 libgeos-dev
 libglu1-mesa-dev
+libgeos++-dev
 libgsl0-dev 
 libgmp3-dev
+libproj-dev
+libssl-dev
 libx11-dev 
 libxml2-dev 
 libzip-dev 

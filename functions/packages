@@ -4,6 +4,41 @@ dir="$(dirname "$0")"
 
 PKGS="$dir/data/packages.list"
 
+function gdal_install {
+    GDAL_URL="http://download.osgeo.org/gdal/CURRENT/"
+    wget -O temp.html $GDAL_URL
+    GDAL_VERSION=`cat temp.html | grep -o -P '(?<=gdal-).*(?=.tar.gz\")'`
+    GDAL_FILE="gdal-"$GDAL_VERSION".tar.gz"
+    rm temp.html
+    wget $GDAL_URL$GDAL_FILE
+    tar zxf $GDAL_FILE
+    cd "gdal-"$GDAL_VERSION
+    ./configure
+    make
+    sudo make install
+    cd ..
+    rm -rf "gdal-"$GDAL_VERSION $GDAL_FILE
+}
+
+function gdal {
+    GNAME="GDAL"
+    if hash gdalinfo 2>/dev/null; then
+        show_info "GDAL installed"
+        VERS=$(eval "gdalinfo --version" | head -n 2 | cut -d " " -f 2)
+        MAJOR=$(echo $VERS | cut -d "." -f 1)
+        MINOR=$(echo $VERS | cut -d "." -f 1)
+        if [ $MAJOR -lt 2 ]; then
+            if (whiptail --title $GNAME --yesno "$GNAME version < 2; upgrade?." 8 78) then
+                gdal_install
+            fi
+        fi
+    else
+        if (whiptail --title $GNAME --yesno "$GNAME not installed; install?." 8 78) then
+            gdal_install
+        fi
+    fi
+}
+
 # Install packages listed in 'data/packages.list'
 function packages {
     if (eval `resize` && whiptail \
@@ -15,6 +50,9 @@ function packages {
         show_warning 'Requires root privileges'
         sudo apt-get install -y $(cat $PKGS)
         sudo R CMD javareconf
+
+        gdal
+
         # Done
         show_success 'Done.'
         # Check

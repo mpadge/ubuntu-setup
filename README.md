@@ -4,14 +4,14 @@ Ubuntu System Setup
 Adapted from 
 [ubuntu-post-install scripts of Sam Hewitt](https://github.com/snwh/ubuntu-post-install), to whom all credit is due.
 
-##Usage
+## Usage
 
 ```
 ./setup.sh
 ```
 
 
-##Note
+## Note
 
 `gsettings.list` and `dsettings.list` can be found by
 ```
@@ -24,6 +24,10 @@ Some of these can not be `gset`. To find out which, just use
 ```
 with autocomplete to find out.
 
+------
+
+## Manual tasks
+
 Some tasks can nevertheless only be completed manually ... 
 
 1. Enable `<super>-N` for moving windows between monitors in `compizconfig`:
@@ -32,42 +36,16 @@ Some tasks can nevertheless only be completed manually ...
 
 2. Set `Source Code Pro` as terminal font 
 ```
-Profile -> general -> font -> SourceCodePro Light 9pt
+profile -> general -> font -> SourceCodePro Light 9pt
 ```
 
 3. Manually update `tcolorbox` in `/usr/share/texlive/texmf-dist/tex/latex/tcolorbox`
 
 
+4. Set up gnome to use solarized colour scheme by following [this](https://gist.github.com/gmodarelli/5942850),
+but instead of `./set_light.sh`, just run `./install_sh` to configure both light and dark profiles
 
------
-
-## <a name="2.2-solarized"></a>2.2 [solarized](https://github.com/altercation/vim-colors-solarized)
-
-1. See notes on `vim` install [below](#2.1-vim)
-2. Install [`vim-pathogen`](https://github.com/tpope/vim-pathogen):
-```
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-```
-then
-```
-cd ~/.vim/bundle
-git clone git://github.com/altercation/vim-colors-solarized.git
-cd vim-colors-solarized
-mv vim-colors-solarized ~/.vim/bundle/
-```
-
-Set up gnome to use solarized colour scheme thusly:
-https://gist.github.com/gmodarelli/5942850
-but instead of `./set_light.sh`, just run
-```
-./install_sh
-```
-to configure both light and dark profiles
-
------
-
-## <a name="2.3-computer-name"></a>2.3 Computer name
+5. Computer name
 
 If not set at install, just change both:
 ```
@@ -75,29 +53,27 @@ If not set at install, just change both:
 /etc/hostname
 ```
 
-Then to change the ["Ubuntu
+6. To change the ["Ubuntu
 Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel) text at top left:
 
-1. `vim .junk.po` # (can be deleted afterward)
-2. insert:
+    i. `vim .junk.po` # (can be deleted afterward)
+    ii. insert:
 
-    ```
-    msgid "Ubuntu Desktop"
-    msgstr "whatever"
-    ```
-3.  then:
+        ```
+        msgid "Ubuntu Desktop"
+        msgstr "whatever"
+        ```
+    iii.  then:
 
-    ```
-    cd /usr/share/locale/en/LC_MESSAGES
-    sudo msgfmt -o unity.mo ~/.junk.po
-    ```
-4. log out to change it
+        ```
+        cd /usr/share/locale/en/LC_MESSAGES
+        sudo msgfmt -o unity.mo ~/.junk.po
+        ```
+    iv. log out to change it
 
 
 
------
-
-# <a name="3-git"></a>3. git setup:
+7. git setup:
 
 ```
 git config --global user.name "mpadge"
@@ -106,19 +82,13 @@ git config --global core.autocrlf input
 git config --global core.safecrlf true
 ```
 
-Then in .gitconfig:
+8. `Nvim-r-plugin`
 
-```
-[alias]
-    co = checkout
-    ci = commit
-    st = status -uno
-    br = branch
-    hist = log --graph --all --date=short --pretty=format:'%Cred%h%Creset%x09%ad - %Cgreen%d%Cblue%s%Creset'
-    type = cat-file -t
-    dump = cat-file -p
-```
+    i. Download [Nvim-r vimball](http://www.vim.org/scripts/script.php?script_id=2628)
 
+    ii. [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %` 
+
+------
 
 ## <a name="3.1-travis"></a>3.1 [travis-ci client](https://github.com/travis-ci/travis.rb#installation)
 
@@ -184,26 +154,7 @@ if(length(new.pkgs)) install.packages(new.pkgs)
 
 ------
 
-## <a name="5.2-vim-r"></a>5.2 [`vim-r-plugin`](http://ubuntuforums.org/showthread.php?t=776492) (now obsolete)
 
-```
-sudo add-apt-repository "deb http://www.uft.uni-bremen.de/chemie/ranke/debs sid-jr/"
-sudo apt-get update
-sudo apt-get install vim-r-plugin
-sudo vim-addons -w install r-plugin
-```
-[See also this link](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r)
-
-------
-
-## <a name="5.3-Nvim-r"></a>5.3 `Nvim-r-plugin`
-
-
-1. Get latest vim by as described above
-2. Download [Nvim-r vimball](http://www.vim.org/scripts/script.php?script_id=2628)
-3. [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %` 
-
---------
 
 # <a name="6-other-vim"></a>6. Other `vim` plugins
 
@@ -276,10 +227,9 @@ sudo pip install slimit
 ```
 
 
---------------------
 
-
-# <a name="8-other-packages"></a>8. Other interesting / useful packages
+<!---
+Other interesting / useful packages:
 
 ```
 ardesia
@@ -297,9 +247,7 @@ routino
 pyparsing
 ```
 
-----------------
-
-## <a name="8.1-image-processing"></a>8.1 For image processing
+and for image processing
 
 ```
 rawtherapee
@@ -307,3 +255,4 @@ rawstudio
 darktable
 ```
 
+--->
