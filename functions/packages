@@ -2,18 +2,18 @@
 
 dir="$(dirname "$0")"
 
-DEVTOOLS="$dir/data/packages.list"
+PKGS="$dir/data/packages.list"
 
 # Install packages listed in 'data/packages.list'
 function packages {
     if (eval `resize` && whiptail \
         --title "Packages" \
-        --yesno "Current list of packages to install: \n\n$(cat $DEVTOOLS) \n\nProceed with installation?" \
+        --yesno "Current list of packages to install: \n\n$(cat $PKGS) \n\nProceed with installation?" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
         --scrolltext) then
         show_info 'Installing...'
         show_warning 'Requires root privileges'
-        sudo apt-get install -y $(cat $DEVTOOLS)
+        sudo apt-get install -y $(cat $PKGS)
         # Done
         show_success 'Done.'
         # Check
@@ -21,7 +21,7 @@ function packages {
         if [[ $EXITSTATUS != 0 ]]; then
             # Already installed
             show_success 'Already installed.'
-            whiptail --title "Finished" --msgbox "Your preferred packages are installed." 8 78
+            whiptail --title "Finished" --msgbox "Packages are already installed." 8 78
             main
         else
             whiptail --title "Finished" --msgbox "Installation complete." 8 78

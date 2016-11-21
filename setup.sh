@@ -3,6 +3,7 @@
 #
 # Authors:
 #   Sam Hewitt <sam@snwh.org>
+#   Mark Padgham <mark.padgham@email.com>
 #
 # Description:
 #   A post-installation bash script for Ubuntu
@@ -11,16 +12,13 @@
 #
 # This script is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
-# Foundation; version 3.
+# Foundation; version >=3.
 #
 # This script is distributed in the hope that it will be useful, but WITHOUT
 # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
+# details: <https://www.gnu.org/licenses/gpl-3.0.txt>
 #
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
-
 # tab width
 tabs 4
 clear
@@ -30,12 +28,12 @@ clear
 dir="$(dirname "$0")"
 
 . $dir/functions/check
+. $dir/functions/aptadd
 . $dir/functions/cleanup
 . $dir/functions/configure
 . $dir/functions/packages
 . $dir/functions/thirdparty
 . $dir/functions/nonapt
-. $dir/functions/update
 
 #----- Fancy Messages -----#
 show_error(){
@@ -69,9 +67,8 @@ function main {
         --menu "\nWhat would you like to do?" \
         --cancel-button "Quit" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        update      'Perform system update' \
+        aptadd      'Add apt repositories' \
         packages    'Install apt packages' \
-        thirdparty  'Install downloaded packages' \
         nonapt      'Install non-apt packages' \
         configure   'Configure system' \
         cleanup     'Cleanup the system' \
@@ -87,14 +84,6 @@ function main {
 
 # Quit
 function quit {
-    #if (whiptail --title "Quit" --yesno "Are you sure you want quit?" 10 60) then
-    #    echo "Exiting..."
-    #    show_info 'Tschüß!'
-    #    exit 99
-    #else
-    #    main
-    #fi
-    show_info 'Tschüß!'
     exit 99
 }
 

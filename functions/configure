@@ -23,21 +23,6 @@ function preferences {
     configure
 }
 
-# Replaces main 'sources.list' with a leaned down version
-function sources {
-    show_info 'Changing system-wide sources.list...'
-    show_warning 'Requires root privileges'
-    sudo cp -r $dir/data/sources.list /etc/apt
-    # Update repository information
-    show_info 'Updating repository information...'
-    show_warning 'Requires root privileges'
-    sudo apt-get update
-    # Done
-    show_success 'Done.'
-    whiptail --title "Finished" --msgbox "Sources list changed successfully." 8 78
-    configure
-}
-
 # dot files
 function dotfiles {
     show_info 'Downloading dot-files...'
@@ -77,7 +62,6 @@ function configure {
         --cancel-button "Go Back" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
         preferences 'Set preferred application-specific & desktop settings' \
-        sources     'Enable all software sources (replaces sources.list)' \
         dotfiles    'Download/replace all dotfiles' \
         dotfiles_cp 'Copy dotfiles to git repo' \
         3>&1 1>&2 2>&3)

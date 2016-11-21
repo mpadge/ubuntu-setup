@@ -1,0 +1,48 @@
+#!/bin/bash
+
+dir="$(dirname "$0")"
+
+keys="$dir/data/keys.list"
+repos="$dir/data/repos.list"
+
+# Install packages listed in 'data/packages.list'
+function aptadd {
+    if (eval `resize` && whiptail \
+        --title "Apt Repositories" \
+        --yesno "apt keys to recieve: \n\n$(cat $keys) \n\nRepositories to add: \n\n$(cat $repos)" \
+        $LINES $COLUMNS $(( $LINES - 12 )) \
+        --scrolltext) then
+        show_info 'Installing...'
+        show_warning 'Requires root privileges'
+        addkeys
+        addrepos
+        # Done
+        show_success 'Done.'
+        # Check
+        EXITSTATUS=$1
+        if [[ $EXITSTATUS != 0 ]]; then
+            # Already installed
+            show_success 'Already installed.'
+            whiptail --title "Finished" --msgbox "apt keys and repositories added." 8 78
+            main
+        else
+            whiptail --title "Finished" --msgbox "Installation complete." 8 78
+            main
+        fi
+    else
+        main
+    fi
+}
+
+function addkeys {
+    show_info 'adding keys ... ' $(cat $keys)
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $(cat $keys)
+    show_success 'apt keys added'
+}
+
+function addrepos {
+    show_info 'adding repos ... ' "$(cat $repos)"
+    sudo add-apt-repository "$(cat $repos)"
+    sudo apt-get update
+    show_success 'apt repositories added'
+}

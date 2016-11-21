@@ -30,6 +30,8 @@ openjdk-8-jdk
 pdftk
 python-bs4 
 python-regex 
+r-base 
+r-base-dev
 rsync
 skype
 ssh
