@@ -27,6 +27,7 @@ function sourcecodepro {
         sudo mkdir "$DIR"
         sudo cp -r * "$DIR/"
         fc-cache -f -v
+        gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Light 9'
 
         # Cleanup and finish
         cd ../..

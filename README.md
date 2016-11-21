@@ -30,42 +30,14 @@ Some tasks can nevertheless only be completed manually ...
     1a.  Window management -> Enable `Put`
     1b. Grab keys for `Put to next output`
 
+2. Set `Source Code Pro` as terminal font 
+```
+Profile -> general -> font -> SourceCodePro Light 9pt
+```
 
-Contents
---------
-
-[1. `apt-get install` comands](#1-apt-get-install) ([1.1 vim](#1.1-vim); 
-[1.2 Other stuff](#1.2-misc))
-
-[2. Visual settings](#2-visual-settings) ([2.1 SourceCodePro](#2.1-sourcecodepro); 
-[2.2 solarized](#2.2-solarized); [2.3 computer name](#2.3-computer-name))
-
-[3. git](#3-git) ([3.1 travis](#3.1-travis))
-
-[4. Miscellaneous system stuff](#4-misc-system-stuff)
-
-[5. R](#5-R) ([5.1 R packages](#5.1-packages); 
-[5.2 vim-r](#5.2-vim-r); [5.3 Nvim-r](#5.3-Nvim-r))
-
-[6. Other `vim` plugins](#6-other-vim)
-
-[7. `python`](#7-python) ([7.1 scipy & numpy](#7-scipy-numpy))
-
-[8. Other packages](#8-other-packages) (
-[8.1 Image processing](#8.1-image-processing))
+3. Manually update `tcolorbox` in `/usr/share/texlive/texmf-dist/tex/latex/tcolorbox`
 
 
-
-
-
------
-
-## <a name="2.1-sourcecodepro"></a>2.1 [SourceCodePro](https://github.com/adobe-fonts/source-code-pro)
-
-1. Download [`.tar.gz`](https://github.com/adobe-fonts/source-code-pro)
-2. Open each `.otf` with `font-viewer` and `install`
-3. Advanced Settings -> Fonts -> Monospace font -> SourceCodePro Light 9pt
-4. Set Terminal -> profile -> general -> font -> SourceCodePro Light 9pt
 
 -----
 
@@ -160,44 +132,6 @@ and then to check it worked:
 travis version
 ```
 
-----------------
-
-# <a name="4-misc-system-stuff"></a>4. Miscellaneous System Stuff
-
-1. Set default editor
-
-    ```
-    echo $EDITOR
-    export EDITOR='vim'
-    ```
-2. `tcolorbox` does **NOT** install as latest version, so has to be done manually in 
-
-    ```
-    /usr/share/texlive/texmf-dist/tex/latex/tcolorbox
-    ```
-3. To update `boost` to `>=LTS`:
-
-    a. Check version
-
-    ```
-    dpkg -s libboost-all-dev | grep version
-    ```
-    b. Then update to downloaded version
-    
-    ```
-    wget -O boost_1_xx_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.xx.0/boost_1_xx_0.tar.gz/download
-    tar xzvf boost_1_xx_0.tar.gz
-    cd boost_1_xx_0/
-    sudo apt-get update
-    sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev
-    ./bootstrap.sh --prefix=/usr/local
-    ```
-    c. The last of these gives instructions for install, then just need to 
-    ```
-    sudo copy boost_1_xx_0 /usr/include/ -r
-    ```
-    d. Finally add to compiler path `/usr/include/boost_1_xx_0` and to linker library path
-`/usr/include/boost_1_xx_0/stage/lib`
 
 ------
 

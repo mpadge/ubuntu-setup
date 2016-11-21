@@ -17,6 +17,7 @@ function preferences {
     do
         eval dconf write $line
     done < "$DSETTINGS"
+    export $EDITOR='vim'
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "Settings changed successfully." 8 78
