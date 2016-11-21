@@ -1,10 +1,9 @@
 #!/bin/bash
 
-#dir="$(dirname "$0")"
-# MP TODO reinstate dirname so can be run from other directories
+DIR="$(dirname "$0")"
 
-GSETTINGS="data/gsettings.list"
-DSETTINGS="data/dsettings.list"
+GSETTINGS=$DIR"/data/gsettings.list"
+DSETTINGS=$DIR"/data/dsettings.list"
 
 # Automatically set preferred gsettings keys as outlined in the 'gsettings.list' file
 function preferences {
@@ -17,7 +16,7 @@ function preferences {
     do
         eval dconf write $line
     done < "$DSETTINGS"
-    export $EDITOR='vim'
+    export EDITOR='vim'
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "Settings changed successfully." 8 78
