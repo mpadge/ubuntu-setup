@@ -1,4 +1,35 @@
-My system setup from scratch ...
+Ubuntu System Setup
+===========================
+
+Adapted from 
+[ubuntu-post-install scripts of Sam Hewitt](https://github.com/snwh/ubuntu-post-install), to whom all credit is due.
+
+##Usage
+
+```
+./setup.sh
+```
+
+
+##Note
+
+`gsettings.list` and `dsettings.list` can be found by
+```
+> dconf watch /
+```
+Manually changing settings will then echo the corresponding `dconf` parameters.
+Some of these can not be `gset`. To find out which, just use
+```
+> gsettings get ...
+```
+with autocomplete to find out.
+
+Some tasks can nevertheless only be completed manually ... 
+
+1. Enable `<super>-N` for moving windows between monitors in `compizconfig`:
+    1a.  Window management -> Enable `Put`
+    1b. Grab keys for `Put to next output`
+
 
 Contents
 --------
@@ -25,80 +56,7 @@ Contents
 
 
 
---------
 
-# <a name="1-apt-get-install"></a>1. `apt-get install` copy-paste commands:
-
-## <a name="1.1-vim"></a>1.1 `vim`
-
-`vim` can be compiled as described [here](http://www.vim.org/git.php) with these
-lines: 
-```
-git clone https://github.com/vim/vim.git
-cd vim/src
-make
-sudo make install
-```
-This will only work if `vim` has not yet been installed at all, that is if
-```
-dpkg --get-selections | grep vim 
-```
-returns nothing. Otherwise modify as described
-[here](http://www.vim.org/git.php).  This also allows easy updating to any and
-all future patches by simply updating the `git clone`.
-
-## <a name="1.2-misc"></a>1.2 Other installation stuff
-
-1. `Java` and `rJava`
-
-    ```
-    sudo apt-get install openjdk-8-jre # or 9?
-    sudo apt-get install openjdk-8-jdk
-    sudo apt-get install r-cran-rjava
-    sudo R CMD javareconf # -e ?
-    ```
-2. [pandoc](https://github.com/jgm/pandoc) is best installed not by `apt-get`,
-   rather by installing the 
-   [latest release](https://github.com/jgm/pandoc/releases):
-
-    ```
-    URL=$(curl -s https://api.github.com/repos/jgm/pandoc/releases | \
-        grep browser_download_url | head -n 1 | cut -d '"' -f 4)
-    sudo wget $URL
-    file=${URL#https://github.com/jgm/pandoc/releases/download/}
-    file=${file#*/}
-    sudo dpkg -i $file
-    ```
-
-
---------
-
-
-# <a name="2-visual-settings"></a>2 Visual settings
-
-1. Appearance -> Look -> Launcher Icon Size = 32 
-2. Appearance -> Behaviour -> Autohide Launcher
-3. Install Gnome Tweak from software centre (not apt-get)
-4. Advanced Settings -> Fonts -> All to 10, except Document = 11
-5. To enable `<super>-N` for moving windows between monitors:
-
-        sudo apt-get install compizconfig-settings-manager compiz-plugins-extra 
-    5a. Window Management -> Enable `Put`
-
-    5b. Grab keys for `Put to next output`
-6. To make `alt-tab` only show current workspace: 
-
-    In dconf-editor: org -> gnome -> shell -> app-switcher 
-    
-    set `current-workspace-only` to true
-7. To add shutdown to list of power options:
-
-    a. Install `dconf-editor`
-
-    b. Under org -> gnome -> settings-daemon -> plugins -> power
-
-    set `lid-close-ac-action` and `lid-close-battery-action`
-8. Settings -> Keyboard -> Launch email client: Set key to `Ctrl+Alt+M`
 
 -----
 

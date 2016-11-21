@@ -14,6 +14,7 @@ function packages {
         show_info 'Installing...'
         show_warning 'Requires root privileges'
         sudo apt-get install -y $(cat $PKGS)
+        sudo R CMD javareconf
         # Done
         show_success 'Done.'
         # Check
