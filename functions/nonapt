@@ -6,6 +6,7 @@ source $dir/functions/non-apt/vim
 source $dir/functions/non-apt/pandoc
 source $dir/functions/non-apt/sourcecodepro
 source $dir/functions/non-apt/travis
+source $dir/functions/non-apt/rpackages
 
 # Install non-apt packages
 function nonapt {
@@ -21,6 +22,7 @@ function nonapt {
         'pandoc'        '2. pandoc' \
         'sourcecodepro' '3. Source Code Pro' \
         'travis'        '4. travis-ci client' \
+        'rpackages'     '5. R packages' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?

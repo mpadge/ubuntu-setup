@@ -1,0 +1,45 @@
+#!/bin/bash
+
+RPKGS="$dir/data/rpackages.list"
+RPKGS_NI=()
+INST=$(sudo Rscript -e "rownames (installed.packages ())")
+while read F ; do
+    if [[ ! ${INST[*]} =~ $F ]]
+    then
+        RPKGS_NI+=($F)
+    fi
+done < $RPKGS
+
+CRAN="https://cran.r-project.org"
+
+# install R packages
+function rpackages {
+    if (eval `resize` && whiptail \
+        --title "R Packages" \
+        --yesno "Current list of R packages to install: \n\n${RPKGS_NI[*]\\} \n\nProceed with installation?" \
+        $LINES $COLUMNS $(( $LINES - 12 )) \
+        --scrolltext) then
+        show_header 'Installing...'
+        show_warning 'Requires root privileges'
+        for i in ${RPKGS_NI[@]}; do
+            CMD='install.packages('\"${i}\"',repos='\"$CRAN\"')'
+            sudo Rscript --verbose -e \'$CMD\'
+        done 
+
+        # Done
+        show_success 'Done.'
+        # Check
+        EXITSTATUS=$1
+        if [[ $EXITSTATUS != 0 ]]; then
+            # Already installed
+            show_success 'Already installed.'
+            whiptail --title "Finished" --msgbox "Packages are already installed." 8 78
+            nonapt
+        else
+            whiptail --title "Finished" --msgbox "Installation complete." 8 78
+            nonapt
+        fi
+    else
+        nonapt
+    fi
+}
