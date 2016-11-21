@@ -29,20 +29,6 @@ Contents
 
 # <a name="1-apt-get-install"></a>1. `apt-get install` copy-paste commands:
 
-First enable canonical partners, then
-
-```
-sudo apt-get install ctags libx11-dev tmux libboost-all-dev texlive-full
-sudo apt-get install git mc libxml2-dev imagemagick libcgal-dev jabref vlc pdftk
-sudo apt-get install gsl-bin libgsl0-dev valgrind lxd zathura
-sudo apt-get install libcurl4-openssl-dev dos2unix python-bs4 libgeos-dev libglu1-mesa-dev
-sudo apt-get install ubuntu-restricted-extras skype
-sudo apt-get install libzip-dev libglu1-mesa-dev mesa-common-dev clang
-sudo apt-get install htop python-regex cmake tree libeigen3-dev libgmp3-dev
-```
-
-`zathura` is needed by `Nvim-r`
-
 ## <a name="1.1-vim"></a>1.1 `vim`
 
 `vim` can be compiled as described [here](http://www.vim.org/git.php) with these

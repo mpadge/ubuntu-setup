@@ -27,13 +27,12 @@ clear
 
 dir="$(dirname "$0")"
 
-. $dir/functions/check
 . $dir/functions/aptadd
+. $dir/functions/check
 . $dir/functions/cleanup
 . $dir/functions/configure
-. $dir/functions/packages
-. $dir/functions/thirdparty
 . $dir/functions/nonapt
+. $dir/functions/packages
 
 #----- Fancy Messages -----#
 show_error(){
