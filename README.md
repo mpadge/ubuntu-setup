@@ -67,18 +67,17 @@ To change the
 ["Ubuntu Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel) 
 text at top left:
 
-1. `vim .junk.po` # (can be deleted afterward)
-2. insert:
+`vim .junk.po` (can be deleted afterward) and insert:
 ```
 msgid "Ubuntu Desktop"
 msgstr "whatever"
 ```
-3.  then:
+then:
 ```
 cd /usr/share/locale/en/LC_MESSAGES
 sudo msgfmt -o unity.mo ~/.junk.po
 ```
-4. log out to change it
+and log out to change it
 
 
 
@@ -93,9 +92,8 @@ git config --global core.safecrlf true
 
 ### 8. `Nvim-r-plugin`
 
-1. Download [Nvim-r vimball](http://www.vim.org/scripts/script.php?script_id=2628)
-
-2. [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %` 
+Download [Nvim-r vimball](http://www.vim.org/scripts/script.php?script_id=2628)
+and [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %` 
 
 
 

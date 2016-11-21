@@ -23,7 +23,7 @@ function rpackages {
         show_warning 'Requires root privileges'
         for i in ${RPKGS_NI[@]}; do
             CMD='install.packages('\"${i}\"',repos='\"$CRAN\"')'
-            sudo Rscript --verbose -e \'$CMD\'
+            sudo Rscript --verbose -e $CMD
         done 
 
         # Done

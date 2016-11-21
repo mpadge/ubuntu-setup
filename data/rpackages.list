@@ -45,6 +45,7 @@ spacetime
 spatialkernel
 spatstat
 spdep
+stplanr
 testthat
 tripack
 XML
