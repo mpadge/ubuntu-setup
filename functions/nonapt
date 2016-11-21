@@ -5,6 +5,7 @@ dir="$(dirname "$0")"
 source $dir/functions/non-apt/vim
 source $dir/functions/non-apt/pandoc
 source $dir/functions/non-apt/sourcecodepro
+source $dir/functions/non-apt/travis
 
 # Install non-apt packages
 function nonapt {
@@ -16,9 +17,10 @@ function nonapt {
         --ok-button "Install/Update" \
         --cancel-button "Go Back" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        'vim'           'vim' \
-        'pandoc'        'pandoc' \
-        'sourcecodepro' 'Source Code Pro' \
+        'vim'           '1. vim' \
+        'pandoc'        '2. pandoc' \
+        'sourcecodepro' '3. Source Code Pro' \
+        'travis'        '4. travis-ci client' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?

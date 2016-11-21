@@ -66,11 +66,11 @@ function main {
         --menu "\nWhat would you like to do?" \
         --cancel-button "Quit" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        aptadd      'Add apt repositories' \
-        packages    'Install apt packages' \
-        nonapt      'Install non-apt packages' \
-        configure   'Configure system' \
-        cleanup     'Cleanup the system' \
+        aptadd      '1. Add apt repositories' \
+        packages    '2. Install apt packages' \
+        nonapt      '3. Install non-apt packages' \
+        configure   '4. Configure system' \
+        cleanup     '5. Cleanup the system' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?

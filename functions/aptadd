@@ -34,12 +34,14 @@ function aptadd {
     fi
 }
 
+# recieve new apt keys
 function addkeys {
     show_info 'adding keys ... ' $(cat $keys)
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $(cat $keys)
     show_success 'apt keys added'
 }
 
+# add new apt repositories
 function addrepos {
     show_info 'adding repos ... ' "$(cat $repos)"
     sudo add-apt-repository "$(cat $repos)"

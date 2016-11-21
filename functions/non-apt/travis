@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# travis client from github.com/travis-ci/travis.rb
+function travis {
+	# Variables
+	PACKAGE=travis
+	TNAME="travis"
+
+    # First check ruby-dev
+    RUBY="ruby-dev"
+    PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $RUBY|grep "install ok installed")
+    if [ "" == "$PKGCHECK" ]; then
+        show_info "travis-ci client requires ruby-dev installation"
+        sudo apt-get install ruby-dev
+    else
+        show_info "ruby-dev installed as required for travis gem ..."
+    fi
+
+	# Install
+    if hash $TNAME 2>/dev/null; then
+        TRCURRENT=`echo $(gem list --no-verbose travis) | cut -d "(" -f2 | cut -d ")" -f1`
+        VONE=$(echo $TRCURRENT | cut -d '.' -f 1)
+        VTWO=$(echo $TRCURRENT | cut -d '.' -f 2)
+        VTHREE=$(echo $TRCURRENT | cut -d '.' -f 3)
+        URL="https://api.github.com/repos/travis-ci/travis.rb/tags"
+        TRLATEST=$(curl -s $URL | grep "tarball_url" | head -n 1 | cut -d '"' -f 4)
+        TRLATEST=${TRLATEST##*/v}
+        #LATEST=${LATEST%.*}
+        LONE=$(echo $TRLATEST | cut -d '.' -f 1)
+        LTWO=$(echo $TRLATEST | cut -d '.' -f 2)
+        LTHREE=$(echo $TRLATEST | cut -d '.' -f 3)
+
+        if ((LONE==VONE)) && ((LTWO==VTWO)) && ((LTHREE==VTHREE))
+        then
+            whiptail --title "$TNAME version" --msgbox "version is latest: $TRLATEST" 8 50
+        elif (whiptail --title "$TNAME update" \
+            --yesno "Proceed with $TNAME update from $TRCURRENT to $TRLATEST?" 10 60)
+        then
+            show_info $TRCURRENT
+            show_info 'updating '$TNAME' from '$TRCURRENT' to '$TRLATEST
+            sudo gem install travis --no-rdoc --no-ri
+            sudo gem cleanup travis
+        fi
+    elif (whiptail --title "$TNAME install" --yesno "Install $TNAME?" 10 60)
+    then
+        sudo gem install travis --no-rdoc --no-ri
+    fi
+    # Done
+    nonapt
+}

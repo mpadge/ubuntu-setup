@@ -88,6 +88,8 @@ git config --global core.safecrlf true
 
     ii. [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %` 
 
+
+
 ------
 
 ## <a name="3.1-travis"></a>3.1 [travis-ci client](https://github.com/travis-ci/travis.rb#installation)
