@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dir="$(dirname "$0")"
+DIR="$(dirname "$0")"
 
-PURGED="$dir/data/purge.list"
+PURGED="$DIR/data/purge.list"
 
 # Remove unused/unwanted packages that are listed in 'data/purge.list'
 function unused {

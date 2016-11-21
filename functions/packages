@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dir="$(dirname "$0")"
+DIR="$(dirname "$0")"
 
-PKGS="$dir/data/packages.list"
+PKGS="$DIR/data/packages.list"
 
 function gdal_install {
     GDAL_URL="http://download.osgeo.org/gdal/CURRENT/"

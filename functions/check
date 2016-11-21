@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dir="$(dirname "$0")"
+DIR="$(dirname "$0")"
 
-DEPS="$dir/data/dependencies.list"
+DEPS="$DIR/data/dependencies.list"
 
 
 # Check if command failed, if true abort

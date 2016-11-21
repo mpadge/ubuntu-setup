@@ -1,6 +1,8 @@
 #!/bin/bash
 
-RPKGS="$dir/data/rpackages.list"
+DIR="$(dirname "$0")"
+
+RPKGS="$DIR/data/rpackages.list"
 RPKGS_NI=()
 INST=$(sudo Rscript -e "rownames (installed.packages ())")
 while read F ; do

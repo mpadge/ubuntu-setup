@@ -1,12 +1,12 @@
 #!/bin/bash
 
-dir="$(dirname "$0")"
+DIR="$(dirname "$0")"
 
-source $dir/functions/non-apt/vim
-source $dir/functions/non-apt/pandoc
-source $dir/functions/non-apt/sourcecodepro
-source $dir/functions/non-apt/travis
-source $dir/functions/non-apt/rpackages
+source $DIR/functions/non-apt/vim
+source $DIR/functions/non-apt/pandoc
+source $DIR/functions/non-apt/sourcecodepro
+source $DIR/functions/non-apt/travis
+source $DIR/functions/non-apt/rpackages
 
 # Install non-apt packages
 function nonapt {

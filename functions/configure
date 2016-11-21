@@ -2,8 +2,8 @@
 
 DIR="$(dirname "$0")"
 
-GSETTINGS=$DIR"/data/gsettings.list"
-DSETTINGS=$DIR"/data/dsettings.list"
+GSETTINGS="$DIR/data/gsettings.list"
+DSETTINGS="$DIR/data/dsettings.list"
 
 # Automatically set preferred gsettings keys as outlined in the 'gsettings.list' file
 function preferences {
