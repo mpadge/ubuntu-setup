@@ -30,22 +30,30 @@ with autocomplete to find out.
 
 Some tasks can nevertheless only be completed manually ... 
 
-1. Enable `<super>-N` for moving windows between monitors in `compizconfig`:
-    1a.  Window management -> Enable `Put`
-    1b. Grab keys for `Put to next output`
+### 1. Move windows
 
-2. Set `Source Code Pro` as terminal font 
+Enable `<super>-N` for moving windows between monitors in `compizconfig`:
+    1.  Window management -> Enable `Put`
+    2. Grab keys for `Put to next output`
+
+### 2. Terminal font
+
 ```
 profile -> general -> font -> SourceCodePro Light 9pt
 ```
 
-3. Manually update `tcolorbox` in `/usr/share/texlive/texmf-dist/tex/latex/tcolorbox`
+### 3. `tcolorbox`
+
+Manually update `tcolorbox` in `/usr/share/texlive/texmf-dist/tex/latex/tcolorbox`
 
 
-4. Set up gnome to use solarized colour scheme by following [this](https://gist.github.com/gmodarelli/5942850),
-but instead of `./set_light.sh`, just run `./install_sh` to configure both light and dark profiles
+### 4. gnome soliarized
 
-5. Computer name
+Follow [this](https://gist.github.com/gmodarelli/5942850), but instead of
+`./set_light.sh`, just run `./install_sh` to configure both light and dark
+profiles
+
+### 5. Computer name
 
 If not set at install, just change both:
 ```
@@ -53,27 +61,28 @@ If not set at install, just change both:
 /etc/hostname
 ```
 
-6. To change the ["Ubuntu
-Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel) text at top left:
+### 6. Desktop text
 
-    i. `vim .junk.po` # (can be deleted afterward)
-    ii. insert:
+To change the 
+["Ubuntu Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel) 
+text at top left:
 
-        ```
-        msgid "Ubuntu Desktop"
-        msgstr "whatever"
-        ```
-    iii.  then:
+1. `vim .junk.po` # (can be deleted afterward)
+2. insert:
+```
+msgid "Ubuntu Desktop"
+msgstr "whatever"
+```
+3.  then:
+```
+cd /usr/share/locale/en/LC_MESSAGES
+sudo msgfmt -o unity.mo ~/.junk.po
+```
+4. log out to change it
 
-        ```
-        cd /usr/share/locale/en/LC_MESSAGES
-        sudo msgfmt -o unity.mo ~/.junk.po
-        ```
-    iv. log out to change it
 
 
-
-7. git setup:
+### 7. git setup:
 
 ```
 git config --global user.name "mpadge"
@@ -82,76 +91,12 @@ git config --global core.autocrlf input
 git config --global core.safecrlf true
 ```
 
-8. `Nvim-r-plugin`
+### 8. `Nvim-r-plugin`
 
-    i. Download [Nvim-r vimball](http://www.vim.org/scripts/script.php?script_id=2628)
+1. Download [Nvim-r vimball](http://www.vim.org/scripts/script.php?script_id=2628)
 
-    ii. [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %` 
+2. [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %` 
 
-
-
-------
-
-## <a name="3.1-travis"></a>3.1 [travis-ci client](https://github.com/travis-ci/travis.rb#installation)
-
-Replace `1.8.2` with latest version
-```
-sudo apt-get install ruby-dev # if not already installed
-sudo gem install travis -v 1.8.2 --no-rdoc --no-ri
-```
-and then to check it worked:
-```
-travis version
-```
-
-
-------
-
-# <a name="5-R"></a>5. `R`
-
-Details [here](http://cran.r-project.org/bin/linux/ubuntu/)
-```
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-sudo add-apt-repository "deb http://cran.r-project.org/bin/linux/ubuntu xenial/"
-sudo apt-get update
-sudo apt-get install r-base r-base-dev
-```
-
-To list r-base version:
-```
-apt-cache showpkg r-base
-```
-
-To set a permenent mirror:
-```
-vim /usr/lib/R/library/base/R/Rprofile
-```
-search for `cran` and replace `@CRAN@` with `https://cran.r-project.org/`
-
-------
-
-## <a name="5.1-packages"></a>5.1 Package installation
-
-In addition to the [`rJava`](#1.2-misc) requirements listed above, prior to
-installation:
-
-1. `httr` requires `libssl-dev`
-2. `rgdal` requires `gdal-bin libgdal-dev libproj-dev`
-3. `sfr` (not yet CRAN) requires `libgeos++-dev`
-
-```
-pkgs <- c ("codetools", "ggplot2", "sp", "spacetime", "XML", "data.table", "RCurl")
-pkgs <- c (pkgs, "osmar", "quantreg", "fpc", "knitr", "rmarkdown", "yaml", "bitops")
-pkgs <- c (pkgs, "spatstat", "adehabitatLT", "CircStats", "fields", "spatialkernel") 
-pkgs <- c (pkgs, "tripack", "spdep", "plyr", "RANN", "combinat", "igraph", "raster") 
-pkgs <- c (pkgs, "chron", "gridBase", "cubature", "R2Cuba", "devtools", "roxygen2") 
-pkgs <- c (pkgs, "testthat", "rgdal", "rjson", "rgl", "rJava", "OpenStreetMap")
-pkgs <- c (pkgs, "animation", "microbenchmark", "rgl", "extrafont", "Rcpp")
-pkgs <- c (pkgs, "ggm", "rgeos", "changepoint", "readxl", "signal", "msm")
-pkgs <- c (pkgs, "distr")
-new.pkgs <- pkgs [!(pkgs %in% rownames (installed.packages()))]
-if(length(new.pkgs)) install.packages(new.pkgs)
-```
 
 
 ------
