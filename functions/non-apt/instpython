@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# install_python
+function install_python {
+    for i in "${PYPKGS[@]}"; do
+        if ! $(python -c "import $i" &> /dev/null)
+        then
+            echo "$i not there"
+            #sudo apt-get install $i
+        else
+            echo "python-$i already installed"
+        fi
+    done
+
+    PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' python-pip|grep "install ok installed")
+    if [ "" == "$PKGCHECK" ]; then
+        sudo apt-get install python-pip
+    fi
+    #sudo pip install ipython 
+    #sudo pip install ipython-notebook 
+
+    show_success 'Done.'
+    nonapt
+}
+

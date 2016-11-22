@@ -2,6 +2,7 @@
 
 source $DIR/functions/non-apt/vim
 source $DIR/functions/non-apt/pandoc
+source $DIR/functions/non-apt/instpython
 source $DIR/functions/non-apt/sourcecodepro
 source $DIR/functions/non-apt/travis
 source $DIR/functions/non-apt/rpackages
@@ -56,6 +57,8 @@ function doall {
                 sudo Rscript --verbose -e $CMD
             done < $RPKGS
         fi
+        # ---non-apt/python
+        install_python
 
         # Done
         show_success 'Done.'

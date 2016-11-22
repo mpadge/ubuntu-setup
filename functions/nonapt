@@ -1,10 +1,13 @@
 #!/bin/bash
 
-source $DIR/functions/non-apt/vim
-source $DIR/functions/non-apt/pandoc
-source $DIR/functions/non-apt/sourcecodepro
-source $DIR/functions/non-apt/travis
-source $DIR/functions/non-apt/rpackages
+echo "-----$DIR-----"
+
+. $DIR/functions/non-apt/vim
+. $DIR/functions/non-apt/pandoc
+. $DIR/functions/non-apt/instpython
+. $DIR/functions/non-apt/sourcecodepro
+. $DIR/functions/non-apt/travis
+. $DIR/functions/non-apt/rpackages
 
 # Install non-apt packages
 function nonapt {
@@ -16,11 +19,12 @@ function nonapt {
         --ok-button "Install/Update" \
         --cancel-button "Go Back" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        'vim'           '1. vim' \
-        'pandoc'        '2. pandoc' \
-        'sourcecodepro' '3. Source Code Pro' \
-        'travis'        '4. travis-ci client' \
-        'rpackages'     '5. R packages' \
+        'vim'               '1. vim' \
+        'pandoc'            '2. pandoc' \
+        'install_python'    '3. python' \
+        'sourcecodepro'     '4. Source Code Pro' \
+        'travis'            '5. travis-ci client' \
+        'rpackages'         '6. R packages' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?
