@@ -21,11 +21,13 @@ function doall {
 
         # ---packages
         #while read F ; do
-        #    if $(dpkg-query -l $F | grep "no packages")
+        #    PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
+        #    PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF|grep "install ok installed")
+        #    if [ "" == "$PKGCHECK" ]
         #    then
-        #        sudo apt-get install -y $F
+        #        sudo apt-get install -y $PF
         #    else
-        #        echo "package "$F" already installed"
+        #        echo "package "$PF" already installed"
         #    fi
         #done < $PKGS
         #sudo R CMD javareconf

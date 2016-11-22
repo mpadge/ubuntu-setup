@@ -3,7 +3,13 @@
 PFILE=$HOME"/.vim/autoload/pathogen.vim"
 
 function install_vim_core {
-    # Clone git repo
+    # This is mostly from
+    # https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
+    sudo apt-get remove vim vim-runtime gvim
+    # That doesn't really work because vim is compiled from source. The only way
+    # I've found to remove it is to manually remove the "vim" directories from
+    # "/usr/share", "/usr/local/share" and "/usr/local/bin"
+    
     HDIR=0
     if [[ $PWD = $HOME ]]
     then
@@ -14,12 +20,25 @@ function install_vim_core {
     # Install package(s)
     show_info $INST_UPDATE_VERB' '$NAME'...'
     show_warning 'Requires root privileges'
-    cd vim/src
-    make distclean
-    make
+    # ----- The "official" github.com/vim/vim way:
+    #cd vim/src
+    #make distclean
+    #make
+    #sudo make install
+    # ----- Or the Valloric way (modified a bit)
+    cd vim
+    ./configure --with-features=huge \
+        --enable-multibyte \
+        --enable-python3interp=yes \
+        --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+        --enable-python3interp=yes \
+        --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu \
+        --enable-gui=gtk2 --enable-cscope --prefix=/usr
+    make VIMRUNTIMEDIR=/usr/share/vim/vim80
+    #make
     sudo make install
     # Cleanup and finish
-    cd ../..
+    cd ..
     rm -rf vim
     if [ $HDIR -eq 0 ]
     then
@@ -69,6 +88,26 @@ function browswer {
         wd=$PWD
         cd $HOME/.vim/bundle && git clone https://github.com/tyru/open-browser.vim
         cd $wd
+    else
+        whiptail --title "open-browser.vim" --msgbox "open-browser already installed." 8 78
+        show_info 'open-browser.vim already installed'
+    fi
+}
+
+function ycm {
+    YCMDIR=$HOME"/.vim/bundle/YouCompleteMe/"
+    YCMNAME="YouCompleteMe"
+    if [ -d $YCMDIR ]; then
+        whiptail --title $YCMNAME --msgbox "$YCMNAME already installed." 8 78
+        show_info "$YCMNAME already installed."
+    else
+        show_info "Installing "$YCMNAME
+        pwd=$PWD
+        cd $HOME/.vim/bundle
+        git clone https://github.com/Valloric/YouCompleteMe
+        cd YouCompleteMe/
+        ./install.py --clang-completer
+        cd $PWD
     fi
 }
 
@@ -90,7 +129,7 @@ function install_vim {
         show_header 'Begin '$NAME' '$INST_UPDATE
         # Install git if not installed
         GITCHECK=$(dpkg-query -W --showformat='${Status}\n' git|grep "install ok installed")
-        if [ "" == "$PKGCHECK" ]; then
+        if [ "" == "$GITCHECK" ]; then
             echo 'installing git first ...'
             sudo apt-get install git
         fi
@@ -100,6 +139,8 @@ function install_vim {
     pathogen
     solarized
     browswer
+    ycm
+    echo "NOTE: install vundle plugins with ':PluginInstall'"
 
     PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' vim-latexsuite|grep "install ok installed")
     if [ "" == "$PKGCHECK" ]

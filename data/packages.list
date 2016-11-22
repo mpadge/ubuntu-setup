@@ -1,10 +1,11 @@
 autotools-dev # packages.list can include comments
+checkinstall
 clang 
 cmake 
 compizconfig-settings-manager 
 compiz-plugins-extra
-ctags
 dos2unix 
+exuberant-ctags
 git
 gnome-tweak-tool
 gparted
@@ -12,32 +13,47 @@ gsl-bin
 htop 
 imagemagick 
 jabref 
+libatk1.0-dev # for vim: see instvim
+libbonoboui2-dev # for vim: see instvim
 libboost-all-dev 
+libcairo2-dev # for vim: see instvim
 libcgal-dev 
 libcurl4-openssl-dev 
+libncurses5-dev # for vim: see instvim
 libeigen3-dev 
 libgeos-dev
 libglu1-mesa-dev
 libgeos++-dev
-libgsl0-dev 
 libgmp3-dev
+libgnome2-dev # for vim: see instvim
+libgnomeui-dev# for vim: see instvim
+libgsl-dev 
+libgtk2.0-dev # for vim: see instvim
+libperl-dev # for vim: see instvim
 libproj-dev
 libssl-dev
 libx11-dev 
 libxml2-dev 
+libxpm-dev # for vim: see instvim
+libxt-dev # for vim: see instvim
 libzip-dev 
+lua5.1 
+liblua5.1-0-dev # lua5.1-dev for vim
 lxd 
 mesa-common-dev 
 mc 
 openjdk-8-jre
 openjdk-8-jdk
 pdftk
+python3-dev 
 python-bs4 
+python-dev 
 python-regex 
 r-base 
 r-base-dev
 r-cran-rjava
 rsync
+ruby-dev 
 ubuntu-restricted-extras 
 skype
 ssh
