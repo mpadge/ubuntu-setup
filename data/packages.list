@@ -1,4 +1,5 @@
 autotools-dev
+bridge-utils
 clang
 cmake 
 compizconfig-settings-manager 
@@ -47,3 +48,4 @@ tree
 valgrind 
 vlc 
 zathura
+zfsutils-linux

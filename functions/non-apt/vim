@@ -62,6 +62,11 @@ function solarized {
     fi
 }
 
+function browswer {
+    wd=$PWD
+    cd $HOME/.vim/bundle && git clone https://github.com/tyru/open-browser.vim
+}
+
 # vim
 function vim {
 	# Variables
@@ -89,6 +94,7 @@ function vim {
 
     pathogen
     solarized
+    browswer
 
     # Done
     show_success 'Done.'
