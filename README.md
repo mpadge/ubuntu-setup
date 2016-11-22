@@ -72,7 +72,9 @@ Some tasks can nevertheless only be completed manually ...
 ### 1. Move windows
 
 Enable `<super>-N` for moving windows between monitors in `compizconfig`:
+
     1.  Window management -> Enable `Put`
+
     2. Grab keys for `Put to next output`
 
 ### 2. Terminal font
