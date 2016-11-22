@@ -26,17 +26,17 @@ clear
 
 #----- Import Functions -----#
 
-dir="$(dirname "$0")"
+DIR="$(dirname "$0")"
 
-. $dir/functions/variables
+. $DIR/functions/variables
 
-. $dir/functions/aptadd
-. $dir/functions/check
-. $dir/functions/cleanup
-. $dir/functions/configure
-. $dir/functions/doall
-. $dir/functions/nonapt
-. $dir/functions/packages
+. $DIR/functions/aptadd
+. $DIR/functions/check
+. $DIR/functions/cleanup
+. $DIR/functions/configure
+. $DIR/functions/doall
+. $DIR/functions/nonapt
+. $DIR/functions/packages
 
 #----- Fancy Messages -----#
 show_error(){

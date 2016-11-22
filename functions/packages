@@ -39,18 +39,19 @@ function gdal {
 function packages {
     if (eval `resize` && whiptail \
         --title "Packages" \
-        --yesno "Current list of packages to install: \n\n$(cat $PKGS) \n\nProceed with installation?" \
+        --yesno "Current list of packages to install: \n\n$(cat $PKGS)\n\nProceed with installation (installed packages will be skipped)?" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
         --scrolltext) then
         show_info 'Installing...'
         show_warning 'Requires root privileges'
         #sudo apt-get install -y $(cat $PKGS)
         while read F ; do
-            if $(dpkg-query -l $F | grep "no packages")
+            PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
+            if $(dpkg-query -l $PF | grep "no packages")
             then
-                sudo apt-get install -y $F
+                sudo apt-get install -y $PF
             else
-                echo "package "$F" already installed"
+                echo "package "$PF" already installed"
             fi
         done < $PKGS
         sudo R CMD javareconf

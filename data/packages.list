@@ -1,9 +1,9 @@
-autotools-dev
-clang
+autotools-dev # packages.list can include comments
+clang 
 cmake 
 compizconfig-settings-manager 
 compiz-plugins-extra
-ctags 
+ctags
 dos2unix 
 git
 gnome-tweak-tool
@@ -46,4 +46,4 @@ tmux
 tree 
 valgrind 
 vlc 
-zathura
+zathura # for Nvim-r

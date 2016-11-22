@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR="$(dirname "$0")"
+#DIR="$(dirname "$0")"
 KEYS="$DIR/data/keys.list"
 REPOS="$DIR/data/repos.list"
 DEPS="$DIR/data/dependencies.list"
