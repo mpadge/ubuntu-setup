@@ -138,8 +138,6 @@ and [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %`
 
 
 
-------
-
 
 <!---
 

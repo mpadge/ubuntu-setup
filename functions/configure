@@ -31,6 +31,7 @@ function dotfiles {
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.bashrc
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.tmux.conf
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.vimrc
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.gitconfig
     eval cd $WD
     # Done
     show_success 'Done.'
@@ -46,6 +47,7 @@ function dotfiles_cp {
     cp $HOME/.bashrc /data/Dropbox/mark/system/ubuntu-setup/dot/.bashrc
     cp $HOME/.vimrc /data/Dropbox/mark/system/ubuntu-setup/dot/.vimrc
     cp $HOME/.tmux.conf /data/Dropbox/mark/system/ubuntu-setup/dot/.tmux.conf
+    cp $HOME/.gitconfig /data/Dropbox/mark/system/ubuntu-setup/dot/.gitconfig
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "dot files copied successfully." 8 78
