@@ -128,33 +128,6 @@ to include `objective` and `subobjective` for example:
 
 -------
 
-# <a name="7-python"></a>7. Python
-
-
-[pip](https://pip.pypa.io/en/latest/installing.html):
-```
-sudo python get-pip.py
-sudo pip install requests
-```
-
-## <a name="7-scipy-numpy"></a>7.1 scipy and numpy:
-
-```
-python-numpy 
-python-scipy 
-python-matplotlib 
-ipython 
-ipython-notebook 
-python-pandas 
-python-sympy 
-python-nose
-```
-as well as
-```
-sudo apt-get python-psutil
-sudo pip install slimit
-```
-
 
 
 <!---
@@ -175,9 +148,7 @@ tk-dev # ditto - maybe tcl-dev is not actually needed?
 routino
 pyparsing
 ```
-
-and for image processing
-
+image processing
 ```
 rawtherapee
 rawstudio

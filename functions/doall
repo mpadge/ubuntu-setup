@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source $DIR/functions/non-apt/vim
-source $DIR/functions/non-apt/pandoc
+source $DIR/functions/non-apt/instvim
+source $DIR/functions/non-apt/instpandoc
 source $DIR/functions/non-apt/instpython
 source $DIR/functions/non-apt/sourcecodepro
 source $DIR/functions/non-apt/travis
@@ -34,12 +34,12 @@ function doall {
         # ---nonapt
         set_preferences
 
-        # ---non-apt/vim
-        install_vim
+        # ---non-apt/instvim
+        install_vim_core
         pathogen
         solarized
         # ---non-apt/pandoc
-        install_pandoc
+        install_pandoc_core
         # ---non-apt/sourcecodepro
         install_sourcecodepro
         # ---non-apt/travis

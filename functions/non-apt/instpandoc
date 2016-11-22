@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function install_pandoc {
+function install_pandoc_core {
     URL=$(curl -s https://api.github.com/repos/jgm/pandoc/releases | \
         grep browser_download_url | head -n 1 | cut -d '"' -f 4)
     sudo wget $URL
@@ -12,8 +12,8 @@ function install_pandoc {
     rm -rf $file
 }
 
-# pandoc - not complete coz lacks version comparison
-function pandoc {
+# install_pandoc - not complete coz lacks version comparison
+function install_pandoc {
 	# Variables
 	PACKAGE=pandoc
 	NAME="pandoc"
@@ -27,7 +27,7 @@ function pandoc {
     fi
 	# Install
 	show_header 'Begin '$NAME' '$INST_UPDATE
-    install_pandoc
+    install_pandoc_core
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "$INST_UPDATE_VERB $NAME complete." 8 78

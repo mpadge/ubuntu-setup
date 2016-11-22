@@ -2,8 +2,8 @@
 
 echo "-----$DIR-----"
 
-. $DIR/functions/non-apt/vim
-. $DIR/functions/non-apt/pandoc
+. $DIR/functions/non-apt/instvim
+. $DIR/functions/non-apt/instpandoc
 . $DIR/functions/non-apt/instpython
 . $DIR/functions/non-apt/sourcecodepro
 . $DIR/functions/non-apt/travis
@@ -19,8 +19,8 @@ function nonapt {
         --ok-button "Install/Update" \
         --cancel-button "Go Back" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        'vim'               '1. vim' \
-        'pandoc'            '2. pandoc' \
+        'install_vim'       '1. vim' \
+        'install_pandoc'    '2. pandoc' \
         'install_python'    '3. python' \
         'sourcecodepro'     '4. Source Code Pro' \
         'travis'            '5. travis-ci client' \

@@ -2,7 +2,7 @@
 
 PFILE=$HOME"/.vim/autoload/pathogen.vim"
 
-function install_vim {
+function install_vim_core {
     # Clone git repo
     HDIR=0
     if [[ $PWD = $HOME ]]
@@ -63,12 +63,17 @@ function solarized {
 }
 
 function browswer {
-    wd=$PWD
-    cd $HOME/.vim/bundle && git clone https://github.com/tyru/open-browser.vim
+    VBDIR="$HOME/.vim/bundle/open-browser.vim"
+
+    if [ ! -d "$VBDIR" ]; then
+        wd=$PWD
+        cd $HOME/.vim/bundle && git clone https://github.com/tyru/open-browser.vim
+        cd $wd
+    fi
 }
 
-# vim
-function vim {
+# install_vim
+function install_vim {
 	# Variables
 	PACKAGE=vim
 	NAME="vim"
@@ -89,15 +94,19 @@ function vim {
             echo 'installing git first ...'
             sudo apt-get install git
         fi
-        install_vim
+        install_vim_core
     fi
 
     pathogen
     solarized
     browswer
-    if (! dpkg-query -l vim-latexsuite | grep "no packages")
+
+    PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' vim-latexsuite|grep "install ok installed")
+    if [ "" == "$PKGCHECK" ]
     then
         sudo vim-addons install -w latex-suite
+    else
+        whiptail --title "vim-latexsuite" --msgbox "vim-latexsuite already installed." 8 78
     fi
 
     # Done

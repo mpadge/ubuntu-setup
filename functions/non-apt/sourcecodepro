@@ -27,19 +27,18 @@ function install_sourcecodepro {
 
 # sourcecodepro
 function sourcecodepro {
-	# Variables
-	NAME="Source Code Pro"
-    DIR="/usr/share/fonts/opentype/Source Code Pro"
+	SCNAME="Source Code Pro"
+    SCDIR="/usr/share/fonts/opentype/Source Code Pro"
 
-    if [ -d "$DIR" ]; then
-        show_info $NAME' already installed'
-        whiptail --title "$NAME" --msgbox "$NAME already installed." 8 78
+    if [ -d "$SCDIR" ]; then
+        show_info $SCNAME' already installed'
+        whiptail --title "$SCNAME" --msgbox "$SCNAME already installed." 8 78
         nonapt
     else
         install_sourcecodepro
         # Done
         show_success 'Done.'
-        whiptail --title "Finished" --msgbox "Installing $NAME complete." 8 78
+        whiptail --title "Finished" --msgbox "Installing $SCNAME complete." 8 78
         nonapt
     fi
 }

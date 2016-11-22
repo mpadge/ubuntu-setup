@@ -17,7 +17,8 @@ function install_python {
         sudo apt-get install python-pip
     fi
     #sudo pip install ipython 
-    #sudo pip install ipython-notebook 
+    #sudo pip install ipython-notebook # doesn't exist
+    #sudo pip install slimit
 
     show_success 'Done.'
     nonapt
