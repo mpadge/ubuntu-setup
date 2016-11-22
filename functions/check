@@ -1,10 +1,5 @@
 #!/bin/bash
 
-DIR="$(dirname "$0")"
-
-DEPS="$DIR/data/dependencies.list"
-
-
 # Check if command failed, if true abort
 function check_fail {
     EXITSTATUS=$1

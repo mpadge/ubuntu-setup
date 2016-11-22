@@ -1,20 +1,5 @@
 #!/bin/bash
 
-DIR="$(dirname "$0")"
-
-RPKGS="$DIR/data/rpackages.list"
-RPKGS_NI=()
-INST=$(sudo Rscript -e "rownames (installed.packages ())")
-while read F ; do
-    if [[ ! ${INST[*]} =~ $F ]]
-    then
-        RPKGS_NI+=($F)
-    fi
-done < $RPKGS
-
-CRAN="https://cran.r-project.org"
-RLIBLOC="/usr/local/lib/R/site-library"
-
 # install R packages
 function rpackages {
     if [ ${#RPKGS_IN[@]} -eq 0 ]

@@ -1,10 +1,5 @@
 #!/bin/bash
 
-DIR="$(dirname "$0")"
-
-KEYS="$DIR/data/keys.list"
-REPOS="$DIR/data/repos.list"
-
 # recieve new apt keys
 function addkeys {
     show_info 'adding keys ... ' $(cat $KEYS)

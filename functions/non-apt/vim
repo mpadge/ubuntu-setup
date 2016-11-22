@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PFILE=$HOME"/.vim/autoload/pathogen.vim"
+
 function install_vim {
     # Clone git repo
     HDIR=0
@@ -26,9 +28,8 @@ function install_vim {
 }
 
 function pathogen {
-    FILE=$HOME"/.vim/autoload/pathogen.vim"
     PNAME="pathogen"
-    if [ ! -e $FILE ]; then
+    if [ ! -e $PFILE ]; then
         show_info 'installing '$PNAME
         mkdir -p ~/.vim/autoload ~/.vim/bundle && \
             curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
@@ -41,7 +42,7 @@ function pathogen {
 function solarized {
     #show_info '---in solarized---'
     PFILE=$HOME"/.vim/autoload/pathogen.vim"
-    if [ ! -e $FILE ]; then
+    if [ ! -e $PFILE ]; then
         pathogen
         show_info 'installing '$PNAME
     fi

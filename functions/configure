@@ -1,10 +1,5 @@
 #!/bin/bash
 
-DIR="$(dirname "$0")"
-
-GSETTINGS="$DIR/data/gsettings.list"
-DSETTINGS="$DIR/data/dsettings.list"
-
 # Automatically set preferred gsettings keys as outlined in the 'gsettings.list' file
 function set_preferences {
     show_info 'Setting preferred application-specific & desktop settings...'
@@ -32,10 +27,10 @@ function dotfiles {
     show_info 'Downloading dot-files...'
     WD=$PWD
     eval cd $HOME
-    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/.Rprofile
-    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/.bashrc
-    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/.tmux.conf
-    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/.vimrc
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.Rprofile
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.bashrc
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.tmux.conf
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.vimrc
     eval cd $WD
     # Done
     show_success 'Done.'

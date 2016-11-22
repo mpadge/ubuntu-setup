@@ -1,7 +1,5 @@
 #!/bin/bash
 
-DIR="$(dirname "$0")"
-
 source $DIR/functions/non-apt/vim
 source $DIR/functions/non-apt/pandoc
 source $DIR/functions/non-apt/sourcecodepro

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+DIR="$(dirname "$0")"
+KEYS="$DIR/data/keys.list"
+REPOS="$DIR/data/repos.list"
+DEPS="$DIR/data/dependencies.list"
+GSETTINGS="$DIR/data/gsettings.list"
+DSETTINGS="$DIR/data/dsettings.list"
+PKGS="$DIR/data/packages.list"
+
+RPKGS="$DIR/data/rpackages.list"
+RPKGS_NI=()
+INST=$(sudo Rscript -e "rownames (installed.packages ())")
+while read F ; do
+    if [[ ! ${INST[*]} =~ $F ]]
+    then
+        RPKGS_NI+=($F)
+    fi
+done < $RPKGS
+CRAN="https://cran.r-project.org"
+RLIBLOC="/usr/local/lib/R/site-library"
+

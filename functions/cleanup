@@ -1,9 +1,5 @@
 #!/bin/bash
 
-DIR="$(dirname "$0")"
-
-PURGED="$DIR/data/purge.list"
-
 # Remove unused/unwanted packages that are listed in 'data/purge.list'
 function unused {
     if (eval `resize` && whiptail \

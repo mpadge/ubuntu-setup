@@ -28,6 +28,8 @@ clear
 
 dir="$(dirname "$0")"
 
+. $dir/functions/variables
+
 . $dir/functions/aptadd
 . $dir/functions/check
 . $dir/functions/cleanup
