@@ -9,11 +9,50 @@ Adapted from
 ```
 ./setup.sh
 ```
+or make an alias.
+
+## Structure
+
+There are six main `functions` in the directory of that name, some of which use
+the `data` directory, and all of which use variables derined in
+`functions/variables`.
+
+1. `doall` enables all functions to be run **non-interactively** to build an
+   entirely new system from scratch
+
+2. `aptadd` adds `apt` keys (`/data/keys.list`) and repositories
+   (`/data/repos.list`)
+
+3. `apt` installs `packages.list` (and skips all those already installed)
+
+4. `nonapt` opens a menu for the following additional functions
+
+    i.  `pandoc` to install the latest version from source
+
+    ii. `python` to install a host of additional python modules
+
+    iii.`vim` to install or upgrade `vim` from source, along with a host of extensions
+
+    iv. `R packages` to install those
+
+    v.  `sourcecodepro` to install the font
+
+    vi. `travis` to install the ruby gem for `travis-ci`
+
+5. `configure` provides 3 configuration options, including installing dotfiles
+
+6. `cleanup` removes obsolete packages, kernels, and the like
+
+
+In addition, `check` performs initial checks for packages necessary to run this
+script
+
+------
 
 
 ## Note
 
-`gsettings.list` and `dsettings.list` can be found by
+The kinds of values given in `gsettings.list` and `dsettings.list` can be found by
 ```
 > dconf watch /
 ```
@@ -100,13 +139,11 @@ and [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %`
 ------
 
 
+<!---
 
-# <a name="6-other-vim"></a>6. Other `vim` plugins
-
-
-1 `vim-latex` is installed with the script, but if latex folding does not work,
-the folds can be examined with `:echo &fdo` -- see `:h fdo` for more details.
-(`install` may have to be repeated without `-w`).
+If `vim-latex` folding does not work, the folds can be examined with `:echo
+&fdo` -- see `:h fdo` for more details.  (`install` may have to be repeated
+without `-w`).
 
 New folding environments can be defined by changing
 `/usr/share/vim/addons/ftplugin/latex-suite/folding.vim` at around line#126 from
@@ -120,17 +157,8 @@ to include `objective` and `subobjective` for example:
                         \. 'subsection,subsubsection,paragraph,'
                         \. 'objective,subobjective'
 
-
-2 Other vim plugins
-
-    vim-vundle ditto
-    vim-youcompleteme
-
 -------
 
-
-
-<!---
 Other interesting / useful packages:
 
 ```

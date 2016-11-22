@@ -74,8 +74,8 @@ function main {
         addapt      '2. Add apt repositories' \
         packages    '3. Install apt packages' \
         nonapt      '4. Install non-apt packages' \
-        configure   '4. Configure system' \
-        cleanup     '5. Cleanup the system' \
+        configure   '5. Configure system' \
+        cleanup     '6. Cleanup the system' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?

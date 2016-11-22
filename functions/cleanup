@@ -73,11 +73,11 @@ function cleanup {
         --menu "\nWhat would you like to do?" \
         --cancel-button "Go Back" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        clean-cache 'Clean package cache' \
-        leftovers   'Remove leftover configuration files' \
-        orphaned    'Remove orphaned packages' \
-        unused      'Remove unused pre-installed packages' \
-        kernels     'Remove old kernel(s)' \
+        clean-cache '1. Clean package cache' \
+        leftovers   '2. Remove leftover configuration files' \
+        orphaned    '3. Remove orphaned packages' \
+        unused      '4. Remove unused pre-installed packages' \
+        kernels     '5. Remove old kernel(s)' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?

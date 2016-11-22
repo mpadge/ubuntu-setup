@@ -61,9 +61,9 @@ function configure {
         --menu "\nWhat would you like to do?" \
         --cancel-button "Go Back" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        preferences 'Set preferred application-specific & desktop settings' \
-        dotfiles    'Download/replace all dotfiles' \
-        dotfiles_cp 'Copy dotfiles to git repo' \
+        preferences '1. Set preferred application-specific & desktop settings' \
+        dotfiles    '2. Download/replace all dotfiles' \
+        dotfiles_cp '3. Copy dotfiles to git repo' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?
