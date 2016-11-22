@@ -45,5 +45,6 @@ texlive-full
 tmux 
 tree 
 valgrind 
+vim-latexsuite
 vlc 
 zathura # for Nvim-r

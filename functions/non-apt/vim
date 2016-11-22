@@ -95,6 +95,10 @@ function vim {
     pathogen
     solarized
     browswer
+    if (! dpkg-query -l vim-latexsuite | grep "no packages")
+    then
+        sudo vim-addons install -w latex-suite
+    fi
 
     # Done
     show_success 'Done.'

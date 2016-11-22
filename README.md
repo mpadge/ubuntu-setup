@@ -104,15 +104,9 @@ and [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %`
 # <a name="6-other-vim"></a>6. Other `vim` plugins
 
 
-1 `vim-latex`
-
-    sudo apt-get install vim-latexsuite
-    sudo vim-addons status % prints status of all available addons
-    sudo vim-addons install -w latex-suite # -w is flag for system-wide installation
-
-If latex folding does not work, the folds can be examined with `:echo &fdo` --
-see `:h fdo` for more details.  (`install` may have to be repeated without
-`-w`).
+1 `vim-latex` is installed with the script, but if latex folding does not work,
+the folds can be examined with `:echo &fdo` -- see `:h fdo` for more details.
+(`install` may have to be repeated without `-w`).
 
 New folding environments can be defined by changing
 `/usr/share/vim/addons/ftplugin/latex-suite/folding.vim` at around line#126 from
@@ -126,18 +120,8 @@ to include `objective` and `subobjective` for example:
                         \. 'subsection,subsubsection,paragraph,'
                         \. 'objective,subobjective'
 
-Note that code folding can't be changed on the fly because these are loaded
-prior to loading `vim-latex` itself, so this seems the easiest way to achieve the
-desired result.
 
-2 `vim-python`: Download `python.vim` script into `/.vim/syntax/`
-
-3 [`vim-pathogen`](https://github.com/tpope/vim-pathogen) already described above ...
-
-    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-4 Other vim plugins
+2 Other vim plugins
 
     vim-vundle ditto
     vim-youcompleteme
