@@ -23,10 +23,9 @@ function nonapt {
         'install_vim'       '1. vim' \
         'install_pandoc'    '2. pandoc' \
         'install_python'    '3. python' \
-        'install_dropbox'   '4. dropbox' \
-        'sourcecodepro'     '5. Source Code Pro' \
-        'travis'            '6. travis-ci client' \
-        'rpackages'         '7. R packages' \
+        'sourcecodepro'     '4. Source Code Pro' \
+        'travis'            '5. travis-ci client' \
+        'rpackages'         '6. R packages' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?

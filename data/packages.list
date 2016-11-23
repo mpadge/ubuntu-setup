@@ -42,6 +42,7 @@ liblua5.1-0-dev # lua5.1-dev for vim
 lxd 
 mesa-common-dev 
 mc 
+nautilus-dropbox
 openjdk-8-jre
 openjdk-8-jdk
 pdftk
