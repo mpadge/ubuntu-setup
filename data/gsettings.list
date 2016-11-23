@@ -12,3 +12,5 @@ org.gnome.desktop.screensaver.ubuntu-lock-on-suspend false
 org.gnome.desktop.background.picture-options 'zoom'
 org.compiz.profiles.unity.plugins.core.hsize 2
 org.compiz.profiles.unity.plugins.core.vsize 2
+org.gnome.nautilus.preferences.default-folder-view 'list-view'
+org.gnome.nautilus.preferences.default-zoom-level 'smallest'
