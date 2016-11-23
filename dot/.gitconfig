@@ -2,7 +2,7 @@
 	name = mpadge
 	email = mark.padgham@email.com
 [core]
-	autcrlf = input
+	autocrlf = input
 	safecrlf = true
 [alias]
     co = checkout
@@ -12,5 +12,6 @@
     hist = log --graph --all --date=short --pretty=format:'%Cred%h%Creset%x09%ad - %Cgreen%d%Cblue%s%Creset'
     type = cat-file -t
     dump = cat-file -p
+
 [push]
 	default = simple

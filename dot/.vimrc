@@ -3,6 +3,11 @@
 runtime! debian.vim 
 " sets 'nocompatible'
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'Valloric/YouCompleteMe'
+call vundle#end()
+
 execute pathogen#infect()
 
 if has("syntax")
@@ -15,6 +20,7 @@ else
     set background=dark
     "set background=light
 endif
+set background=light
 set t_Co=16
 let g:solarized_termcolors=16
 colorscheme solarized

@@ -60,17 +60,18 @@ attach(.env)
         bot <- "\u2580"
         vc <- "\u2588"
 
+        bl <- '  ' # blanks at left side
         top_half <- paste0 (rep (top, gap + nc / 2 - 1))
-        message (top_half, ' R ', top_half, top)
-        message (paste0 (vc, paste0 (rep (' ', gap + nc + 1), collapse=''), ' ', vc))
+        message (bl, top_half, ' R ', top_half, top)
+        message (paste0 (bl, vc, paste0 (rep (' ', gap + nc + 1), collapse=''), ' ', vc))
         for (i in 1:length (lns))
         {
             gaps <- paste0 (rep (' ', gaplen [i]), collapse='')
-            message (paste0 (vc, gaps, lns [[i]], gaps, vc))
+            message (paste0 (bl, vc, gaps, lns [[i]], gaps, vc))
         }
-        message (paste0 (vc, paste0 (rep (' ', gap + nc + 1), collapse=''), ' ', vc))
+        message (paste0 (bl, vc, paste0 (rep (' ', gap + nc + 1), collapse=''), ' ', vc))
         bot_half <- paste0 (rep (bot, gap + nc / 2 - 1))
-        message (bot_half, ' R ', bot_half, bot)
+        message (bl, bot_half, ' R ', bot_half, bot)
         message ('')
 
         if (curl::has_internet ())
