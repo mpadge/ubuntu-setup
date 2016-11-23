@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# install_dropbox
+function install_dropbox {
+	# Variables
+	PACKAGE=dropbox
+	NAME="dropbox"
+    PKGCHECK=dropbox status
+    # TODO: Make this check more robust
+    if [ ! "$PKGCHECK" = "Up to date" ]
+    then 
+        URL="https://www.dropbox.com/download?plat=lnx.x86_64"
+        wd=$PWD
+        cd $HOME
+        wget -O $URL | tar xzf -
+        ~/.dropbox_dist/dropboxd
+        whiptail --title $NAME --msgbox "$NAME installed." 8 78
+    fi
+    nonapt
+}
