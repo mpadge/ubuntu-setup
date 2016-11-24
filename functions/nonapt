@@ -1,9 +1,6 @@
 #!/bin/bash
 
-echo "-----$DIR-----"
-
 . $DIR/functions/non-apt/instvim
-. $DIR/functions/non-apt/instdropbox
 . $DIR/functions/non-apt/instpandoc
 . $DIR/functions/non-apt/instpython
 . $DIR/functions/non-apt/sourcecodepro

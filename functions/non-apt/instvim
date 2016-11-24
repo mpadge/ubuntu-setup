@@ -65,13 +65,13 @@ function solarized {
         pathogen
         show_info 'installing '$PNAME
     fi
-    SDIR=$HOME"/.vim/bundle/vim-colors-solarized/"
-    SNAME="vim-colors-solarized"
-    if [ -d $DIR ]; then
-        whiptail --title $SNAME --msgbox "$SNAME already installed." 8 78
-        show_info "$SNAME already installed."
+    SOLDIR=$HOME"/.vim/bundle/vim-colors-solarized/"
+    SOLNAME="vim-colors-solarized"
+    if [ -d $SOLDIR ]; then
+        whiptail --title $SOLNAME --msgbox "$SOLNAME already installed." 8 78
+        show_info "$SOLNAME already installed."
     else
-        show_info "Installing "$SNAME
+        show_info "Installing "$SOLNAME
         pwd=$PWD
         cd $HOME/.vim/bundle
         git clone https://github.com/altercation/vim-colors-solarized.git
@@ -94,6 +94,18 @@ function browswer {
     fi
 }
 
+function vundle {
+    VUNDIR=$HOME"/.vim/bundle/Vundle.vim/"
+    VUNNAME="vundle"
+    if [ -d $VUNDIR ]; then
+        whiptail --title $VUNNAME --msgbox "$VUNNAME already installed." 8 78
+        show_info "$VUNNAME already installed."
+    else
+        show_info "Installing "$VUNNAME
+        git clone https://github.com/Valloric/YouCompleteMe $HOME/.vim/bundle/Vundle.vim
+    fi
+}
+
 function ycm {
     YCMDIR=$HOME"/.vim/bundle/YouCompleteMe/"
     YCMNAME="YouCompleteMe"
@@ -102,12 +114,9 @@ function ycm {
         show_info "$YCMNAME already installed."
     else
         show_info "Installing "$YCMNAME
-        pwd=$PWD
-        cd $HOME/.vim/bundle
-        git clone https://github.com/Valloric/YouCompleteMe
-        cd YouCompleteMe/
-        ./install.py --clang-completer
-        cd $PWD
+        #git clone https://github.com/Valloric/YouCompleteMe $hOME/.vim/bundle/YouCompleteMe
+        vim +PluginInstall +qall
+        $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer
     fi
 }
 
@@ -139,6 +148,7 @@ function install_vim {
     pathogen
     solarized
     browswer
+    vundle
     ycm
     echo "NOTE: install vundle plugins with ':PluginInstall'"
 
