@@ -6,11 +6,12 @@ org.gnome.shell.app-switcher current-workspace-only true
 org.gnome.settings-daemon.plugins.power lid-close-ac-action 'shutdown'
 org.gnome.settings-daemon.plugins.power lid-close-battery-action 'suspend'
 org.gnome.settings-daemon.plugins.media-keys email '<Primary><Alt>m'
-org.gnome.desktop.session.idle-delay uint32 600
-org.gnome.desktop.screensaver.lock-enabled false
-org.gnome.desktop.screensaver.ubuntu-lock-on-suspend false
-org.gnome.desktop.background.picture-options 'zoom'
-org.compiz.profiles.unity.plugins.core.hsize 2
-org.compiz.profiles.unity.plugins.core.vsize 2
-org.gnome.nautilus.preferences.default-folder-view 'list-view'
-org.gnome.nautilus.preferences.default-zoom-level 'smallest'
+org.gnome.desktop.session idle-delay 600
+org.gnome.desktop.screensaver lock-enabled false
+org.gnome.desktop.screensaver ubuntu-lock-on-suspend false
+org.gnome.desktop.background picture-options 'zoom'
+org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+org.gnome.nautilus.list-view default-zoom-level 'smallest'
+org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
+org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 2
+org.compiz.put:/org/compiz/profiles/unity/plugins/put/ put-next-output-key '<Super>n'

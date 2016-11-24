@@ -69,32 +69,24 @@ with autocomplete to find out.
 
 Some tasks can nevertheless only be completed manually ... 
 
-### 1. Move windows
-
-Enable `<super>-N` for moving windows between monitors in `compizconfig`:
-
-    1.  Window management -> Enable `Put`
-
-    2. Grab keys for `Put to next output`
-
-### 2. Terminal font
+### 1. Terminal font
 
 ```
 profile -> general -> font -> SourceCodePro Light 9pt
 ```
 
-### 3. `tcolorbox`
+### 2. `tcolorbox`
 
 Manually update `tcolorbox` in `/usr/share/texlive/texmf-dist/tex/latex/tcolorbox`
 
 
-### 4. gnome soliarized
+### 3. gnome soliarized
 
 Follow [this](https://gist.github.com/gmodarelli/5942850), but instead of
 `./set_light.sh`, just run `./install_sh` to configure both light and dark
 profiles
 
-### 5. Computer name
+### 4. Computer name
 
 If not set at install, just change both:
 ```
@@ -102,7 +94,7 @@ If not set at install, just change both:
 /etc/hostname
 ```
 
-### 6. Desktop text
+### 5. Desktop text
 
 To change the 
 ["Ubuntu Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel) 
