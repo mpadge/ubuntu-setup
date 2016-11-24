@@ -61,7 +61,9 @@ Some of these can not be `gset`. To find out which, just use
 ```
 > gsettings get ...
 ```
-with autocomplete to find out.
+with autocomplete to find out. Alternatively `gsettings list-recursively` will
+list all settings, or see the [compiz
+wiki](https://wiki.archlinux.org/index.php/Compiz_configuration)
 
 ------
 
@@ -75,18 +77,13 @@ Some tasks can nevertheless only be completed manually ...
 profile -> general -> font -> SourceCodePro Light 9pt
 ```
 
-### 2. `tcolorbox`
-
-Manually update `tcolorbox` in `/usr/share/texlive/texmf-dist/tex/latex/tcolorbox`
-
-
-### 3. gnome soliarized
+### 2. gnome soliarized
 
 Follow [this](https://gist.github.com/gmodarelli/5942850), but instead of
 `./set_light.sh`, just run `./install_sh` to configure both light and dark
 profiles
 
-### 4. Computer name
+### 3. Computer name
 
 If not set at install, just change both:
 ```
@@ -94,7 +91,7 @@ If not set at install, just change both:
 /etc/hostname
 ```
 
-### 5. Desktop text
+### 4. Desktop text
 
 To change the 
 ["Ubuntu Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel) 

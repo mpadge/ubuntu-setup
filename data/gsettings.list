@@ -14,4 +14,5 @@ org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 org.gnome.nautilus.list-view default-zoom-level 'smallest'
 org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
 org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 2
+org.compiz.core:/org/compiz/profiles/unity/plugins/core/ active-plugins "['core','composite','opengl','commands','imgpng','mousepoll','copytex', 'compiztoolbox', 'grid', 'resize', 'move', 'put', 'regex', 'place', 'wall', 'snap', 'vpswitch', 'unitymtgrabhandles', 'session', 'animation', 'fade', 'workarounds', 'expo', 'scale', 'ezoom', 'unityshell']"
 org.compiz.put:/org/compiz/profiles/unity/plugins/put/ put-next-output-key '<Super>n'
