@@ -120,6 +120,18 @@ function ycm {
     fi
 }
 
+function vimlatex {
+    PKGCHECK=$(sudo vim-addons status | grep "latex suite" | grep "removed")
+    if [ ! "" == "$PKGCHECK" ]
+    then
+        sudo vim-addons install -w latex-suite
+        vim-addons install latex-suite
+    else
+        show_info "latex-suite already installed"
+        whiptail --title "vim-latexsuite" --msgbox "vim-latexsuite already installed." 8 78
+    fi
+}
+
 # install_vim
 function install_vim {
 	# Variables
@@ -150,15 +162,8 @@ function install_vim {
     browswer
     vundle
     ycm
-    echo "NOTE: install vundle plugins with ':PluginInstall'"
-
-    PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' vim-latexsuite|grep "install ok installed")
-    if [ "" == "$PKGCHECK" ]
-    then
-        sudo vim-addons install -w latex-suite
-    else
-        whiptail --title "vim-latexsuite" --msgbox "vim-latexsuite already installed." 8 78
-    fi
+    vim +PluginInstall +qall
+    vimlatex
 
     # Done
     show_success 'Done.'
