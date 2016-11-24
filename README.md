@@ -122,23 +122,6 @@ and log out to change it
 
 
 
-### 7. git setup:
-
-```
-git config --global user.name "mpadge"
-git config --global user.email "mark.padgham@email.com"
-git config --global core.autocrlf input
-git config --global core.safecrlf true
-```
-
-### 8. `Nvim-r-plugin`
-
-Download [Nvim-r vimball](http://www.vim.org/scripts/script.php?script_id=2628)
-and [Install](https://github.com/jalvesaq/Nvim-R)  by `:so %` 
-
-
-
-
 <!---
 
 If `vim-latex` folding does not work, the folds can be examined with `:echo

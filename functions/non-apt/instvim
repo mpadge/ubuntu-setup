@@ -132,6 +132,22 @@ function vimlatex {
     fi
 }
 
+function nvimr {
+    # Stable version at:
+    # http://www.vim.org/scripts/script.php?script_id=2628
+    # This is a pathogen install of the current git version
+    NVRDIR=$HOME"/.vim/bundle/Nvim-R/"
+    NVRNAME="nvim-r"
+    if [ -d $NVRDIR ]; then
+        whiptail --title $NVRNAME --msgbox "$NVRNAME already installed." 8 78
+        show_info "$NVRNAME already installed."
+    else
+        show_info "Installing "$NVRNAME
+        pwd=$PWD
+        git clone https://github.com/jalvesaq/Nvim-R $NVRDIR
+    fi
+}
+
 # install_vim
 function install_vim {
 	# Variables
@@ -164,6 +180,7 @@ function install_vim {
     ycm
     vim +PluginInstall +qall
     vimlatex
+    nvimr
 
     # Done
     show_success 'Done.'
