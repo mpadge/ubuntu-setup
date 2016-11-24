@@ -2,7 +2,7 @@
 
 # install R packages
 function rpackages {
-    if [ ${#RPKGS_IN[@]} -eq 0 ]
+    if [ -z $RPKGS_NI ]
     then
         whiptail --title "R packages" --msgbox "All R packages installed." 8 78
         nonapt

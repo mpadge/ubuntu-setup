@@ -23,6 +23,7 @@
 # tab width
 tabs 4
 clear
+# set -xv # for debugging
 
 #----- Import Functions -----#
 

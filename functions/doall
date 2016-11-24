@@ -9,6 +9,8 @@ source $DIR/functions/non-apt/rpackages
 
 # Install packages listed in 'data/packages.list'
 function doall {
+    whiptail --title "NOTE"  --msgbox "Prior to running doall, software-properties-common may need to be reinstalled - check first!" 8 78
+    show_info "check with $ apt-get install software-properties-common"
     if (eval `resize` && whiptail \
         --title "Everything" \
         --yesno "Install and setup whole system non-interactively?" \
@@ -16,22 +18,22 @@ function doall {
         --scrolltext) then
 
         # ---aptadd
-        #addkeys
-        #addrepos
+        addkeys
+        addrepos
 
         # ---packages
-        #while read F ; do
-        #    PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
-        #    PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF|grep "install ok installed")
-        #    if [ "" == "$PKGCHECK" ]
-        #    then
-        #        sudo apt-get install -y $PF
-        #    else
-        #        echo "package "$PF" already installed"
-        #    fi
-        #done < $PKGS
-        #sudo R CMD javareconf
-        #gdal
+        while read F ; do
+            PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
+            PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF|grep "install ok installed")
+            if [ "" == "$PKGCHECK" ]
+            then
+                sudo apt-get install -y $PF
+            else
+                echo "package "$PF" already installed"
+            fi
+        done < $PKGS
+        sudo R CMD javareconf
+        gdal
 
         # ---nonapt
         set_preferences
