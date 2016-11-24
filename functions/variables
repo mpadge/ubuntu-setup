@@ -18,6 +18,6 @@ while read F ; do
     fi
 done < $RPKGS
 CRAN="https://cran.r-project.org"
-RLIBLOC="/usr/local/lib/R/site-library"
+RLIBLOC="/usr/local/lib/R/site-library/"
 
 PYPKGS=("numpy" "scipy" "matplotlib" "pandas" "sympy" "nose" "psutil")

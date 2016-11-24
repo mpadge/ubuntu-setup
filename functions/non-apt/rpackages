@@ -15,7 +15,7 @@ function rpackages {
         show_warning 'Requires root privileges'
         if [ -d "$RLIBLOC" ]; then
             for i in ${RPKGS_NI[@]}; do
-                CMD='install.packages('\"${i}\"',repos='\"$CRAN\"',lib.loc='\"$RLIBLOC\"')'
+                CMD='install.packages('\"${i}\"',repos='\"$CRAN\"',lib='\"$RLIBLOC\"')'
                 sudo Rscript --verbose -e $CMD
             done 
         else
