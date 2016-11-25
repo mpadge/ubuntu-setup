@@ -8,9 +8,12 @@ function addkeys {
 }
 
 # add new apt repositories
+# TODO: Add check for only if not existent
 function addrepos {
     show_info 'adding repos ... ' "$(cat $REPOS)"
-    sudo add-apt-repository "$(cat $REPOS)"
+    while read F ; do
+        sudo add-apt-repository "$F"
+    done < $REPOS
     sudo apt-get update
     show_success 'apt repositories added'
 }
