@@ -2,15 +2,11 @@
 "
 runtime! debian.vim 
 " sets 'nocompatible'
-set nocompatible
-filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
-filetype plugin indent on
 
 execute pathogen#infect()
 
@@ -35,7 +31,7 @@ if has("autocmd")
     " Load indentation rules and plugins according to the detected filetype.
     " Note these are essential for r-plugin!
     filetype plugin on
-    " filetype indent on " set above for vundle
+    filetype indent on
 endif
 
 set showcmd		    " Show (partial) command in status line.
