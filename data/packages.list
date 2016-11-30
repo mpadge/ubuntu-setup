@@ -65,3 +65,4 @@ valgrind
 vim-latexsuite
 vlc 
 zathura # for Nvim-r
+zfsutils-linux

@@ -1,7 +1,9 @@
 " ~./.vimrc
 "
 runtime! debian.vim 
-" sets 'nocompatible'
+" should set 'nocompatible', but this is still necessary: (why?)
+set nocompatible
+
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
