@@ -10,6 +10,7 @@ cubature
 data.table
 devtools
 distr
+dplyr
 extrafont
 fAsianOptions
 fields
@@ -20,6 +21,7 @@ gridBase
 httr
 igraph
 knitr
+lubridate
 microbenchmark
 msm
 OpenStreetMap
@@ -39,6 +41,7 @@ rJava
 rjson
 rmarkdown
 roxygen2 
+rvest
 sf
 signal
 sp
