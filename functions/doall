@@ -37,6 +37,7 @@ function doall {
 
         # ---nonapt
         set_preferences
+        dotfiles
 
         # ---non-apt/instvim
         install_vim_core
