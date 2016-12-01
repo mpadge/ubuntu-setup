@@ -14,7 +14,7 @@ or make an alias.
 ## Structure
 
 There are six main `functions` in the directory of that name, some of which use
-the `data` directory, and all of which use variables derined in
+the `data` directory, and all of which use variables defined in
 `functions/variables`.
 
 1. `doall` enables all functions to be run **non-interactively** to build an
