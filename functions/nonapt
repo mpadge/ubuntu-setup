@@ -25,6 +25,7 @@ function nonapt {
         'sourcecodepro'     '5. Source Code Pro' \
         'travis'            '6. travis-ci client' \
         'tcolorbox'         '7. latex tcolorbox' \
+        'gdal_install'      '8. GDAL' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?
