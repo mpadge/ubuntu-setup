@@ -10,6 +10,8 @@ function gdal_install {
     tar zxf $GDAL_FILE
     cd "gdal-"$GDAL_VERSION
     ./configure --with-sqlite3 --with-expat
+    # Driver support can be checked by inspecting configure output, or by
+    # $ gdal-config --formats
     make
     sudo make install
     cd ..
