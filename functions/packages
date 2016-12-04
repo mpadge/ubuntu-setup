@@ -9,7 +9,7 @@ function gdal_install {
     wget $GDAL_URL$GDAL_FILE
     tar zxf $GDAL_FILE
     cd "gdal-"$GDAL_VERSION
-    ./configure
+    ./configure --with-sqlite3 --with-expat
     make
     sudo make install
     cd ..
