@@ -5,6 +5,7 @@ cmake
 compizconfig-settings-manager 
 compiz-plugins-extra
 dos2unix 
+expat # For GDAL OSM Driver
 exuberant-ctags
 git
 gnome-tweak-tool
@@ -58,6 +59,7 @@ ruby-dev
 ubuntu-restricted-extras 
 skype
 ssh
+sqlite3 # For GDAL OSM Driver
 texlive-full
 tmux 
 tree 
