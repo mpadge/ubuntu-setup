@@ -21,22 +21,31 @@ gridBase
 httr
 igraph
 knitr
+leaflet
 lubridate
+maptools
 microbenchmark
 msm
+nabor # stplanr dep
 OpenStreetMap
+openxlsx
 osmar
 plyr
+poweRlaw
 quantreg
+R.utils # stplanr dep
 R2Cuba
 RANN
 raster 
 Rcpp
+RcppArmadillo # stplanr dep
 RCurl
+readr # stplanr dep
 readxl
 rgdal
 rgeos
 rgl
+RgoogleMaps # stplanr dep
 rJava
 rjson
 rmarkdown
@@ -51,5 +60,6 @@ spatstat
 spdep
 testthat
 tripack
+VGAM
 XML
 yaml

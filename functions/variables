@@ -12,9 +12,10 @@ RPKGS="$DIR/data/rpackages.list"
 RPKGS_NI=()
 INST=$(sudo Rscript -e "rownames (installed.packages ())")
 while read F ; do
-    if [[ ! ${INST[*]} =~ $F ]]
+    PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
+    if [[ ! ${INST[*]} =~ $PF ]]
     then
-        RPKGS_NI+=($F)
+        RPKGS_NI+=($PF)
     fi
 done < $RPKGS
 CRAN="https://cran.r-project.org"
