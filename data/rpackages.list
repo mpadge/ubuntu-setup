@@ -59,6 +59,7 @@ spatialkernel
 spatstat
 spdep
 testthat
+tmap
 tripack
 VGAM
 XML
