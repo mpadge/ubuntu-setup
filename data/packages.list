@@ -33,6 +33,7 @@ libgsl-dev
 libgtk2.0-dev # for vim: see instvim
 libperl-dev # for vim: see instvim
 libproj-dev
+libpq-dev # for RPostgreSQL
 libsqlite3-dev # For GDAL OSM Driver
 libssl-dev
 libx11-dev 
