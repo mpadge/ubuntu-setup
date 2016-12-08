@@ -12,7 +12,8 @@ RPKGS="$DIR/data/rpackages.list"
 RPKGS_NI=()
 INST=$(sudo Rscript -e "rownames (installed.packages ())")
 while read F ; do
-    PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
+    # cut comments from package names and remove all whitespace
+    PF=$(echo $F | cut -d "#" -f 1 | tr -d '[:space:]') 
     if [[ ! ${INST[*]} =~ $PF ]]
     then
         RPKGS_NI+=($PF)
