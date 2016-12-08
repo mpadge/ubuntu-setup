@@ -4,7 +4,8 @@ function non_inst_packages {
     PKGS_NI=()
     show_info_red "checking apt package installation status ... "
     while read F; do
-        PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
+        # cut comments from package names and remove all whitespace
+        PF=$(echo $F | cut -d "#" -f 1 | tr -d '[:space:]') 
         PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF 2>&1|grep "install ok installed")
         if [ "" == "$PKGCHECK" ]; then
             PKGS_NI+=($PF)
