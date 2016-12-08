@@ -50,6 +50,7 @@ rJava
 rjson
 rmarkdown
 roxygen2 
+RPostgreSQL
 rvest
 sf
 signal
