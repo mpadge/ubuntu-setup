@@ -25,26 +25,15 @@ tabs 4
 clear
 # set -xv # for debugging
 
-#----- Import Functions -----#
-
-DIR="$(dirname "$0")"
-
-. $DIR/functions/variables
-
-. $DIR/functions/aptadd
-. $DIR/functions/check
-. $DIR/functions/cleanup
-. $DIR/functions/configure
-. $DIR/functions/doall
-. $DIR/functions/nonapt
-. $DIR/functions/packages
-
 #----- Fancy Messages -----#
 show_error(){
 echo -e "\033[1;31m$@\033[m" 1>&2
 }
 show_info(){
 echo -e "\033[1;32m$@\033[0m"
+}
+show_info_red(){
+echo -e "\033[1;31m$@\033[0m"
 }
 show_warning(){
 echo -e "\033[1;33m$@\033[0m"
@@ -61,6 +50,20 @@ echo -e "\033[1;36m$@\033[0m"
 show_listitem(){
 echo -e "\033[0;37m$@\033[0m"
 }
+
+#----- Import Functions -----#
+
+DIR="$(dirname "$0")"
+
+. $DIR/functions/variables
+
+. $DIR/functions/aptadd
+. $DIR/functions/check
+. $DIR/functions/cleanup
+. $DIR/functions/configure
+. $DIR/functions/doall
+. $DIR/functions/nonapt
+. $DIR/functions/packages
 
 # Main
 function main {

@@ -29,6 +29,7 @@ function addapt {
         show_warning 'Requires root privileges'
         addkeys
         addrepos
+
         # Done
         show_success 'Done.'
         # Check

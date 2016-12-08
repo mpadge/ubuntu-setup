@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function non_inst_packages {
+    PKGS_NI=()
+    show_info_red "checking apt package installation status ... "
+    while read F; do
+        PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
+        PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF 2>&1|grep "install ok installed")
+        if [ "" == "$PKGCHECK" ]; then
+            PKGS_NI+=($PF)
+        fi
+    done < $PKGS
+}
+
 function gdal_install {
     GDAL_URL="http://download.osgeo.org/gdal/CURRENT/"
     wget -O temp.html $GDAL_URL
@@ -37,41 +49,52 @@ function gdal {
     fi
 }
 
+function pgresql_switch {
+    # Not used at at present
+    # default bash streams are 0=std in, 1=std out, 2=error, so 2>&1 sends
+    # errors to std out.
+    PKGCHECK=$(psql 2>&1|grep "FATAL") # no postgres user
+    if [ ! "" == "$PKGCHECK" ]; then 
+        show_info "Estalishing posgres user"
+        sudo -u -i postgres # establish "postgres" as user
+    fi
+}
+
 # Install packages listed in 'data/packages.list'
+# TODO: gdal and pgresql_check are only run if there are non-installed packages
+# - rearrange to run them every time.
 function packages {
-    if (eval `resize` && whiptail \
+    non_inst_packages
+    gdal
+
+    if [ ${#PKGS_NI[@]} -eq 0 ]; then
+        whiptail --title "Packages Installed" --msgbox "All packages already installed." 8 78
+        main
+    elif (eval `resize` && whiptail \
         --title "Packages" \
-        --yesno "Current list of packages to install: \n\n$(cat $PKGS)\n\nProceed with installation (installed packages will be skipped)?" \
+        --yesno "Current list of packages to install: \n\n${PKGS_NI[*]\\} \n\nProceed with installation?" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
         --scrolltext) then
         show_info 'Installing...'
         show_warning 'Requires root privileges'
-        #sudo apt-get install -y $(cat $PKGS)
-        while read F ; do
-            PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
-            PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF|grep "install ok installed")
-            if [ "" == "$PKGCHECK" ]
-            then
-                sudo apt-get install -y $PF
-            else
-                echo "package "$PF" already installed"
-            fi
-        done < $PKGS
-        sudo R CMD javareconf
+        for i in ${PKGS_NI[@]}; do
+            sudo apt-get install -y ${i}
+        done
 
+        sudo R CMD javareconf
         gdal
 
         # Done
         show_success 'Done.'
         # Check
-        EXITSTATUS=$1
+        EXITSTATUS=$1 # Not used here. TODO: Fix this?
         if [[ $EXITSTATUS != 0 ]]; then
             # Already installed
             show_success 'Already installed.'
-            whiptail --title "Finished" --msgbox "All packages already installed." 8 78
+            whiptail --title "Finished" --msgbox "All packages installed." 8 78
             main
         else
-            whiptail --title "Finished" --msgbox "Installation complete." 8 78
+            whiptail --title "Finished" --msgbox "All packages installed." 8 78
             main
         fi
     else

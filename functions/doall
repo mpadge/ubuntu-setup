@@ -48,7 +48,7 @@ function doall {
         # ---non-apt/sourcecodepro
         install_sourcecodepro
         # ---non-apt/travis
-        sudo apt-get install ruby-dev
+        sudo apt-get install -y ruby-dev
         sudo gem install travis --no-rdoc --no-ri
         # ---non-apt/rpackages
         if [ -d "$RLIBLOC" ]; then

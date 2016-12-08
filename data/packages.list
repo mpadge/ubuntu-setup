@@ -49,6 +49,9 @@ nautilus-dropbox
 openjdk-8-jre
 openjdk-8-jdk
 pdftk
+postgis
+postgresql
+postgresql-contrib
 python3-dev 
 python-bs4 
 python-dev 

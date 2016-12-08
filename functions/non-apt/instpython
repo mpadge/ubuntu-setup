@@ -14,7 +14,7 @@ function install_python {
 
     PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' python-pip|grep "install ok installed")
     if [ "" == "$PKGCHECK" ]; then
-        sudo apt-get install python-pip
+        sudo apt-get install -y python-pip
     fi
     #sudo pip install ipython 
     #sudo pip install ipython-notebook # doesn't exist

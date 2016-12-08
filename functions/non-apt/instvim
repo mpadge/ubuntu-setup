@@ -168,7 +168,7 @@ function install_vim {
         GITCHECK=$(dpkg-query -W --showformat='${Status}\n' git|grep "install ok installed")
         if [ "" == "$GITCHECK" ]; then
             echo 'installing git first ...'
-            sudo apt-get install git
+            sudo apt-get install -y git
         fi
         install_vim_core
     fi
