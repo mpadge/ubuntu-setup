@@ -36,6 +36,7 @@ libproj-dev
 libpq-dev # for RPostgreSQL
 libsqlite3-dev # For GDAL OSM Driver
 libssl-dev
+libudunits2-dev # for R units via sp
 libx11-dev 
 libxml2-dev 
 libxpm-dev # for vim: see instvim
