@@ -10,6 +10,7 @@ org.gnome.desktop.session idle-delay 600
 org.gnome.desktop.screensaver lock-enabled false
 org.gnome.desktop.screensaver ubuntu-lock-on-suspend false
 org.gnome.desktop.background picture-options 'zoom'
+org.gnome.desktop.privacy remember-recent-files false
 org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 org.gnome.nautilus.list-view default-zoom-level 'smallest'
 org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
