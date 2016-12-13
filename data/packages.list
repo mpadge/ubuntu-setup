@@ -1,6 +1,6 @@
 autotools-dev # packages.list can include comments
 checkinstall
-clang 
+clang-3.9 # clang - see apt.llvm.org
 cmake 
 compizconfig-settings-manager 
 compiz-plugins-extra
@@ -20,6 +20,8 @@ libbonoboui2-dev # for vim: see instvim
 libboost-all-dev 
 libcairo2-dev # for vim: see instvim
 libcgal-dev 
+libclang-3.9-dev# clang - see apt.llvm.org
+libclang-common-3.9-dev # clang - see apt.llvm.org
 libcurl4-openssl-dev 
 libncurses5-dev # for vim: see instvim
 libeigen3-dev 
@@ -31,6 +33,7 @@ libgnome2-dev # for vim: see instvim
 libgnomeui-dev# for vim: see instvim
 libgsl-dev 
 libgtk2.0-dev # for vim: see instvim
+libllvm3.9 # clang - see apt.llvm.org
 libperl-dev # for vim: see instvim
 libproj-dev
 libpq-dev # for RPostgreSQL
@@ -42,6 +45,9 @@ libxml2-dev
 libxpm-dev # for vim: see instvim
 libxt-dev # for vim: see instvim
 libzip-dev 
+lldb-3.9 # clang - see apt.llvm.org
+llvm-3.9 # clang - see apt.llvm.org
+llvm-3.9-dev # clang - see apt.llvm.org
 lua5.1 
 liblua5.1-0-dev # lua5.1-dev for vim
 lxd 

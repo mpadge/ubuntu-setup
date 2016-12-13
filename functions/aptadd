@@ -4,6 +4,8 @@
 function addkeys {
     show_info 'adding keys ... ' $(cat $KEYS)
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $(cat $KEYS)
+    # clang from apt.llvm.org
+    wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
     show_success 'apt keys added'
 }
 
