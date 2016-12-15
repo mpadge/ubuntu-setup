@@ -4,8 +4,10 @@ local ({
         r['CRAN'] <- 'https://cran.wu.ac.at'
         options(repos=r)
         })
-.libPaths ("/usr/local/lib/R/site-library")
-.libPaths ("/home/markus/R/x86_64-pc-linux-gnu-library/3.3")
+# libPath are appended at *front* - see
+# http://stackoverflow.com/questions/24387660/how-to-change-libpaths-permanently-in-r
+.libPaths(c ('~/R/x86_64-pc-linux-gnu-library/3.3', .libPaths ()))
+.libPaths(c ('/usr/local/lib/R/site-library', .libPaths ()))
  
 #options (stringsAsFactors=FALSE)
 #options (max.print=100)
