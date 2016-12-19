@@ -66,4 +66,5 @@ tripack
 units # sf dep
 VGAM
 XML
+xml2
 yaml
