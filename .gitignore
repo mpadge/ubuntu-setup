@@ -1,1 +1,5 @@
 dot/.bash_aliases
+
+# vim files
+.*.un~
+.*.swp
