@@ -37,7 +37,10 @@ libllvm3.9 # clang - see apt.llvm.org
 libperl-dev # for vim: see instvim
 libproj-dev
 libpq-dev # for RPostgreSQL
-libsqlite3-dev # For GDAL OSM Driver
+libspatialite-dev
+libspatialite3
+libsqlite3-dev 
+libsqlite3-0 
 libssl-dev
 libudunits2-dev # for R units via sp
 libx11-dev 
@@ -72,7 +75,7 @@ ruby-dev
 ubuntu-restricted-extras 
 skype
 ssh
-sqlite3 # For GDAL OSM Driver
+sqlite3 
 texlive-full
 tmux 
 tree 
