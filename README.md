@@ -91,25 +91,6 @@ If not set at install, just change both:
 /etc/hostname
 ```
 
-### 4. Desktop text
-
-To change the 
-["Ubuntu Desktop"](http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel) 
-text at top left:
-
-`vim .junk.po` (can be deleted afterward) and insert:
-```
-msgid "Ubuntu Desktop"
-msgstr "whatever"
-```
-then:
-```
-cd /usr/share/locale/en/LC_MESSAGES
-sudo msgfmt -o unity.mo ~/.junk.po
-```
-and log out to change it
-
-
 
 <!---
 

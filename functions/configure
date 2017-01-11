@@ -12,6 +12,13 @@ function set_preferences {
         eval dconf write $line
     done < "$DSETTINGS"
     export EDITOR='vim'
+    # Change "Ubuntu desktop" text at top left of screen to "msgstr" below
+    # http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel
+cat <<EOF >~/.junk.po
+    msgid "Ubuntu Desktop"
+    msgstr "o---o"
+EOF
+    sudo msgfmt -o /usr/share/locale/en/LC_MESSAGES/unity.mo ~/.junk.po
 }
 
 function preferences {
