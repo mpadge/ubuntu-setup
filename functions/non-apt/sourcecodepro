@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCDIR="/usr/share/fonts/opentype/Source Code Pro"
+
 function install_sourcecodepro {
     URL="https://github.com/adobe-fonts/source-code-pro/releases/latest"
     URL=$(curl -s $URL | grep 'href' | head -n 1 | cut -d '"' -f 2)
@@ -14,8 +16,8 @@ function install_sourcecodepro {
     FILE=$(echo $URL | rev | head -n 1 | cut -d '/' -f 1 | rev)
     tar -xzf $FILE
     cd $ARCHIVE"/OTF"
-    sudo mkdir "$DIR"
-    sudo cp -r * "$DIR/"
+    sudo mkdir "$SCDIR"
+    sudo cp -r * "$SCDIR/"
     fc-cache -f -v
     gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Light 9'
 
