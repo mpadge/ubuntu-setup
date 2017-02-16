@@ -33,6 +33,7 @@ openxlsx
 osmar
 plyr
 poweRlaw
+pracma
 quantreg
 R.utils # stplanr dep
 R2Cuba
