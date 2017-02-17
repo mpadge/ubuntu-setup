@@ -1,0 +1,26 @@
+#!/bin/bash
+
+function latexpkgs {
+    tcolorbox
+    titlesec
+}
+
+function tcolorbox {
+    TCNAME="tcolorbox"
+    URL="http://mirrors.ctan.org/install/macros/latex/contrib/tcolorbox.tds.zip"
+    show_header 'Downloading '$TCNAME
+    sudo wget $URL
+    unzip "tcolorbox.tds.zip" -d "tcolorbox"
+    sudo cp -rf tcolorbox/tex/latex/tcolorbox/ /usr/share/texlive/texmf-dist/tex/latex/tcolorbox/
+    rm -rf tcolorbox tcolorbox.tds.zip
+}
+
+function titlesec {
+    TSNAME="titlesec"
+    URL="http://mirrors.ctan.org/install/macros/latex/contrib/titlesec.tds.zip"
+    show_header 'Downloading '$TSNAME
+    sudo wget $URL
+    unzip "titlesec.tds.zip" -d "titlesec"
+    sudo cp -rf titlesec/tex/latex/titlesec/ /usr/share/texlive/texmf-dist/tex/latex/titlesec/
+    rm -rf titlesec titlesec.tds.zip
+}

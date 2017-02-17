@@ -6,7 +6,7 @@
 . $DIR/functions/non-apt/sourcecodepro
 . $DIR/functions/non-apt/travis
 . $DIR/functions/non-apt/rpackages
-. $DIR/functions/non-apt/tcolorbox
+. $DIR/functions/non-apt/latex-pkgs
 
 # Install non-apt packages
 function nonapt {
@@ -24,7 +24,7 @@ function nonapt {
         'install_python'    '4. python' \
         'sourcecodepro'     '5. Source Code Pro' \
         'travis'            '6. travis-ci client' \
-        'tcolorbox'         '7. latex tcolorbox' \
+        'latexpkgs'         '7. latex packages' \
         'gdal_install'      '8. GDAL' \
         3>&1 1>&2 2>&3)
      
