@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# These packages have necessary updated versions beyond those installed with
+# texlive.
+
 function latexpkgs {
     tcolorbox
     titlesec
@@ -16,6 +19,8 @@ function tcolorbox {
 }
 
 function titlesec {
+    # Update from 2.10.1 -> 2.10.2
+    # TODO: Delete this once texlive version == 2.10.2
     TSNAME="titlesec"
     URL="http://mirrors.ctan.org/install/macros/latex/contrib/titlesec.tds.zip"
     show_header 'Downloading '$TSNAME
