@@ -9,6 +9,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 filetype plugin indent on
 
@@ -24,7 +25,7 @@ else
     set background=dark
     "set background=light
 endif
-set background=light
+set background=dark
 set t_Co=16
 let g:solarized_termcolors=16
 colorscheme solarized
@@ -90,6 +91,9 @@ nnoremap <C-L> :nohls<cr>
 noremap <C-m> :!make<cr>
 nmap <leader>w :w!<cr>
 nmap <C-x> :qa<cr>
+" syntastic
+nmap [l :lprev<cr> 
+nmap ]l :lnext<cr> 
 
 " openbrowser maps:
 nmap gx <Plug>(openbrowser-smart-search)
@@ -145,6 +149,40 @@ let R_tmux_title = 'R'
 let g:R_notmuxconf = 1 "use my .tmux.conf, not the Nvim-r one
 
 let r_syntax_folding = 1
+
+
+"-------------------------------------------
+"-------------   syntastic   ---------------
+"-------------------------------------------
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" jimhester/lintr:
+let g:syntastic_enable_r_lintr_checker = 1
+let g:syntastic_r_checkers = ['lintr']
+let g:syntastic_enable_rmd_lintr_checker = 1
+let g:syntastic_rmd_checkers = ['lintr']
+function! SyntasticCheckHook(errors)
+    if !empty(a:errors)
+        let g:syntastic_loc_list_height = min([len(a:errors), 10])
+    endif
+endfunction
+
+let g:syntastic_r_lintr_quiet_messages = {"regex": 
+    \ ['Only use double-quotes.', 'Opening curly braces should never',
+    \ 'No visible global function definition', 'Commented code should be removed']}
+let g:syntastic_rmd_lintr_quiet_messages = {"regex": 
+    \ ['Only use double-quotes.', 'Opening curly braces should never',
+    \ 'No visible global function definition', 'Commented code should be removed']}
+" syntastic has :Error, so this is required for :E to work again
+" (https://github.com/vim-syntastic/syntastic/issues/164)
+command E Ex
 
 "-------------------------------------------
 "-------------   vim-latex   ---------------
