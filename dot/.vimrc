@@ -163,6 +163,22 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_debug = 1
+" - open .cpp and :mes, :SyntasticInfo to get debug info
+" see https://github.com/vim-syntastic/syntastic/issues/1246 and
+" https://github.com/Valloric/YouCompleteMe#user-content-the-gycm_show_diagnostics_ui-option
+let g:ycm_show_diagnostics_ui = 0
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++14 -std=libc++'
+let g:syntastic_enable_cpp_check_header = 1
+let g:syntastic_enable_cpp_lint_checker = 1
+let g:syntastic_enable_cpp_clang_check = 1
+let g:syntastic_enable_cpp_clang_tidy = 1
+let g:syntastic_cpp_checkers = ['gcc', 'clang_check', 'clang_tidy', 'cpp_lint']
+
+let g:syntastic_cpp_clang_check_quiet_messages = {"regex":
+    \ ['file not found']}
+
 " jimhester/lintr:
 let g:syntastic_enable_r_lintr_checker = 1
 let g:syntastic_r_checkers = ['lintr']
