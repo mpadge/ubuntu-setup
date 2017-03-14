@@ -10,6 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'jalvesaq/Nvim-R'
 call vundle#end()
 filetype plugin indent on
 
@@ -143,7 +144,8 @@ let R_assign = 0
 
 let g:R_in_buffer = 0
 let g:R_tmux_split = 1
-let g:R_vsplit = 1 "enable vertical split
+let g:R_rconsole_width = winwidth("%") / 2
+let g:R_nvimpager = "horizontal"
 let R_args = ['--no-save', '--quiet']
 let R_tmux_title = 'R'
 let g:R_notmuxconf = 1 "use my .tmux.conf, not the Nvim-r one
