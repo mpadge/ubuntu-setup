@@ -79,9 +79,13 @@ profile -> general -> font -> SourceCodePro Light 9pt
 
 ### 2. gnome soliarized
 
-Follow [this](https://gist.github.com/gmodarelli/5942850), but instead of
-`./set_light.sh`, just run `./install_sh` to configure both light and dark
-profiles
+Clone repo as described [here](https://github.com/gmodarelli/solarize), then
+simply
+```
+cd ~/.solarized/gnome
+./install.sh
+```
+to configure both light and dark profiles
 
 ### 3. Computer name
 
