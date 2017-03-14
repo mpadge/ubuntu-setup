@@ -87,7 +87,15 @@ cd ~/.solarized/gnome
 ```
 to configure both light and dark profiles
 
-### 3. Computer name
+### 3. Nvim-r
+
+[`.Rprofile` has two lines](https://github.com/mpadge/ubuntu-setup/blob/master/dot/.Rprofile#L8-L11)
+that need to be changed around in order to properly install
+[`Nvim-r`](https://github.com/jalvesaq/Nvim-R) the first time (using
+[`vundle`](https://github.com/VundleVim/Vundle.vim), so install with
+`:PluginInstall`). After that, they need to be changed back the way they were.
+
+### 4. Computer name
 
 If not set at install, just change both:
 ```
