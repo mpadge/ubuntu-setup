@@ -81,12 +81,27 @@ attach(.env)
 
         if (curl::has_internet ())
         {
-            old <- utils::old.packages ()
-            if (!is.null (old)) 
-                message ('Updatable packages: ', 
-                         do.call (paste, as.list (rownames (old))), '\n')
-            else 
-                message ('All packages up to date\n')
+            # only check for new packages once per day
+            chk_file <- "~/.Rold_pkg_check"
+            do_check <- TRUE
+            today <- strsplit (as.character (Sys.time ()), " ") [[1]] [1]
+            if (file.exists (chk_file))
+            {
+                chk_date <- utils::read.table (chk_file, as.is=TRUE) [1, 1]
+                if (chk_date == today)
+                    do_check = FALSE
+            }
+            write (today, file = chk_file)
+            if (do_check)
+            {
+                message ('Old package check for ', today, ' : ', appendLF=FALSE)
+                old <- utils::old.packages ()
+                if (!is.null (old)) 
+                    message ('Updatable packages: ', 
+                             do.call (paste, as.list (rownames (old))), '\n')
+                else 
+                    message ('All packages up to date\n')
+            }
         } else
             message ('nope, no internet\n')
     }
