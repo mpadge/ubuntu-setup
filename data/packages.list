@@ -76,7 +76,7 @@ ubuntu-restricted-extras
 skype
 ssh
 sqlite3 
-texlive-full
+#texlive-full
 tmux 
 tree 
 valgrind 

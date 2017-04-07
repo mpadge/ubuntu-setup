@@ -17,11 +17,15 @@ function doall {
         $LINES $COLUMNS $(( $LINES - 12 )) \
         --scrolltext) then
 
+        # ---repeated sudo -nv to update sudo timestamp
+        sudo -nv
+
         # ---aptadd
         addkeys
         addrepos
 
         # ---packages
+        sudo -nv
         while read F ; do
             PF=$(echo $F | cut -d "#" -f 1) # cut comments from package names
             PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF|grep "install ok installed")
@@ -36,21 +40,27 @@ function doall {
         gdal
 
         # ---nonapt
+        sudo -nv
         set_preferences
         dotfiles
 
         # ---non-apt/instvim
+        sudo -nv
         install_vim_core
         pathogen
         solarized
         # ---non-apt/pandoc
+        sudo -nv
         install_pandoc_core
         # ---non-apt/sourcecodepro
+        sudo -nv
         install_sourcecodepro
         # ---non-apt/travis
+        sudo -nv
         sudo apt-get install -y ruby-dev
         sudo gem install travis --no-rdoc --no-ri
         # ---non-apt/rpackages
+        sudo -nv
         if [ -d "$RLIBLOC" ]; then
             while read F ; do
                 CMD='install.packages('\"$F\"',repos='\"$CRAN\"',lib.loc='\"$RLIBLOC\"')'
@@ -63,6 +73,7 @@ function doall {
             done < $RPKGS
         fi
         # ---non-apt/python
+        sudo -nv
         install_python
 
         # Done

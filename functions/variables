@@ -7,6 +7,7 @@ DEPS="$DIR/data/dependencies.list"
 GSETTINGS="$DIR/data/gsettings.list"
 DSETTINGS="$DIR/data/dsettings.list"
 PKGS="$DIR/data/packages.list"
+PKGST="$DIR/data/packages-texlive.list"
 
 RPKGS="$DIR/data/rpackages.list"
 RPKGS_NI=()

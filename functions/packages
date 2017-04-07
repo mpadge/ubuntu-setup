@@ -10,7 +10,7 @@ function non_inst_packages {
         if [ "" == "$PKGCHECK" ]; then
             PKGS_NI+=($PF)
         fi
-    done < $PKGS
+    done < <(cat $PKGS $PKGST)
 }
 
 function gdal_install {

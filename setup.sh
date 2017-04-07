@@ -97,6 +97,7 @@ function quit {
 
 #RUN
 check_dependencies
+sudo -v
 while :
 do
   main
