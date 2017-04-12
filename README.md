@@ -18,7 +18,8 @@ the `data` directory, and all of which use variables defined in
 `functions/variables`.
 
 1. `doall` enables all functions to be run **non-interactively** to build an
-   entirely new system from scratch
+   entirely new system from scratch (although it starts with `ubuntu-restricted-extras`
+   which is the only bit that requires interaction to install mscorefonts)
 
 2. `aptadd` adds `apt` keys (`/data/keys.list`) and repositories
    (`/data/repos.list`)
