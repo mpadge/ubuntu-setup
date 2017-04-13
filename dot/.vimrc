@@ -11,10 +11,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jalvesaq/Nvim-R'
+Plugin 'altercation/vim-colors-solarized'
 call vundle#end()
 filetype plugin indent on
 
-execute pathogen#infect()
+"execute pathogen#infect()
 
 if has("syntax")
     syntax on
