@@ -29,6 +29,7 @@ function gdal_install {
     sudo make install
     cd ..
     rm -rf "gdal-2"$GDAL_VERSION $GDAL_FILE $GDAL_FILE
+    sudo apt-get install libgdal-dev
 }
 
 function gdal {
