@@ -1,4 +1,5 @@
 ubuntu-restricted-extras 
+curl
 autotools-dev # packages.list can include comments
 checkinstall
 clang-3.9 # clang - see apt.llvm.org
