@@ -78,7 +78,16 @@ Some tasks can nevertheless only be completed manually ...
 profile -> general -> font -> SourceCodePro Light 9pt
 ```
 
-### 2. gnome soliarized
+### 2. [Vundle.vim](https://github.com/VundleVim/Vundle.vim)
+
+Often does seem to work on first install. If `unknown function vundle#begin` is
+flagged, simply repeat setup:
+```
+rm .vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+### 3. gnome soliarized
 
 Clone repo as described [here](https://github.com/gmodarelli/solarize), then
 simply
@@ -88,7 +97,7 @@ cd ~/.solarized/gnome
 ```
 to configure both light and dark profiles
 
-### 3. Nvim-r
+### 4. Nvim-r
 
 [`.Rprofile` has two lines](https://github.com/mpadge/ubuntu-setup/blob/master/dot/.Rprofile#L8-L11)
 that need to be changed around in order to properly install
@@ -96,7 +105,7 @@ that need to be changed around in order to properly install
 [`vundle`](https://github.com/VundleVim/Vundle.vim), so install with
 `:PluginInstall`). After that, they need to be changed back the way they were.
 
-### 4. Computer name
+### 5. Computer name
 
 If not set at install, just change both:
 ```
