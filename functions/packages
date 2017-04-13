@@ -16,19 +16,19 @@ function non_inst_packages {
 function gdal_install {
     GDAL_URL="http://download.osgeo.org/gdal/CURRENT/"
     wget -O temp.html $GDAL_URL
-    GDAL_VERSION=`cat temp.html | grep -o -P '(?<=gdal-).*(?=.tar.gz\")'`
-    GDAL_FILE="gdal-"$GDAL_VERSION".tar.gz"
+    GDAL_VERSION=`cat temp.html | grep -o -P '(?<=gdal-2).*(?=.tar.gz\")'`
+    GDAL_FILE="gdal-2"$GDAL_VERSION".tar.gz"
     rm temp.html
     wget $GDAL_URL$GDAL_FILE
     tar zxf $GDAL_FILE
-    cd "gdal-"$GDAL_VERSION
+    cd "gdal-2"$GDAL_VERSION
     ./configure --with-sqlite3 --with-expat
     # Driver support can be checked by inspecting configure output, or by
     # $ gdal-config --formats
     make
     sudo make install
     cd ..
-    rm -rf "gdal-"$GDAL_VERSION $GDAL_FILE $GDAL_FILE
+    rm -rf "gdal-2"$GDAL_VERSION $GDAL_FILE $GDAL_FILE
 }
 
 function gdal {

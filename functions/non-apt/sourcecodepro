@@ -10,9 +10,9 @@ function install_sourcecodepro {
     ARCHIVE=${ARCHIVE/"releases/tag/"}
     ARCHIVE=${ARCHIVE////-}
     URL="https://github.com"$(curl -s $URL | grep '.tar.gz' | head -n 1 | cut -d '"' -f 2)
-    show_header 'Downloading '$NAME
-    sudo wget $URL
-    show_header 'installing '$NAME' ...'
+    show_header 'Downloading '$SCNAME
+    wget $URL
+    show_header 'installing '$SCNAME' ...'
     FILE=$(echo $URL | rev | head -n 1 | cut -d '/' -f 1 | rev)
     tar -xzf $FILE
     cd $ARCHIVE"/OTF"
