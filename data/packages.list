@@ -22,7 +22,7 @@ libbonoboui2-dev # for vim: see instvim
 libboost-all-dev 
 libcairo2-dev # for vim: see instvim
 libcgal-dev 
-libclang-3.9-dev# clang - see apt.llvm.org
+libclang-3.9-dev # clang - see apt.llvm.org
 libclang-common-3.9-dev # clang - see apt.llvm.org
 libcurl4-openssl-dev 
 libncurses5-dev # for vim: see instvim
@@ -32,7 +32,7 @@ libglu1-mesa-dev
 libgeos++-dev
 libgmp3-dev
 libgnome2-dev # for vim: see instvim
-libgnomeui-dev# for vim: see instvim
+libgnomeui-dev # for vim: see instvim
 libgsl-dev 
 libgtk2.0-dev # for vim: see instvim
 libllvm3.9 # clang - see apt.llvm.org
