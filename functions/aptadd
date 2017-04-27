@@ -39,6 +39,7 @@ function addrepos {
     if $repos_added
     then
         sudo apt-get update
+        sudo apt-get upgrade
         show_success 'apt repositories added'
     fi
 }
