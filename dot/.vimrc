@@ -27,7 +27,7 @@ else
     set background=dark
     "set background=light
 endif
-set background=dark
+set background=light
 set t_Co=16
 let g:solarized_termcolors=16
 colorscheme solarized

@@ -50,13 +50,13 @@ function dotfiles {
 # dot files copy
 function dotfiles_cp {
     show_info 'Copying dot-files to git repo...'
-    cp $HOME/.bash_aliases /data/Dropbox/mark/system/ubuntu-setup/dot/.bash_aliases
-    cp $HOME/.Rprofile /data/Dropbox/mark/system/ubuntu-setup/dot/.Rprofile
-    cp $HOME/.bashrc /data/Dropbox/mark/system/ubuntu-setup/dot/.bashrc
-    cp $HOME/.vimrc /data/Dropbox/mark/system/ubuntu-setup/dot/.vimrc
-    cp $HOME/.tmux.conf /data/Dropbox/mark/system/ubuntu-setup/dot/.tmux.conf
-    cp $HOME/.gitconfig /data/Dropbox/mark/system/ubuntu-setup/dot/.gitconfig
-    cp $HOME/.inputrc /data/Dropbox/mark/system/ubuntu-setup/dot/.inputrc
+    cp $HOME/.bash_aliases /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.bash_aliases
+    cp $HOME/.Rprofile /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.Rprofile
+    cp $HOME/.bashrc /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.bashrc
+    cp $HOME/.vimrc /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.vimrc
+    cp $HOME/.tmux.conf /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.tmux.conf
+    cp $HOME/.gitconfig /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.gitconfig
+    cp $HOME/.inputrc /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.inputrc
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "dot files copied successfully." 8 78
