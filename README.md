@@ -83,7 +83,7 @@ profile -> general -> font -> SourceCodePro Light 9pt
 Often does seem to work on first install. If `unknown function vundle#begin` is
 flagged, simply repeat setup:
 ```
-rm .vim/bundle/Vundle.vim
+rm -rf .vim/bundle/Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
