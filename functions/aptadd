@@ -2,22 +2,45 @@
 
 # recieve new apt keys
 function addkeys {
-    show_info 'adding keys ... ' $(cat $KEYS)
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $(cat $KEYS)
+    keys_added=false
+    while read F
+    do
+        EX=$(apt-key list | grep -w $F)
+        if [ "" == $EX ]
+        then
+            show_info 'adding keys ... ' $(cat $KEYS)
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $(cat $KEYS)
+            keys_added=true
+        fi
+    done < $KEYS
     # clang from apt.llvm.org
     wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
-    show_success 'apt keys added'
+    if $keys_added
+    then
+        sudo apt-get update
+        show_success 'apt keys added'
+    fi
 }
 
 # add new apt repositories
-# TODO: Add check for only if not existent
 function addrepos {
-    show_info 'adding repos ... ' "$(cat $REPOS)"
-    while read F ; do
-        sudo add-apt-repository "$F"
+    repos_added=false
+    while read F
+    do
+        REX=grep "$F" /etc/apt/sources.list
+        if [ "" == "$REX" ]
+        then
+            show_info 'adding repos ... ' "$(cat $REPOS)"
+            sudo add-apt-repository "$F"
+            repos_added=true
+        fi
     done < $REPOS
-    sudo apt-get update
-    show_success 'apt repositories added'
+
+    if $repos_added
+    then
+        sudo apt-get update
+        show_success 'apt repositories added'
+    fi
 }
 
 # Install packages listed in 'data/packages.list'

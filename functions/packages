@@ -5,10 +5,15 @@ function non_inst_packages {
     show_info_red "checking apt package installation status ... "
     while read F; do
         # cut comments from package names and remove all whitespace
-        PF=$(echo $F | cut -d "#" -f 1 | tr -d '[:space:]') 
-        PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF 2>&1|grep "install ok installed")
-        if [ "" == "$PKGCHECK" ]; then
-            PKGS_NI+=($PF)
+        #PF=$(echo $F | cut -d "#" -f 1 | tr -d '[:space:]') 
+        PF=$(echo $F | cut -d " " -f 1)
+        # but exclude packages commented-out with initial "#"
+        if [[ $PF != "#"* ]]
+        then
+            PKGCHECK=$(dpkg-query -W --showformat='${Status}\n' $PF 2>&1|grep "install ok installed")
+            if [ "" == "$PKGCHECK" ]; then
+                PKGS_NI+=($PF)
+            fi
         fi
     done < <(cat $PKGS $PKGST)
 }
