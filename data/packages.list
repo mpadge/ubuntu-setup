@@ -45,6 +45,7 @@ libsqlite3-dev
 libsqlite3-0 
 libssl-dev
 libudunits2-dev # for R units via sp
+libv8-3.14-dev # for R tmap
 libx11-dev 
 libxml2-dev 
 libxpm-dev # for vim: see instvim
