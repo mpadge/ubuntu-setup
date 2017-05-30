@@ -20,6 +20,7 @@ ggmap
 ggplot2
 gridBase
 httr
+hunspel
 igraph
 knitr
 leaflet
