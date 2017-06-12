@@ -34,6 +34,7 @@ function dotfiles {
     show_info 'Downloading dot-files...'
     WD=$PWD
     eval cd $HOME
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.Renviron
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.Rprofile
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.bashrc
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.tmux.conf
@@ -52,6 +53,7 @@ function dotfiles_cp {
     show_info 'Copying dot-files to git repo...'
     cp $HOME/.bash_aliases /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.bash_aliases
     cp $HOME/.Rprofile /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.Rprofile
+    cp $HOME/.Renviron /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.Renviron
     cp $HOME/.bashrc /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.bashrc
     cp $HOME/.vimrc /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.vimrc
     cp $HOME/.tmux.conf /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.tmux.conf
