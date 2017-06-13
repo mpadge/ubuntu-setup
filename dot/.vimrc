@@ -12,6 +12,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tyru/open-browser.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -170,7 +171,7 @@ let g:syntastic_check_on_wq = 0
 "let b:syntastic_mode = 0 " disable
 " http://stackoverflow.com/questions/20030603/vim-syntastic-how-to-disable-the-checker
 let g:syntastic_mode_map = { 
-    \ 'mode': 'passive', 
+    \ 'mode': 'active', 
     \ 'active_filetypes': [],
     \ 'passive_filetypes': [] }
 nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
