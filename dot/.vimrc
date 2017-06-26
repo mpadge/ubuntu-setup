@@ -18,6 +18,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'jimhester/lintr'
+Plugin 'mkitt/tabline.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -146,6 +147,7 @@ set laststatus=2
 let g:airline_theme='sol'
 " show all open buffers on top
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
 " nice looking things
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -179,12 +181,16 @@ nmap <Space> <Plug>RDSendLine
 let R_assign = 0
 
 let g:R_in_buffer = 0
+let g:R_applescript = 0
 let g:R_tmux_split = 1
-let g:R_rconsole_width = winwidth("%") / 2
+let g:R_rconsole_height = winheight(0)
+let g:R_rconsole_width = winwidth(0) / 2
+"let g:R_rconsole_width = 0
+"autocmd VimResized * let R_rconsole_width = winwidth(0) / 2
 let g:R_nvimpager = "horizontal"
 let R_args = ['--no-save', '--quiet']
 let R_tmux_title = 'R'
-let g:R_notmuxconf = 1 "use my .tmux.conf, not the Nvim-r one
+"let g:R_notmuxconf = 1 "use my .tmux.conf, not the Nvim-r one
 
 let r_syntax_folding = 1
 
