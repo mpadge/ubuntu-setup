@@ -35,7 +35,11 @@ attach(.env)
         #            "stats", "methods", "nvimcom"))
 
         if ('colorout' %in% rownames (utils::installed.packages ()))
+        {
             library (colorout)
+            # default normal green too faint for light bg
+            setOutputColors (normal = 0, verbose = FALSE)
+        }
 
         rv <- R.Version ()$version.string
         rn <- R.Version ()$nickname
