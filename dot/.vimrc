@@ -13,6 +13,11 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tyru/open-browser.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'jimhester/lintr'
 call vundle#end()
 filetype plugin indent on
 
@@ -32,6 +37,7 @@ set background=light
 set t_Co=16
 let g:solarized_termcolors=16
 colorscheme solarized
+"colorscheme monokai
 
 if has("autocmd")
     " Jump to the last position when reopening a file
@@ -74,7 +80,7 @@ set gdefault
 "automatically highlight searching
 set hlsearch 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 set backspace=indent,eol,start
 
 
@@ -127,6 +133,30 @@ function MyExplore()
 endfunction
 
 nmap <F2> :call MyExplore()<cr>
+
+"----------------------------------------
+"-------------   airline   ---------------
+"----------------------------------------
+
+set laststatus=2
+" configure vim-airline
+" let g:airline_theme='term'
+"let g:airline_theme='solarized'
+let g:airline_theme='sol'
+" show all open buffers on top
+let g:airline#extensions#tabline#enabled = 1
+" nice looking things
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = '|'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
 
 
 "----------------------------------------
