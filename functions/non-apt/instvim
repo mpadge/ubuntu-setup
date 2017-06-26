@@ -59,7 +59,6 @@ function pathogen {
 }
 
 function solarized {
-    #show_info '---in solarized---'
     PFILE=$HOME"/.vim/autoload/pathogen.vim"
     if [ ! -e $PFILE ]; then
         pathogen
@@ -78,6 +77,22 @@ function solarized {
         cd vim-colors-solarized
         mv vim-colors-solarized $HOME/.vim/bundle
         cd $PWD
+    fi
+}
+
+function monokai {
+    VCDIR="$HOME/.vim/colors"
+    if [ ! -d "$VCDIR" ]; then
+        mkdir -p $VCDIR;
+    fi
+    MKFILE=$VCDIR/monokai.vim
+    if [ ! -f $MKFILE ]; then
+        git clone https://github.com/sickill/vim-monokai
+        cp vim-monokai/colors/monokai.vim $MKFILE
+        rm -rf vim-monokai
+    else
+        whiptail --title "monokai colours" --msgbox "monokai already installed." 8 78
+        show_info 'monokai already installed'
     fi
 }
 
@@ -175,6 +190,7 @@ function install_vim {
 
     pathogen
     solarized
+    monokai
     browswer
     vundle
     ycm
