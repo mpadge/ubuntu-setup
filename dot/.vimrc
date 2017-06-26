@@ -84,6 +84,7 @@ set cmdheight=1
 set backspace=indent,eol,start
 
 
+
 "------------------------------------
 " Behavior
 "------------------------------------
@@ -157,6 +158,9 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
+
+set wildmenu
+set wildmode=list:full
 
 
 "----------------------------------------
