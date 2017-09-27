@@ -3,6 +3,7 @@
 . $DIR/functions/non-apt/instvim
 . $DIR/functions/non-apt/instpandoc
 . $DIR/functions/non-apt/instpython
+. $DIR/functions/non-apt/docker
 . $DIR/functions/non-apt/sourcecodepro
 . $DIR/functions/non-apt/travis
 . $DIR/functions/non-apt/rpackages
@@ -22,10 +23,11 @@ function nonapt {
         'rpackages'         '2. R packages' \
         'install_pandoc'    '3. pandoc' \
         'install_python'    '4. python' \
-        'sourcecodepro'     '5. Source Code Pro' \
-        'travis'            '6. travis-ci client' \
-        'latexpkgs'         '7. latex packages' \
-        'gdal_install'      '8. GDAL' \
+        'install_docker'    '5. docker' \
+        'sourcecodepro'     '6. Source Code Pro' \
+        'travis'            '7. travis-ci client' \
+        'latexpkgs'         '8. latex packages' \
+        'gdal_install'      '9. GDAL' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?
