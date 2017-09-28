@@ -20,6 +20,7 @@ ggm
 ggmap
 ggplot2
 gridBase
+hexbin
 httr
 hunspel
 igraph
