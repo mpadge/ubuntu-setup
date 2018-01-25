@@ -1,2 +1,3 @@
 Tab:complete
 "\e[Z":menu-complete
+set completion-ignore-case on
