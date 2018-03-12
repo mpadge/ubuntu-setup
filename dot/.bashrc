@@ -139,7 +139,7 @@ test -r $d && eval "$(dircolors $d)"
 # added by travis gem
 [ -f /home/markus/.travis/travis.sh ] && source /home/markus/.travis/travis.sh
 
-from @karpfen:
+# from @karpfen:
 function run {
     if [ -z "$1" ]; then
         echo "Usage: run <file_name>"
