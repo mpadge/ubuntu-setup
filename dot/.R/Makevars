@@ -1,0 +1,8 @@
+CXX=clang++
+CXXFLAGS= -Wall -pedantic -Wconversion
+#CXXFLAGS= -Wall -pedantic
+CXX11=clang++
+CXX11FLAGS= -Wall -pedantic -Wconversion
+#CXX11FLAGS= -Wall -pedantic
+CC=clang
+#CXX=g++

@@ -31,6 +31,10 @@ function preferences {
 
 # dot files
 function dotfiles {
+    if [ ! -d ~/.R ]; then
+        mkdir ~/.R
+    fi
+
     show_info 'Downloading dot-files...'
     WD=$PWD
     eval cd $HOME
@@ -41,6 +45,9 @@ function dotfiles {
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.vimrc
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.gitconfig
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.inputrc
+
+    eval cd $HOME/.R
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.R/Makevars
     eval cd $WD
     # Done
     show_success 'Done.'
