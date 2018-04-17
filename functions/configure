@@ -34,6 +34,9 @@ function dotfiles {
     if [ ! -d ~/.R ]; then
         mkdir ~/.R
     fi
+    if [ ! -d ~/.ccache ]; then
+        mkdir ~/.ccache
+    fi
 
     show_info 'Downloading dot-files...'
     WD=$PWD
@@ -49,6 +52,10 @@ function dotfiles {
     eval cd $HOME/.R
     curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.R/Makevars
     eval cd $WD
+    eval cd $HOME/.ccache
+    curl -O https://raw.githubusercontent.com/mpadge/ubuntu-setup/master/dot/.ccache/ccache.conf
+    eval cd $WD
+
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "dot files downloaded successfully." 8 78
@@ -58,14 +65,21 @@ function dotfiles {
 # dot files copy
 function dotfiles_cp {
     show_info 'Copying dot-files to git repo...'
-    cp $HOME/.bash_aliases /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.bash_aliases
-    cp $HOME/.Rprofile /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.Rprofile
-    cp $HOME/.Renviron /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.Renviron
-    cp $HOME/.bashrc /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.bashrc
-    cp $HOME/.vimrc /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.vimrc
-    cp $HOME/.tmux.conf /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.tmux.conf
-    cp $HOME/.gitconfig /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.gitconfig
-    cp $HOME/.inputrc /data/Dropbox/mark/code/repos/ubuntu-setup/dot/.inputrc
+
+    cp $HOME/.bash_aliases $DIR/dot/.bash_aliases
+
+    cp $HOME/.bash_aliases $DIR/dot/.bash_aliases
+    cp $HOME/.Rprofile $DIR/dot/.Rprofile
+    cp $HOME/.Renviron $DIR/dot/.Renviron
+    cp $HOME/.bashrc $DIR/dot/.bashrc
+    cp $HOME/.vimrc $DIR/dot/.vimrc
+    cp $HOME/.tmux.conf $DIR/dot/.tmux.conf
+    cp $HOME/.gitconfig $DIR/dot/.gitconfig
+    cp $HOME/.inputrc $DIR/dot/.inputrc
+
+    cp $HOME/.R/Makevars $DIR/dot/.R/Makevars
+    cp $HOME/.ccache/ccache.conf $DIR/dot/.ccache/ccache.conf
+
     # Done
     show_success 'Done.'
     whiptail --title "Finished" --msgbox "dot files copied successfully." 8 78

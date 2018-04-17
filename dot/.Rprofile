@@ -7,7 +7,7 @@ local ({
 # http://stackoverflow.com/questions/24387660/how-to-change-libpaths-permanently-in-r
 # Note that the order of these has to be reversed for initial installation of
 # nvimcom, then they can be reset.
-.libPaths(c ('~/R/x86_64-pc-linux-gnu-library/3.4.1', .libPaths ()))
+.libPaths(c ('~/R/x86_64-pc-linux-gnu-library/3.4', .libPaths ()))
 .libPaths(c ('/usr/local/lib/R/site-library', .libPaths ()))
  
 #options (stringsAsFactors=FALSE)

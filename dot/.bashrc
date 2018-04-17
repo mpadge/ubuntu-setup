@@ -123,7 +123,7 @@ fi
 export TERM=screen-256color-bce
 
 # Add custom colour scheme produced from http://ciembor.github.io/4bit/#
-#source /data/Dropbox/mark/system/solarized.sh
+#source .../solarized.sh
 
 # Nvim-r-plugin requires its own line in .vimrc to achieve this
 alias R='R --no-save --quiet'

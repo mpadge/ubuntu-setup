@@ -1,8 +1,20 @@
-CXX=clang++
+VER=
+CCACHE=ccache
+
+CXX=$(CCACHE) clang++$(VER)
 CXXFLAGS= -Wall -pedantic -Wconversion
 #CXXFLAGS= -Wall -pedantic
-CXX11=clang++
+
+CXX11=$(CCACHE) clang++$(VER)
 CXX11FLAGS= -Wall -pedantic -Wconversion
 #CXX11FLAGS= -Wall -pedantic
-CC=clang
+
+CXX14=$(CCACHE) clang++$(VER)
+CXX14FLAGS= -Wall -pedantic -Wconversion
+#CXX16FLAGS= -Wall -pedantic
+
+CC=$(CCACHE) clang$(VER)
 #CXX=g++
+
+FC=$(CCACHE) gfortran$(VER)
+F77=$(CCACHE) gfortran$(VER)
