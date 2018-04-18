@@ -1,5 +1,6 @@
 ubuntu-restricted-extras 
 curl
+autojump # https://github.com/wting/autojump
 autotools-dev # packages.list can include comments
 checkinstall
 clang-3.9 # clang - see apt.llvm.org
