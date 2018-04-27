@@ -19,6 +19,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'jimhester/lintr'
 Plugin 'mkitt/tabline.vim'
+Plugin 'kannokanno/previm'
 call vundle#end()
 filetype plugin indent on
 
@@ -34,7 +35,7 @@ else
     set background=dark
     "set background=light
 endif
-set background=light
+set background=dark
 set t_Co=16
 let g:solarized_termcolors=16
 colorscheme solarized
@@ -194,6 +195,17 @@ let R_tmux_title = 'R'
 
 let r_syntax_folding = 1
 
+
+"-------------------------------------------
+"---------------   previm   ----------------
+"-------------------------------------------
+
+"augroup PrevimSettings
+"    autocmd!
+"    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+"augroup END
+
+nnoremap <leader>m :PrevimOpen<cr>
 
 "-------------------------------------------
 "-------------   syntastic   ---------------
