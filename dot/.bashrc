@@ -25,6 +25,9 @@ shopt -s histappend                      # append to history, don't overwrite it
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+# https://github.com/wting/autojump
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -123,10 +126,10 @@ fi
 export TERM=screen-256color-bce
 
 # Add custom colour scheme produced from http://ciembor.github.io/4bit/#
-#source .../solarized.sh
+# source ../solarized.sh
 
 # Nvim-r-plugin requires its own line in .vimrc to achieve this
-alias R='R --no-save --quiet'
+alias R='R --no-save --no-restore --quiet'
 alias sudo='sudo ' # ensures that sudo R loads .Rprofile
 
 # shell promopt (31m = red, 32m = green)
@@ -137,7 +140,7 @@ d=.dircolors
 test -r $d && eval "$(dircolors $d)"
 
 # added by travis gem
-[ -f /home/markus/.travis/travis.sh ] && source /home/markus/.travis/travis.sh
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # from @karpfen:
 function run {
