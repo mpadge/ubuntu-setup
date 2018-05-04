@@ -8,6 +8,7 @@ codetools
 combinat
 cubature
 data.table
+dbscan
 devtools
 distr
 dplyr
