@@ -1,17 +1,21 @@
 VER=
 CCACHE=ccache
+CCACHE=
+
+EXCL_A=/usr/local/lib/R/site-library/Rcpp/include
+EXCL_B=/usr/local/lib/R/site-library/RcppArmadillo/include
 
 CXX=$(CCACHE) clang++$(VER)
-CXXFLAGS= -Wall -pedantic -Wconversion
+CXXFLAGS= -Wall -pedantic -Wconversion -isystem $(EXCL_A) -isystem $(EXCL_B)
 #CXXFLAGS= -Wall -pedantic
 
 CXX11=$(CCACHE) clang++$(VER)
-CXX11FLAGS= -Wall -pedantic -Wconversion
+CXX11FLAGS= -Wall -pedantic -Wconversion -isystem $(EXCL_A) -isystem $(EXCL_B)
 #CXX11FLAGS= -Wall -pedantic
 
 CXX14=$(CCACHE) clang++$(VER)
-CXX14FLAGS= -Wall -pedantic -Wconversion
-#CXX16FLAGS= -Wall -pedantic
+CXX14FLAGS= -Wall -pedantic -Wconversion -isystem $(EXCL_A) -isystem $(EXCL_B)
+#CXX14FLAGS= -Wall -pedantic
 
 CC=$(CCACHE) clang$(VER)
 #CXX=g++
